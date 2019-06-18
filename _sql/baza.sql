@@ -34,10 +34,15 @@ CREATE TABLE IF NOT EXISTS `kategoria` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nazwa` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin2;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin2;
 
--- Zrzucanie danych dla tabeli project-uz_shop.kategoria: ~0 rows (około)
+-- Zrzucanie danych dla tabeli project-uz_shop.kategoria: ~4 rows (około)
 /*!40000 ALTER TABLE `kategoria` DISABLE KEYS */;
+REPLACE INTO `kategoria` (`id`, `nazwa`) VALUES
+	(1, 'koszulki'),
+	(2, 'bluzy'),
+	(3, 'buty'),
+	(4, 'spodnie');
 /*!40000 ALTER TABLE `kategoria` ENABLE KEYS */;
 
 -- Zrzut struktury tabela project-uz_shop.klienci

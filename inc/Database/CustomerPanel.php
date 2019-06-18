@@ -118,7 +118,6 @@ class CustomerPanel {
 
     public function getCustomerQuestions(){
         $getQuestions = new Connect();
-        $questionsIDs = [];
 
         try {
             $getQuestionsList = $getQuestions->query(
@@ -159,12 +158,6 @@ class CustomerPanel {
 
             echo '    </tbody>';
             echo '</table>';
-
-
-            if (!isset($_SESSION['ID_Zapytania'])){
-                session_start();
-            }
-            $_SESSION['ID_Zapytania'] = $questionsIDs;
 
             echo '<script>
                 jQuery(document).ready(function($) {
@@ -230,7 +223,7 @@ class CustomerPanel {
                     echo '        </tr>';
                     echo '    </thead>';
                     echo '</table>';
-                    
+
                     echo '<textarea class="form-control" id="textAreaTrescWiadomosci" rows="3"></textarea>';
                     echo '<button type="submit" class="btn btn-primary">Wyślij wiadomość</button>';
                 echo '</div>';

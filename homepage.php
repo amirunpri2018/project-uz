@@ -64,6 +64,120 @@ $polaczenie->close();
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
           integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <link rel="stylesheet" href="produkty/css/style.css">
+    <style type="text/css">
+
+
+
+
+        ul {
+     list-style: none;
+     float: left;
+}
+ 
+ul > li {
+     margin: 0;
+     padding: 0;
+     float: left; 
+     position: relative;
+     height: 30px;
+}
+ 
+ul > li > a {
+     padding: 10px; 
+     color: #444;
+     text-decoration: none; 
+}
+ 
+ul > li > a:hover, 
+ul > li:hover > a {
+     color: rgba(226,226,226,0.49);
+     text-decoration: underline;
+    
+}
+ 
+ul > li ul {
+     padding: 0;
+     position: absolute; 
+     display: none; 
+     left: 0px; 
+     top: 30px; 
+     width: 200px; 
+     text-align: left;
+     background-color: #fcfcfc;
+     border: 1px solid #ccc;
+}
+ 
+ul li:hover > ul {
+     display: block;
+     margin-top: 11px;
+}
+ 
+ul > li ul ul {
+     left: 200px; 
+     top: -1px;
+}
+ 
+ul > li ul li {
+     margin: 0; 
+     padding: 0;
+     position: relative; 
+     float: none; 
+     height: auto;
+}
+ 
+ul > li ul li a {
+     padding: 10px 20px; 
+     color: #505050; 
+     text-decoration: none;
+     display: block;
+}
+ 
+ul > li ul li a:hover,
+ul > li ul li:hover > a {
+     text-decoration: none;
+     color: #fff;
+     background-color: #f26c4f;
+}
+    html,
+    body,
+    ,
+    .carousel {
+      height: 60vh;
+    }
+
+    @media (max-width: 740px) {
+
+      html,
+      body,
+      ,
+      .carousel {
+        height: 100vh;
+      }
+    }
+
+    @media (min-width: 800px) and (max-width: 850px) {
+
+      html,
+      body,
+      ,
+      .carousel {
+        height: 100vh;
+      }
+    }
+
+    .view,body,html{height:100%}
+
+    .carousel{height:50%}
+
+    .carousel .carousel-inner,.carousel .carousel-inner .active,.carousel .carousel-inner .carousel-item{
+      height:100%
+      }
+      @media (max-width:776px)
+      {
+        .carousel{
+          height:100%}}.page-footer{background-color:#929FBA}
+
+  </style>
 </head>
 <body>
 
@@ -128,7 +242,7 @@ $polaczenie->close();
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
+     <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0 menuroll" style="font-size: 25px;padding-bottom: 10px;"
         ">
         <li class="nav-item">
@@ -139,28 +253,21 @@ $polaczenie->close();
             </a></li>
         <li class="nav-item">
             <a class="nav-link" href="produkty">Ubrania</a>
+              <ul>
+               <li><a href="#">Buty</a></li>
+               <li><a href="#">Bluzy</a></li>
+               <li><a href="#">Kalesony</a></li>
+               <li><a href="#">leginsy</a></li>
+               <li><a href="#">skarpoetki</a></li>
+               <li><a href="#">opaski</a></li>
+          </ul>
         </li>
+
         <li class="nav-item">
             <a class="nav-link" style="color:  rgba(226,226,226,0.49);" href="#">|
+
             </a></li>
-            <li class="nav-item">
-            <a class="nav-link" href="produkty">Odżywki</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" style="color:  rgba(226,226,226,0.49);" href="#">|
-            </a></li>
-            <li class="nav-item">
-            <a class="nav-link" href="produkty">Buty</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" style="color:  rgba(226,226,226,0.49);" href="#">|
-            </a></li>
-             <li class="nav-item">
-            <a class="nav-link" href="produkty">Suplementy</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" style="color:  rgba(226,226,226,0.49);" href="#">|
-            </a></li>
+          
         <li class="nav-item">
             <a class="nav-link" href="zamowienie">Zamówienie</a>
         </li>
@@ -479,8 +586,8 @@ $polaczenie->close();
 </section>
 <!-- Section: Products v.1 -->
 </main>
-   <footer style="padding-top: 90px">
-    <div id="footer" style="position:fixed; bottom: 0px; z-index: -5;">
+   <footer >
+    <div id="footer" style="position: relative; bottom: 0px; z-index: -5;">
         <a class="navbar-brand social"
            style="color: white; font-size: 24px; padding-left: 70px; padding-top: 30px; padding-right: 70px;"
            href="#">

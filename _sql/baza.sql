@@ -39,10 +39,16 @@ CREATE TABLE IF NOT EXISTS `kategoria` (
 -- Zrzucanie danych dla tabeli project-uz_shop.kategoria: ~4 rows (około)
 /*!40000 ALTER TABLE `kategoria` DISABLE KEYS */;
 REPLACE INTO `kategoria` (`id`, `nazwa`) VALUES
-	(1, 'koszulki'),
-	(2, 'bluzy'),
-	(3, 'buty'),
-	(4, 'spodnie');
+	(1, 'bluzy'),
+	(2, 'dresy'),
+	(3, 'koszule'),
+	(4, 't_shirty'),
+	(5, 'marynarki'),
+	(6, 'spodnie'),
+	(7, 'sukienki'),
+	(8, 'spodniczki'),
+	(9, 'obuwie'),
+	(10, 'dodatki');
 /*!40000 ALTER TABLE `kategoria` ENABLE KEYS */;
 
 -- Zrzut struktury tabela project-uz_shop.klienci
@@ -75,7 +81,7 @@ CREATE TABLE IF NOT EXISTS `produkty` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
--- Zrzucanie danych dla tabeli project-uz_shop.produkty: ~0 rows (około)
+-- Zrzucanie danych dla tabeli project-uz_shop.produkty: ~1 rows (około)
 /*!40000 ALTER TABLE `produkty` DISABLE KEYS */;
 REPLACE INTO `produkty` (`id`, `kategoria`, `nazwa`, `cena`) VALUES
 	(2, 'sport', 'test', 13);

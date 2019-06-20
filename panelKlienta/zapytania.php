@@ -133,9 +133,9 @@ session_start();
                     $getOrders = new CustomerPanel();
 
                     if(isset($_GET['id'])){
-                        $getOrders->getQuestionDetails($_GET['id']);
+                        $getOrders->getQuestionDetails($_SESSION['z_id'], $_GET['id']);
                     } else {
-                        $getOrders->getCustomerQuestions();
+                        $getOrders->getCustomerQuestions($_SESSION['z_id']);
                     }
                 ?>
             </div>

@@ -13,7 +13,7 @@ require_once 'inc/Database/CustomerOrderStatus.php';
 if (isset($_POST['p_nr']) && !empty($_POST['p_nr'])) {
     $p_nr = $_POST['p_nr'];
 
-    $orderStatus = new CustomerOrderStatus();
+    $orderStatus = new CustomerOrderStatusTest();
     $orderStatus->getOrderStatus($_SESSION['z_id'], $p_nr);
 }
 ?>

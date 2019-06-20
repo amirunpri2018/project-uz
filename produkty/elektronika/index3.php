@@ -51,7 +51,12 @@ session_start();
 
                 if (isset($_SESSION['zalogowany']))
                 {
-                    echo "<span class=\"nav-link\">Cześć <b>".$_SESSION['z_imie']."</b>!</span>";
+                    echo "<span class=\"nav-link\">
+                                <a href='../panelklienta/account.php'>
+                                    Cześć <b>".$_SESSION['z_imie']."</b>!
+                                </a>
+                              </span>
+                             ";
                 }
 
                 else
@@ -260,7 +265,7 @@ session_start();
             if ($result->num_rows > 0) {
                 // output data of each row
 
-                echo "<div class='row'>";
+                echo "<div class='row'>";g
 
                 while ($row = $result->fetch_assoc()) {
                     $i++;

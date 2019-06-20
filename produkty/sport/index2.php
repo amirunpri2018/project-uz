@@ -44,7 +44,7 @@ session_start();
         <i class="fab fa-pinterest-p"></i>
 
     </a>
-    <div class="collapse navbar-collapkategoriaproduktuse justify-content-end" id="navbarNavDropdown">
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
         <ul class="navbar-nav">
             <li class="nav-item">
                 <?php
@@ -208,7 +208,7 @@ session_start();
                     require_once "../php/connect.php";
                     $polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
 
-                    if ($result = $polaczenie->query("SELECT * FROM produkty WHERE kategoria='sport' ORDER BY cena")) {
+                    if ($result = $polaczenie->query("SELECT * FROM article WHERE category_id=6 ORDER BY price")) {
 
                         $row_cnt = $result->num_rows;
 
@@ -237,7 +237,7 @@ session_start();
 
             <?php
 
-            $sql = "SELECT * FROM produkty WHERE kategoria='sport' ORDER BY cena";
+            $sql = "SELECT * FROM article WHERE category_id=6 ORDER BY price";
             $result = $polaczenie->query($sql);
             $i = 1;
 

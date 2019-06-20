@@ -128,11 +128,6 @@ else {
         <div class="row">
             <div class="col-md-12">
                 <div id="order">
-                    <div style="text-align: center; font-size: 22px; margin-bottom: 10px;">Zamówienie nr <span id="nr_zamowienia">
-
-                            <?php echo $_SESSION['nr_zamowienia2'] ?>
-
-                        </span> zostało przekazane do realizacji.</div><br>
 
                     <div style="text-align: center;">Wybrałaś/eś sposób zapłaty: <b><?php
 
@@ -148,14 +143,6 @@ else {
                             }
 
                             ?>
-
-
-                    <br><br>Twoje zamówienie zostane dostarczone na adres:<br><br>
-                            <b>
-                        <?php echo $_SESSION['imie2']; ?>
-                        <?php echo $_SESSION['nazwisko2'] ?><br>
-                        <?php echo $_SESSION['adres2']; ?><br>
-                                <?php echo $_SESSION['miejscowosc2']; ?></b>
 
                     </div>
 

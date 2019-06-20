@@ -205,6 +205,74 @@ background-color: rgba(255,0,0,0.10)!important;
 </style>";
     }
 
+
+
+    $phone = $_POST['phone'];
+
+    if (strlen($phone) < 1) {
+        $wszystko_ok = false;
+        $_SESSION['e_phone'] = "<i class=\"fas fa-user-times\"></i> Pole telefon jest wymagane!";
+
+        echo "<style>
+
+input[name='phone'] {
+border: 1px solid red!important;
+background-color: rgba(255,0,0,0.10)!important;
+}
+
+</style>";
+    }
+
+    if (strlen($phone) > 11) {
+        $wszystko_ok = false;
+        $_SESSION['e_phone'] = "<i class=\"fas fa-user-times\"></i> Wprowadź maksymalnie 9 znaków!";
+
+        echo "<style>
+
+input[name='phone'] {
+border: 1px solid red!important;
+background-color: rgba(255,0,0,0.10)!important;
+}
+
+</style>";
+    }
+
+
+
+
+    $zip = $_POST['zip'];
+
+    if (strlen($zip) < 1) {
+        $wszystko_ok = false;
+        $_SESSION['e_zip'] = "<i class=\"fas fa-user-times\"></i> Pole kod pocztowy jest wymagane!";
+
+        echo "<style>
+
+input[name='zip'] {
+border: 1px solid red!important;
+background-color: rgba(255,0,0,0.10)!important;
+}
+
+</style>";
+    }
+
+    if (strlen($zip) > 6) {
+        $wszystko_ok = false;
+        $_SESSION['e_zip'] = "<i class=\"fas fa-user-times\"></i> Wprowadź maksymalnie 6 znaków!";
+
+        echo "<style>
+
+input[name='zip'] {
+border: 1px solid red!important;
+background-color: rgba(255,0,0,0.10)!important;
+}
+
+</style>";
+    }
+
+
+
+
     $miejscowosc = $_POST['miejscowosc'];
 
     if (strlen($miejscowosc) < 1) {
@@ -248,7 +316,7 @@ background-color: rgba(255,0,0,0.10)!important;
             throw new Exception(mysqli_connect_errno());
         } else {
             // czy numer dostępu istnieje?
-            $rezultat = $polaczenie->query("SELECT login FROM klienci WHERE login='$login'");
+            $rezultat = $polaczenie->query("SELECT login FROM customer WHERE login='$login'");
             if (!$rezultat)
                 throw new Exception($polaczenie->error);
             $ile_takich_loginow = $rezultat->num_rows;
@@ -312,21 +380,27 @@ background-color: rgba(255,0,0,0.10)!important;
 
                 $polaczenie = new mysqli($host, $db_user, $db_password, $db_name);
 
-                $imie = htmlentities($imie, ENT_QUOTES, "UTF-8");
-                $nazwisko = htmlentities($nazwisko, ENT_QUOTES, "UTF-8");
-                $adres = htmlentities($adres, ENT_QUOTES, "UTF-8");
+                $name = htmlentities($imie, ENT_QUOTES, "UTF-8");
+                $surname = htmlentities($nazwisko, ENT_QUOTES, "UTF-8");
+                $address = htmlentities($adres, ENT_QUOTES, "UTF-8");
                 $login = htmlentities($login, ENT_QUOTES, "UTF-8");
-                $haslo = htmlentities($haslo, ENT_QUOTES, "UTF-8");
-                $miejscowosc = htmlentities($miejscowosc, ENT_QUOTES, "UTF-8");
+                $password = htmlentities($haslo, ENT_QUOTES, "UTF-8");
+                $zip = htmlentities($zip, ENT_QUOTES, "UTF-8");
+                $phone = htmlentities($zip, ENT_QUOTES, "UTF-8");
+                $city = htmlentities($miejscowosc, ENT_QUOTES, "UTF-8");
 
-                if ($polaczenie->query(sprintf("INSERT INTO klienci VALUES (NULL, '%s', '%s', '%s', '%s', '%s', '%s')",
-
+                if ($polaczenie->query(sprintf("INSERT INTO customer VALUES (NULL, '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
+                    mysqli_real_escape_string($polaczenie, $name),
+                    mysqli_real_escape_string($polaczenie, $surname),
+                    mysqli_real_escape_string($polaczenie, $address),
+                    mysqli_real_escape_string($polaczenie, $city),
+                    mysqli_real_escape_string($polaczenie, $zip),
+                    mysqli_real_escape_string($polaczenie, $phone),
                     mysqli_real_escape_string($polaczenie, $login),
-                    mysqli_real_escape_string($polaczenie, $haslo),
-                    mysqli_real_escape_string($polaczenie, $imie),
-                    mysqli_real_escape_string($polaczenie, $nazwisko),
-                    mysqli_real_escape_string($polaczenie, $adres),
-                    mysqli_real_escape_string($polaczenie, $miejscowosc)))) {
+                    mysqli_real_escape_string($polaczenie, $password)
+
+
+                    ))) {
 
                     $_SESSION['udanarejestracja'] = "Rejestracja zakończona pomyślnie!";
                     header('location: login.php');
@@ -564,14 +638,76 @@ background-color: rgba(255,0,0,0.10)!important;
 
                             ?>"></div>
 
+
+
                         <?php
+
+
 
                         if (isset($_SESSION['e_miejscowosc'])) {
                             echo '<div class="f_error" style>' . $_SESSION['e_miejscowosc'] . '</div>';
                             unset($_SESSION['e_miejscowosc']);
                         }
 
+
                         ?>
+
+
+
+                        <div><input type="text" placeholder="Podaj kod pocztowy" name="zip" value="<?php
+
+                            if (isset($_POST['zip'])) {
+
+                                if (strlen($zip) < 1) {
+                                    echo "";
+                                }
+
+                                if (strlen($zip) > 6) {
+                                    echo "";
+                                } else {
+                                    echo $zip;
+                                }
+                            }
+
+                            ?>"></div>
+
+
+
+                        <?php
+
+                        if (isset($_SESSION['e_zip'])) {
+                            echo '<div class="f_error" style>' . $_SESSION['e_zip'] . '</div>';
+                            unset($_SESSION['e_zip']);
+                        }
+
+                        ?>
+
+                        <div><input type="text" placeholder="Wprowadź telefon" name="phone" value="<?php
+
+                            if (isset($_POST['phone'])) {
+
+                                if (strlen($phone) < 1) {
+                                    echo "";
+                                }
+
+                                if (strlen($phone) > 11) {
+                                    echo "";
+                                } else {
+                                    echo "$phone";
+                                }
+                            }
+
+                            ?>"></div>
+
+                        <?php
+
+                        if (isset($_SESSION['e_phone'])) {
+                            echo '<div class="f_error" style>' . $_SESSION['e_phone'] . '</div>';
+                            unset($_SESSION['e_phone']);
+                        }
+
+                        ?>
+
 
                         <div><input type="text" placeholder="Wprowadź login" name="login" value="<?php
 

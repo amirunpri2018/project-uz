@@ -2,218 +2,12 @@
 
 session_start();
 
-if (isset($_POST['imie2'])) {
+if (isset($_POST['kwota2'])) {
     $wszystko_ok2 = true;
-
-
-// imie
-    $_SESSION['imie2'] = $_POST['imie2'];
-
-
-    if (strlen($_SESSION['imie2']) < 1) {
-        $wszystko_ok2 = false;
-        $_SESSION['e_imie2'] = "<i class=\"fas fa-user-times\"></i> Pole imię jest wymagane!";
-
-
-        echo "<style>
-
-input[name='imie2'] {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.10)!important;
-}
-
-</style>";
-
-    }
-
-    if (strlen($_SESSION['imie2']) > 16) {
-        $wszystko_ok2 = false;
-        $_SESSION['e_imie2'] = "<i class=\"fas fa-user-times\"></i> Wprowadź maksymalnie 15 liter!";
-
-        echo "<style>
-
-input[name='imie2'] {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.10)!important;
-}
-
-</style>";
-
-    }
-
-    if (ctype_alnum($_SESSION['imie2']) == false) {
-        $wszystko_ok2 = false;
-        $_SESSION['e_imie2'] = "<i class=\"fas fa-user-times\"></i> Pole imię jest wymagane!";
-
-        echo "<style>
-
-input[name='imie2'] {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.10)!important;
-}
-
-</style>";
-
-    }
-
-    if (preg_match("/[^A-z_-]/", $_SESSION['imie2']) == 1) {
-        $wszystko_ok2 = false;
-        $_SESSION['e_imie2'] = "<i class=\"fas fa-user-times\"></i> Wprowadź tylko litery!";
-
-        echo "<style>
-
-input[name='imie2'] {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.10)!important;
-}
-
-</style>";
-
-    }
-
-//nazwisko
-    $_SESSION['nazwisko2'] = $_POST['nazwisko2'];
-
-    if (strlen($_SESSION['nazwisko2']) < 1) {
-        $wszystko_ok2 = false;
-        $_SESSION['e_nazwisko2'] = "<i class=\"fas fa-user-times\"></i> Pole nazwisko jest wymagane!";
-
-        echo "<style>
-
-input[name='nazwisko2'] {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.10)!important;
-}
-
-</style>";
-    }
-
-    if (strlen($_SESSION['nazwisko2']) > 16) {
-        $wszystko_ok2 = false;
-        $_SESSION['e_nazwisko2'] = "<i class=\"fas fa-user-times\"></i> Wprowadź maksymalnie 15 liter!";
-
-        echo "<style>
-
-input[name='nazwisko2'] {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.10)!important;
-}
-
-</style>";
-    }
-
-    if (ctype_alnum($_SESSION['nazwisko2'] == false)) {
-        $wszystko_ok2 = false;
-        $_SESSION['e_nazwisko2'] = "<i class=\"fas fa-user-times\"></i> Pole nazwisko jest wymagane!";
-
-        echo "<style>
-
-input[name='nazwisko2'] {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.10)!important;
-}
-
-</style>";
-    }
-
-    if (preg_match("/[^A-z_-]/", $_SESSION['nazwisko2']) == 1) {
-        $wszystko_ok2 = false;
-        $_SESSION['e_nazwisko2'] = "<i class=\"fas fa-user-times\"></i> Wprowadź tylko litery!";
-
-        echo "<style>
-
-input[name='nazwisko2'] {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.10)!important;
-}
-
-</style>";
-    }
-
-    $_SESSION['adres2'] = $_POST['adres2'];
-
-    if (strlen($_SESSION['adres2']) < 1) {
-        $wszystko_ok2 = false;
-        $_SESSION['e_adres2'] = "<i class=\"fas fa-user-times\"></i> Pole adres zamówienia jest wymagane!";
-
-        echo "<style>
-
-input[name='adres2'] {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.10)!important;
-}
-
-</style>";
-    }
-
-    if (strlen($_SESSION['adres2']) > 40) {
-        $wszystko_ok2 = false;
-        $_SESSION['e_adres2'] = "<i class=\"fas fa-user-times\"></i> Wprowadź maksymalnie 40 znaków!";
-
-        echo "<style>
-
-input[name='adres2'] {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.10)!important;
-}
-
-</style>";
-    }
-
-
-    $_SESSION['miejscowosc2'] = $_POST['miejscowosc2'];
-
-    if (strlen($_SESSION['miejscowosc2']) < 1) {
-        $wszystko_ok2 = false;
-        $_SESSION['e_miejscowosc2'] = "<i class=\"fas fa-user-times\"></i> Pole miejscowość jest wymagane!";
-
-        echo "<style>
-
-input[name='miejscowosc2'] {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.10)!important;
-}
-
-</style>";
-    }
-
-    if (strlen($_SESSION['miejscowosc2']) > 40) {
-        $wszystko_ok2 = false;
-        $_SESSION['e_miejscowosc2'] = "<i class=\"fas fa-user-times\"></i> Wprowadź maksymalnie 40 znaków!";
-
-        echo "<style>
-
-input[name='miejscowosc2'] {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.10)!important;
-}
-
-</style>";
-    }
-
-
     $_SESSION['kwota2'] = $_POST['kwota2'];
-
-    if ($_SESSION['kwota2'] <= 0)
-    {
-        $wszystko_ok2 = false;
-        $_SESSION['e_kwota2'] = "<div style='text-align: center; color: red; margin-top: -15px;'><i class=\"fas fa-user-times\"></i> Brak produktów w koszyku!</div>";
-        echo "
-        
-        <style>
-        
-        #submitbutton {
-        background-color: #d80000!important;
-        opacity: 0.3;
-        }
-        
-</style>
-        
-        ";
-    }
-
-    $_SESSION['nr_zamowienia2'] = $_POST['nr_zamowienia2'];
     $_SESSION['taskOption'] = $_POST['taskOption'];
+    $_SESSION['zamowienie2'] = $_POST['zamowienie2'];
+
 
     if ($wszystko_ok2 == true) {
 
@@ -234,24 +28,43 @@ background-color: rgba(255,0,0,0.10)!important;
                 $nr_zamowienia2 = $_SESSION['nr_zamowienia2'];
                 $kwota2 = $_SESSION['kwota2'];
                 $miejscowosc2 = $_SESSION['miejscowosc2'];
+                $z_id = $_SESSION['z_id'];
+
+                $sql = "SELECT `id` FROM `order` ORDER BY id DESC LIMIT 1";
+                $lastOrderNumber = $polaczenie->query($sql);
+                $row = $lastOrderNumber->fetch_assoc();
+
 
                 $imie2 = htmlentities($_SESSION['imie2'], ENT_QUOTES, "UTF-8");
                 $nazwisko2 = htmlentities($_SESSION['nazwisko2'], ENT_QUOTES, "UTF-8");
                 $adres2 = htmlentities($_SESSION['adres2'], ENT_QUOTES, "UTF-8");
                 $miejscowosc2 =htmlentities($_SESSION['miejscowosc2'], ENT_QUOTES, "UTF-8");
 
-                if ($polaczenie->query(sprintf("INSERT INTO zamowienia VALUES ('%d', '%s', '%s', '%s', '%s', '%s' ,'%s', '%f', '%s', '%s')",
+                $articlesid = explode(',', $zamowienie2);
 
-                    mysqli_real_escape_string($polaczenie, $nr_zamowienia2),
-                    mysqli_real_escape_string($polaczenie, 'brak'),
-                    mysqli_real_escape_string($polaczenie, $imie2),
-                    mysqli_real_escape_string($polaczenie, $nazwisko2),
-                    mysqli_real_escape_string($polaczenie, $adres2),
-                    mysqli_real_escape_string($polaczenie, $miejscowosc2),
-                    mysqli_real_escape_string($polaczenie, $zamowienie2),
+
+                if ($polaczenie->query(sprintf("INSERT INTO `order` (`id`, `customer_id`, `status_id`, `date`, `price`, `shipping_method`) VALUES (null, '%d', '%d', '%s', '%f', '%s')",
+
+                    mysqli_real_escape_string($polaczenie, $z_id),
+                    mysqli_real_escape_string($polaczenie, 3),
+                    mysqli_real_escape_string($polaczenie, date("Y-m-d H:i:s")),
                     mysqli_real_escape_string($polaczenie, $kwota2),
-                    mysqli_real_escape_string($polaczenie, $var),
-                    mysqli_real_escape_string($polaczenie, 'Oczekiwanie')))) {
+                    mysqli_real_escape_string($polaczenie, $var)
+
+                    ))) {
+
+                    foreach($articlesid as $articleId) {
+
+                        $polaczenie->query(sprintf("INSERT INTO `order_detail` (`id`, `order_number_id`, `article_id`, `price`, `quantity`) VALUES (null, '%d', '%d', '%f', '%d')",
+
+                            mysqli_real_escape_string($polaczenie, $row['id']+1),
+                            mysqli_real_escape_string($polaczenie, (int)$articleId),
+                            mysqli_real_escape_string($polaczenie, 1),
+                            mysqli_real_escape_string($polaczenie, 1)
+
+                        ));
+                    }
+
 
                     $_SESSION['udanezamowienie'] = true;
                     header('Location: zamowienie.php');
@@ -261,6 +74,8 @@ background-color: rgba(255,0,0,0.10)!important;
             $polaczenie->close();
 
         } catch (Exception $e) {
+
+
             echo "<span style='color: red;'>Błąd serwera! Prosimy o zakupy w innym terminie! :)</span>";
             echo $e;
         }
@@ -385,7 +200,6 @@ background-color: rgba(255,0,0,0.10)!important;
         <div class="row">
             <div class="col-md-6">
                 <div id="order">
-                    <div style="text-align: center; font-size: 22px; margin-bottom: 10px;">Twoje zamówienie nr <span id="nr_zamowienia">0</span></div>
                     <ul id="koszyk">
 
                     </ul>
@@ -418,173 +232,9 @@ background-color: rgba(255,0,0,0.10)!important;
             </div>
             <div class="col-md-6 contact-col">
                 <div id="order">
-                    <div style="text-align: center; font-size: 22px; margin-bottom: 10px;">Dane kontaktowe</div>
+                    <div style="text-align: center; font-size: 22px; margin-bottom: 10px;">Wybierz metode wysylki</div>
                     <form method="post" id="order_form">
-                        <input type="text" name="imie2" placeholder="Podaj swoje imię" value="<?php
 
-                        if (isset($_SESSION['zalogowany']))
-                        {
-                            echo $_SESSION['z_imie'];
-                        }
-
-                        if (isset($_POST['imie2'])) {
-
-                            if (strlen($_SESSION['imie2']) < 1) {
-                                echo "";
-                            }
-
-                            if (strlen($_SESSION['imie2']) > 16) {
-                                echo "";
-                            }
-
-                            if (ctype_alnum($_SESSION['imie2']) == false) {
-                                echo "";
-                            }
-
-                            if (preg_match("/[^A-z_-]/", $_SESSION['imie2']) == 1) {
-                                echo "";
-                            }
-
-                            if (isset($_SESSION['z_imie']))
-                            {
-                                echo "";
-                            }
-
-                            else {
-                                echo $_SESSION['imie2'];
-                            }
-                        }
-
-
-                        ?>">
-
-                <?php
-
-                if (isset($_SESSION['e_imie2'])) {
-                    echo '<div class="f_error" style>' . $_SESSION['e_imie2'] . '</div>';
-                    unset($_SESSION['e_imie2']);
-                }
-
-                ?>
-                        <input type="text" name="nazwisko2" placeholder="Podaj swoje nazwisko" value="<?php
-
-                        if (isset($_SESSION['zalogowany']))
-                        {
-                            echo $_SESSION['z_nazwisko'];
-                        }
-
-                        if (isset($_POST['nazwisko2'])) {
-
-                            if (strlen($_SESSION['nazwisko2']) < 1) {
-                                echo "";}
-
-                            if (strlen($_SESSION['nazwisko2']) > 16) {
-                                echo "";}
-
-                            if (ctype_alnum($_SESSION['nazwisko2']) == false) {
-                                echo "";}
-
-                            if (preg_match("/[^A-z_-]/", $_SESSION['nazwisko2']) == 1) {
-                                echo "";}
-
-                            if (isset($_SESSION['z_nazwisko']))
-                            {
-                                echo "";
-                            }
-
-                            else {
-                                echo $_SESSION['nazwisko2'];
-                            }
-
-                        }
-
-                        ?>">
-
-                <?php
-
-                if (isset($_SESSION['e_nazwisko2'])) {
-                    echo '<div class="f_error" style>' . $_SESSION['e_nazwisko2'] . '</div>';
-                    unset($_SESSION['e_nazwisko2']);
-                }
-
-                ?>
-                        <input type="text" name="adres2" placeholder="Podaj adres zamówienia" value="<?php
-
-                        if (isset($_SESSION['zalogowany']))
-                        {
-                            echo $_SESSION['z_adres'];
-                        }
-
-                        if (isset($_POST['adres2'])) {
-
-                            if (strlen($_SESSION['adres2']) < 1) {
-                                echo "";
-                            }
-
-                            if (strlen($_SESSION['adres2']) > 40) {
-                                echo "";
-                            }
-
-                            if (isset($_SESSION['z_adres']))
-                            {
-                                echo "";
-                            }
-
-                            else {
-                                echo $_SESSION['adres2'];
-                            }
-                        }
-
-
-                        ?>">
-
-                <?php
-
-                if (isset($_SESSION['e_adres2'])) {
-                    echo '<div class="f_error" style>' . $_SESSION['e_adres2'] . '</div>';
-                    unset($_SESSION['e_adres2']);
-                }
-
-                ?>
-
-                        <input type="text" name="miejscowosc2" placeholder="Podaj miejscowość" value="<?php
-
-                        if (isset($_SESSION['zalogowany']))
-                        {
-                            echo $_SESSION['z_miejscowosc'];
-                        }
-
-                        if (isset($_POST['adres2'])) {
-
-                            if (strlen($_SESSION['miejscowosc2']) < 1) {
-                                echo "";
-                            }
-
-                            if (strlen($_SESSION['miejscowosc2']) > 40) {
-                                echo "";
-                            }
-
-                            if (isset($_SESSION['z_miejscowosc']))
-                            {
-                                echo "";
-                            }
-
-                            else {
-                                echo $_SESSION['miejscowosc2'];
-                            }
-                        }
-
-
-                        ?>">
-
-                        <?php
-
-                        if (isset($_SESSION['e_miejscowosc2'])) {
-                            echo '<div class="f_error" style>' . $_SESSION['e_miejscowosc2'] . '</div>';
-                            unset($_SESSION['e_miejscowosc2']);
-                        }
-
-                        ?>
 
 
                         <select name="taskOption" form="order_form">
@@ -594,14 +244,22 @@ background-color: rgba(255,0,0,0.10)!important;
 
                         <input style="display: none;" id="kwota2" type="text" name="kwota2" readonly>
                         <input style="display: none;" id="zamowienie2" type="text" name="zamowienie2" readonly>
-                        <input style="display: none;" id="nr_zamowienia2" type="text" name="nr_zamowienia2" readonly>
 
-<script>
+
+
+                        <script>
     $(document).ready(function () {
         $("#kwota2").val(localStorage.getItem('sumalist'));
         $("#zamowienie2").val(localStorage.getItem('item_id'));
 
-        var pp = $("#nr_zamowienia").html(Math.floor((Math.random() * 10000) + 1));
+
+
+        if ($("#zamowienie2").val().slice(-2) == ', ') {
+            $("#zamowienie2").val($("#zamowienie2").val().slice(0, -2));
+        } else {
+            $("#zamowienie2").val($("#zamowienie2").val().slice(0, -1));
+        }
+
 
         document.getElementById("nr_zamowienia2").value = pp.html();
         localStorage.setItem('order_id', document.getElementById("nr_zamowienia2").value);

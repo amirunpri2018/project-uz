@@ -14,19 +14,19 @@ if ($polaczenie->connect_errno != 0) {
     $login = htmlentities($login, ENT_QUOTES, "UTF-8");
     $haslo = htmlentities($haslo, ENT_QUOTES, "UTF-8");
     if ($rezultat = @$polaczenie->query(
-        sprintf("SELECT * FROM klienci WHERE login = '%s' AND haslo = '%s'",
+        sprintf("SELECT * FROM customer WHERE login = '%s' AND password = '%s'",
             mysqli_real_escape_string($polaczenie, $login),
             mysqli_real_escape_string($polaczenie, $haslo)))) {
         $ilu_userow = $rezultat->num_rows;
         if ($ilu_userow > 0) {
             $_SESSION['zalogowany'] = true;
             $wiersz = $rezultat->fetch_assoc();
-            $_SESSION['id'] = $wiersz['id'];
-            $_SESSION['imie'] = $wiersz['imie'];
-            $_SESSION['nazwisko'] = $wiersz['nazwisko'];
+            $_SESSION['z_id'] = $wiersz['z_id'];
+            $_SESSION['name'] = $wiersz['name'];
+            $_SESSION['surname'] = $wiersz['surname'];
             $_SESSION['login'] = $wiersz['login'];
-            $_SESSION['haslo'] = $wiersz['haslo'];
-            $_SESSION['adres'] = $wiersz['adres'];
+            $_SESSION['password'] = $wiersz['password'];
+            $_SESSION['address'] = $wiersz['address'];
 
             unset($_SESSION['blad']);
             $rezultat->free_result();

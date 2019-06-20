@@ -387,7 +387,7 @@ session_start();
                     require_once "php/connect.php";
                     $polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
 
-                    if ($result = $polaczenie->query("SELECT * FROM produkty ORDER BY cena DESC")) {
+                    if ($result = $polaczenie->query("SELECT * FROM article ORDER BY price DESC")) {
 
                         $row_cnt = $result->num_rows;
 
@@ -416,7 +416,7 @@ session_start();
 
             <?php
 
-            $sql = "SELECT * FROM produkty ORDER BY cena DESC";
+            $sql = "SELECT * FROM article ORDER BY price DESC";
             $result = $polaczenie->query($sql);
             $i = 0;
 
@@ -462,9 +462,9 @@ session_start();
                     }
 
                     echo "<div class=\"opis\">
-                        <div class=\"nazwa\" style='margin-top:6px;'>".$row['nazwa']."</div>
-                        <div><b>Cena:</b> <span class=\"cenaprzedmiotu\">".$row['cena']."</span> PLN</div>
-                        <div class='kategoriaproduktu' style='display: none;'>".$row['kategoria']."</div>
+                        <div class=\"nazwa\" style='margin-top:6px;'>".$row['name']."</div>
+                        <div><b>Cena:</b> <span class=\"cenaprzedmiotu\">".$row['price']."</span> PLN</div>
+                        <div class='kategoriaproduktu'>".$row['category_id']."</div>
                     </div>
                     <div class='movetobasket'><i class=\"fas fa-arrows-alt\"></i></div>
                     <div class='addtobasket'><i class=\"fas fa-cart-plus\"></i></div>";

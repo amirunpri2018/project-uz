@@ -209,7 +209,7 @@ session_start();
                     require_once "../php/connect.php";
                     $polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
 
-                    if ($result = $polaczenie->query("SELECT * FROM produkty WHERE kategoria='szkola' ORDER BY cena")) {
+                    if ($result = $polaczenie->query("SELECT * FROM article WHERE category_id=5 ORDER BY price")) {
 
                         $row_cnt = $result->num_rows;
 
@@ -238,7 +238,7 @@ session_start();
 
             <?php
 
-            $sql = "SELECT * FROM produkty WHERE kategoria='szkola' ORDER BY cena";
+            $sql = "SELECT *FROM article WHERE category_id=5 ORDER BY price";
             $result = $polaczenie->query($sql);
             $i = 1;
 

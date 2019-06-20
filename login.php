@@ -15,7 +15,7 @@ if (isset($_POST['l_login']) && isset($_POST['l_haslo'])) {
         $l_login = htmlentities($_SESSION['l_login'], ENT_QUOTES, "UTF-8");
         $l_haslo = htmlentities($l_haslo, ENT_QUOTES, "UTF-8");
         if ($rezultat = @$polaczenie->query(
-            sprintf("SELECT * FROM klienci WHERE login = '%s' AND haslo = '%s'",
+            sprintf("SELECT * FROM customer WHERE login = '%s' AND password = '%s'",
                 mysqli_real_escape_string($polaczenie, $_SESSION['l_login']),
                 mysqli_real_escape_string($polaczenie, $l_haslo)))) {
             $ilu_userow = $rezultat->num_rows;
@@ -24,10 +24,11 @@ if (isset($_POST['l_login']) && isset($_POST['l_haslo'])) {
                 $_SESSION['zalogowany'] = true;
 
                 $wiersz = $rezultat->fetch_assoc();
-                $_SESSION['z_imie'] = $wiersz['imie'];
-                $_SESSION['z_nazwisko'] = $wiersz['nazwisko'];
-                $_SESSION['z_adres'] = $wiersz['adres'];
-                $_SESSION['z_miejscowosc'] = $wiersz['miejscowosc'];
+                $_SESSION['z_imie'] = $wiersz['name'];
+                $_SESSION['z_nazwisko'] = $wiersz['surname'];
+                $_SESSION['z_adres'] = $wiersz['address'];
+                $_SESSION['z_miejscowosc'] = $wiersz['city'];
+                $_SESSION['z_id'] = $wiersz['id'];
                 $rezultat->free_result();
 
                 header('Location: panel.php');

@@ -1,6 +1,6 @@
 <?php
 
-require_once '../inc/Database/Connect.php';
+//require_once '../inc/Database/Connect.php';
 
 class CustomerPanelTest extends PHPUnit_Framework_TestCase {
     public function testGetCustomerData() {

@@ -3,34 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b31a5e8a-43f9-4cfa-832c-c639600258b0" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/account.php" beforeDir="false" afterPath="$PROJECT_DIR$/account.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/panel.php" beforeDir="false" afterPath="$PROJECT_DIR$/panel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/panelKlienta/dane.php" beforeDir="false" afterPath="$PROJECT_DIR$/panelKlienta/dane.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/panelKlienta/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/panelKlienta/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/produkty/elektronika/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/produkty/elektronika/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/produkty/elektronika/index2.php" beforeDir="false" afterPath="$PROJECT_DIR$/produkty/elektronika/index2.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/produkty/elektronika/index3.php" beforeDir="false" afterPath="$PROJECT_DIR$/produkty/elektronika/index3.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/produkty/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/produkty/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/produkty/index2.php" beforeDir="false" afterPath="$PROJECT_DIR$/produkty/index2.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/produkty/index3.php" beforeDir="false" afterPath="$PROJECT_DIR$/produkty/index3.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/produkty/mieszkanie/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/produkty/mieszkanie/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/produkty/mieszkanie/index2.php" beforeDir="false" afterPath="$PROJECT_DIR$/produkty/mieszkanie/index2.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/produkty/mieszkanie/index3.php" beforeDir="false" afterPath="$PROJECT_DIR$/produkty/mieszkanie/index3.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/produkty/motoryzacja/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/produkty/motoryzacja/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/produkty/motoryzacja/index2.php" beforeDir="false" afterPath="$PROJECT_DIR$/produkty/motoryzacja/index2.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/produkty/motoryzacja/index3.php" beforeDir="false" afterPath="$PROJECT_DIR$/produkty/motoryzacja/index3.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/produkty/sport/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/produkty/sport/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/produkty/sport/index2.php" beforeDir="false" afterPath="$PROJECT_DIR$/produkty/sport/index2.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/produkty/sport/index3.php" beforeDir="false" afterPath="$PROJECT_DIR$/produkty/sport/index3.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/produkty/szkola/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/produkty/szkola/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/produkty/szkola/index2.php" beforeDir="false" afterPath="$PROJECT_DIR$/produkty/szkola/index2.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/produkty/szkola/index3.php" beforeDir="false" afterPath="$PROJECT_DIR$/produkty/szkola/index3.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/produkty/ubrania/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/produkty/ubrania/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/produkty/ubrania/index2.php" beforeDir="false" afterPath="$PROJECT_DIR$/produkty/ubrania/index2.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/produkty/ubrania/index3.php" beforeDir="false" afterPath="$PROJECT_DIR$/produkty/ubrania/index3.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zamowienie/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/zamowienie/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zamowienie/zamowienie.php" beforeDir="false" afterPath="$PROJECT_DIR$/zamowienie/zamowienie.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -46,7 +18,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/account.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="149">
@@ -54,6 +26,30 @@
               <folding>
                 <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/produkty/elektronika/index3.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="141">
+              <caret line="236" column="8" selection-start-line="236" selection-start-column="8" selection-end-line="236" selection-end-column="8" />
+              <folding>
+                <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -183,17 +179,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="costam" type="b2602c69:ProjectViewProjectNode" />
-              <item name="costam" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
+      <pane id="ProjectPane" />
       <pane id="Scope">
         <subPane subId="Project Files">
           <expand>
@@ -240,12 +226,12 @@
       <workItem from="1561029926784" duration="11053000" />
       <workItem from="1561042480747" duration="194000" />
       <workItem from="1561043045540" duration="291000" />
-      <workItem from="1561044240396" duration="1175000" />
+      <workItem from="1561044240396" duration="2716000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12713000" />
+    <option name="totallyTimeSpent" value="14254000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1536" height="864" extended-state="0" />
@@ -297,7 +283,6 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/produkty/php/connect.php" />
-    <entry file="file://$PROJECT_DIR$/produkty/elektronika/index3.php" />
     <entry file="file://$PROJECT_DIR$/produkty/motoryzacja/index3.php" />
     <entry file="file://$PROJECT_DIR$/panel.php" />
     <entry file="file://$PROJECT_DIR$/produkty/php/zaloguj.php" />
@@ -317,6 +302,28 @@
           <folding>
             <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/produkty/elektronika/index3.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="141">
+          <caret line="236" column="8" selection-start-line="236" selection-start-column="8" selection-end-line="236" selection-end-column="8" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

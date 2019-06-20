@@ -550,7 +550,7 @@ ul > li ul li:hover > a {
       <div class="card card-cascade narrower card-ecommer ce">
         <!-- Card image -->
         <div class="view view-cascade overlay">
-          <img src="zdjecia/elektornika.jpg" class="card-img-top"
+          <img src="zdjecia/elektronika.jpg" class="card-img-top"
             alt="sample photo">
           <a>
             <div class="mask rgba-white-slight"></div>
@@ -571,7 +571,7 @@ ul > li ul li:hover > a {
               <strong>Ceny od 120zł</strong>
             </span>
             <span class="float-right font-weight-bold" >
-              <strong ><a href="/produkty/elektornika">Zobacz</a></strong>
+              <strong ><a href="/produkty/elektronika">Zobacz</a></strong>
             </span>
           </div>
         </div>

@@ -126,7 +126,7 @@ if (isset($_POST['kwota2'])) {
 
                     else
                     {
-                        echo "<a class=\"nav-link\" href=\"../\">Rejestracja</a>";
+                        echo "<a class=\"nav-link\" href=\"account.php\">Rejestracja</a>";
                     }
                 ?>
 

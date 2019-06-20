@@ -183,7 +183,7 @@ $polaczenie->close();
                         ?>
 
                         <div style="text-align: center; font-size: 14px; color: grey;">Nie masz jeszcze konta? <a
-                                    href="index.php" style="font-weight: bold; text-decoration: none; color: grey;">Rejestracja</a>
+                                    href="account.php" style="font-weight: bold; text-decoration: none; color: grey;">Rejestracja</a>
                         </div>
 
                         <?php

@@ -4,7 +4,7 @@ session_start();
 
 if (!isset($_SESSION['udanezamowienie']))
 {
-    header('Location: index.php');
+    header('Location: account.php');
     exit();
 }
 else {

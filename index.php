@@ -2,419 +2,45 @@
 
 session_start();
 
-if (isset($_SESSION['zalogowany'])) {
-    header('Location: panel.php');
-    exit();
-}
 
-if (isset($_POST['imie'])) {
-    $wszystko_ok = true;
+require_once "produkty/php/connect.php";
+$polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
 
-// imie
-    $imie = $_POST['imie'];
+if (isset($_POST['p_nr']) && !empty($_POST['p_nr'])) {
 
+    $p_nr = $_POST['p_nr'];
 
-    if (strlen($imie) < 1) {
-        $wszystko_ok = false;
-        $_SESSION['e_imie'] = "<i class=\"fas fa-user-times\"></i> Pole imię jest wymagane!";
+    if ($polaczenie->connect_errno != 0) {
+        echo "Error: " . $polaczenie->connect_errno;
+    } else {
 
+        $p_nr = htmlentities($p_nr, ENT_QUOTES, "UTF-8");
 
-        echo "<style>
+        if ($rezultat = @$polaczenie->query(
+            sprintf("SELECT status FROM zamowienia WHERE id = '%s'",
+                mysqli_real_escape_string($polaczenie, $p_nr)))) {
+            $ilu_userow = $rezultat->num_rows;
 
-input[name='imie'] {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.10)!important;
-}
+            if ($ilu_userow > 0) {
 
-</style>";
-
-    }
-
-    if (strlen($imie) > 16) {
-        $wszystko_ok = false;
-        $_SESSION['e_imie'] = "<i class=\"fas fa-user-times\"></i> Wprowadź maksymalnie 15 liter!";
-
-        echo "<style>
-
-input[name='imie'] {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.10)!important;
-}
-
-</style>";
-
-    }
-
-    if (ctype_alnum($imie) == false) {
-        $wszystko_ok = false;
-        $_SESSION['e_imie'] = "<i class=\"fas fa-user-times\"></i> Pole imię jest wymagane!";
-
-        echo "<style>
-
-input[name='imie'] {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.10)!important;
-}
-
-</style>";
-
-    }
-
-    if (preg_match("/[^A-z_-]/", $imie) == 1) {
-        $wszystko_ok = false;
-        $_SESSION['e_imie'] = "<i class=\"fas fa-user-times\"></i> Wprowadź tylko litery!";
-
-        echo "<style>
-
-input[name='imie'] {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.10)!important;
-}
-
-</style>";
-
-    }
-
-//koniec imienia
-
-//nazwisko
-    $nazwisko = $_POST['nazwisko'];
-
-    if (strlen($nazwisko) < 1) {
-        $wszystko_ok = false;
-        $_SESSION['e_nazwisko'] = "<i class=\"fas fa-user-times\"></i> Pole nazwisko jest wymagane!";
-
-        echo "<style>
-
-input[name='nazwisko'] {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.10)!important;
-}
-
-</style>";
-    }
-
-    if (strlen($nazwisko) > 16) {
-        $wszystko_ok = false;
-        $_SESSION['e_nazwisko'] = "<i class=\"fas fa-user-times\"></i> Wprowadź maksymalnie 15 liter!";
-
-        echo "<style>
-
-input[name='nazwisko'] {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.10)!important;
-}
-
-</style>";
-    }
-
-    if (ctype_alnum($nazwisko) == false) {
-        $wszystko_ok = false;
-        $_SESSION['e_nazwisko'] = "<i class=\"fas fa-user-times\"></i> Pole nazwisko jest wymagane!";
-
-        echo "<style>
-
-input[name='nazwisko'] {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.10)!important;
-}
-
-</style>";
-    }
-
-    if (preg_match("/[^A-z_-]/", $nazwisko) == 1) {
-        $wszystko_ok = false;
-        $_SESSION['e_nazwisko'] = "<i class=\"fas fa-user-times\"></i> Wprowadź tylko litery!";
-
-        echo "<style>
-
-input[name='nazwisko'] {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.10)!important;
-}
-
-</style>";
-    }
-
-//koniec nazwisko
-
-//poczatek haslo
-
-    $haslo = $_POST['haslo'];
-
-    if (strlen($haslo) < 1) {
-        $wszystko_ok = false;
-        $_SESSION['e_haslo'] = "<i class=\"fas fa-user-times\"></i> Pole hasło jest wymagane!";
-
-        echo "<style>
-
-input[name='haslo'] {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.10)!important;
-}
-
-</style>";
-    }
-
-    if (strlen($haslo) > 11) {
-        $wszystko_ok = false;
-        $_SESSION['e_haslo'] = "<i class=\"fas fa-user-times\"></i> Wprowadź maksymalnie 10 znaków!";
-
-        echo "<style>
-
-input[name='haslo'] {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.10)!important;
-}
-
-</style>";
-    }
-
-
-//koniec haslo
-
-//poczatek adres
-
-    $adres = $_POST['adres'];
-
-    if (strlen($adres) < 1) {
-        $wszystko_ok = false;
-        $_SESSION['e_adres'] = "<i class=\"fas fa-user-times\"></i> Pole adres dostawy jest wymagane!";
-
-        echo "<style>
-
-input[name='adres'] {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.10)!important;
-}
-
-</style>";
-    }
-
-    if (strlen($adres) > 40) {
-        $wszystko_ok = false;
-        $_SESSION['e_adres'] = "<i class=\"fas fa-user-times\"></i> Wprowadź maksymalnie 40 znaków!";
-
-        echo "<style>
-
-input[name='adres'] {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.10)!important;
-}
-
-</style>";
-    }
-
-
-
-    $phone = $_POST['phone'];
-
-    if (strlen($phone) < 1) {
-        $wszystko_ok = false;
-        $_SESSION['e_phone'] = "<i class=\"fas fa-user-times\"></i> Pole telefon jest wymagane!";
-
-        echo "<style>
-
-input[name='phone'] {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.10)!important;
-}
-
-</style>";
-    }
-
-    if (strlen($phone) > 11) {
-        $wszystko_ok = false;
-        $_SESSION['e_phone'] = "<i class=\"fas fa-user-times\"></i> Wprowadź maksymalnie 9 znaków!";
-
-        echo "<style>
-
-input[name='phone'] {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.10)!important;
-}
-
-</style>";
-    }
-
-
-
-
-    $zip = $_POST['zip'];
-
-    if (strlen($zip) < 1) {
-        $wszystko_ok = false;
-        $_SESSION['e_zip'] = "<i class=\"fas fa-user-times\"></i> Pole kod pocztowy jest wymagane!";
-
-        echo "<style>
-
-input[name='zip'] {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.10)!important;
-}
-
-</style>";
-    }
-
-    if (strlen($zip) > 6) {
-        $wszystko_ok = false;
-        $_SESSION['e_zip'] = "<i class=\"fas fa-user-times\"></i> Wprowadź maksymalnie 6 znaków!";
-
-        echo "<style>
-
-input[name='zip'] {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.10)!important;
-}
-
-</style>";
-    }
-
-
-
-
-    $miejscowosc = $_POST['miejscowosc'];
-
-    if (strlen($miejscowosc) < 1) {
-        $wszystko_ok = false;
-        $_SESSION['e_miejscowosc'] = "<i class=\"fas fa-user-times\"></i> Pole miejscowość jest wymagane!";
-
-        echo "<style>
-
-input[name='miejscowosc'] {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.10)!important;
-}
-
-</style>";
-    }
-
-    if (strlen($miejscowosc) > 40) {
-        $wszystko_ok = false;
-        $_SESSION['e_miejscowosc'] = "<i class=\"fas fa-user-times\"></i> Wprowadź maksymalnie 40 znaków!";
-
-        echo "<style>
-
-input[name='miejscowosc'] {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.10)!important;
-}
-
-</style>";
-    }
-
-    //poczatek login
-
-    $login = $_POST['login'];
-
-    require_once "produkty/php/connect.php";
-    mysqli_report(MYSQLI_REPORT_STRICT);
-
-    try {
-        $polaczenie = new mysqli($host, $db_user, $db_password, $db_name);
-        if ($polaczenie->connect_errno != 0) {
-            throw new Exception(mysqli_connect_errno());
-        } else {
-            // czy numer dostępu istnieje?
-            $rezultat = $polaczenie->query("SELECT login FROM customer WHERE login='$login'");
-            if (!$rezultat)
-                throw new Exception($polaczenie->error);
-            $ile_takich_loginow = $rezultat->num_rows;
-            if ($ile_takich_loginow > 0) {
-                $wszystko_ok = false;
-                $_SESSION['e_login'] = "<i class=\"fas fa-user-times\"></i> Istnieje już taki login!";
-                echo "<style>
-            input[name='login'] {
-            border: 1px solid red!important;
-            background-color: rgba(255,0,0,0.10)!important;
-            }
-            </style>";
-            }
-        }
-        $polaczenie->close();
-
-    } catch (Exception $e) {
-        echo "<span style='color: red;'>Błąd serwera! Prosimy o rejestrację w innym terminie! :)</span>";
-        echo $e;
-    };
-
-    if (strlen($login) < 1) {
-        $wszystko_ok = false;
-        $_SESSION['e_login'] = "<i class=\"fas fa-user-times\"></i> Pole login jest wymagane!";
-
-        echo "<style>
-
-input[name='login'] {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.10)!important;
-}
-
-</style>";
-    }
-
-    if (strlen($login) > 11) {
-        $wszystko_ok = false;
-        $_SESSION['e_login'] = "<i class=\"fas fa-user-times\"></i> Wprowadź maksymalnie 10 znaków!";
-
-        echo "<style>
-
-input[name='login'] {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.10)!important;
-}
-
-</style>";
-    }
-
-//koniec login
-
-    if ($wszystko_ok == true) {
-
-        require_once "produkty/php/connect.php";
-
-        try {
-            $polaczenie = new mysqli($host, $db_user, $db_password, $db_name);
-            if ($polaczenie->connect_errno != 0) {
-                throw new Exception(mysqli_connect_errno());
+                $wiersz = $rezultat->fetch_assoc();
+                $_SESSION['status'] = $wiersz['status'];
+                $rezultat->free_result();
             } else {
+                echo "<style>
 
-                $polaczenie = new mysqli($host, $db_user, $db_password, $db_name);
-
-                $name = htmlentities($imie, ENT_QUOTES, "UTF-8");
-                $surname = htmlentities($nazwisko, ENT_QUOTES, "UTF-8");
-                $address = htmlentities($adres, ENT_QUOTES, "UTF-8");
-                $login = htmlentities($login, ENT_QUOTES, "UTF-8");
-                $password = htmlentities($haslo, ENT_QUOTES, "UTF-8");
-                $zip = htmlentities($zip, ENT_QUOTES, "UTF-8");
-                $phone = htmlentities($zip, ENT_QUOTES, "UTF-8");
-                $city = htmlentities($miejscowosc, ENT_QUOTES, "UTF-8");
-
-                if ($polaczenie->query(sprintf("INSERT INTO customer VALUES (NULL, '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
-                    mysqli_real_escape_string($polaczenie, $name),
-                    mysqli_real_escape_string($polaczenie, $surname),
-                    mysqli_real_escape_string($polaczenie, $address),
-                    mysqli_real_escape_string($polaczenie, $city),
-                    mysqli_real_escape_string($polaczenie, $zip),
-                    mysqli_real_escape_string($polaczenie, $phone),
-                    mysqli_real_escape_string($polaczenie, $login),
-                    mysqli_real_escape_string($polaczenie, $password)
-
-
-                    ))) {
-
-                    $_SESSION['udanarejestracja'] = "Rejestracja zakończona pomyślnie!";
-                    header('location: login.php');
-                }
-            }
-            $polaczenie->close();
-        } catch (Exception $e) {
-            echo "<span style='color: red;'>Błąd serwera! Prosimy o rejestrację w innym terminie! :)</span>";
-            echo $e;
-        }
+input[type='text'], input[type='password']  {
+border: 1px solid red!important;
+background-color: rgba(255,0,0,0.09)!important;
+}
+</style>";
+                $_SESSION['blad2'] = '<div style="color: red; text-align: center; font-size: 14px; font-weight: bold; margin: 10px;">Nie znaleziono takiego zamówienia.</div>';
+            }}
     }
 }
 
-//koniec adres
+$polaczenie->close();
+
 ?>
 
 <!doctype html>
@@ -433,6 +59,120 @@ background-color: rgba(255,0,0,0.10)!important;
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
           integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <link rel="stylesheet" href="produkty/css/style.css">
+    <style type="text/css">
+
+
+
+
+        ul {
+     list-style: none;
+     float: left;
+}
+ 
+ul > li {
+     margin: 0;
+     padding: 0;
+     float: left; 
+     position: relative;
+     height: 30px;
+}
+ 
+ul > li > a {
+     padding: 10px; 
+     color: #444;
+     text-decoration: none; 
+}
+ 
+ul > li > a:hover, 
+ul > li:hover > a {
+     color: rgba(226,226,226,0.49);
+     text-decoration: underline;
+    
+}
+ 
+ul > li ul {
+     padding: 0;
+     position: absolute; 
+     display: none; 
+     left: 0px; 
+     top: 30px; 
+     width: 200px; 
+     text-align: left;
+     background-color: #fcfcfc;
+     border: 1px solid #ccc;
+}
+ 
+ul li:hover > ul {
+     display: block;
+     margin-top: 11px;
+}
+ 
+ul > li ul ul {
+     left: 200px; 
+     top: -1px;
+}
+ 
+ul > li ul li {
+     margin: 0; 
+     padding: 0;
+     position: relative; 
+     float: none; 
+     height: auto;
+}
+ 
+ul > li ul li a {
+     padding: 10px 20px; 
+     color: #505050; 
+     text-decoration: none;
+     display: block;
+}
+ 
+ul > li ul li a:hover,
+ul > li ul li:hover > a {
+     text-decoration: none;
+     color: #fff;
+     background-color: #f26c4f;
+}
+    html,
+    body,
+    ,
+    .carousel {
+      height: 60vh;
+    }
+
+    @media (max-width: 740px) {
+
+      html,
+      body,
+      ,
+      .carousel {
+        height: 100vh;
+      }
+    }
+
+    @media (min-width: 800px) and (max-width: 850px) {
+
+      html,
+      body,
+      ,
+      .carousel {
+        height: 100vh;
+      }
+    }
+
+    .view,body,html{height:100%}
+
+    .carousel{height:50%}
+
+    .carousel .carousel-inner,.carousel .carousel-inner .active,.carousel .carousel-inner .carousel-item{
+      height:100%
+      }
+      @media (max-width:776px)
+      {
+        .carousel{
+          height:100%}}.page-footer{background-color:#929FBA}
+
+  </style>
 </head>
 <body>
 
@@ -451,10 +191,14 @@ background-color: rgba(255,0,0,0.10)!important;
             <li class="nav-item">
                 <?php
 
-                if (isset($_SESSION['zalogowany'])) {
-                    echo "<span class=\"nav-link\">Cześć <b>" . $_SESSION['z_imie'] . "</b>!</span>";
-                } else {
-                    echo "<a class=\"nav-link\" href=\"../\">Rejestracja</a>";
+                if (isset($_SESSION['zalogowany']))
+                {
+                    echo "<span class=\"nav-link\">Cześć <b>".$_SESSION['z_imie']."</b>!</span>";
+                }
+
+                else
+                {
+                    echo "<a class=\"nav-link\" href=\"account.php\">Rejestracja</a>";
                 }
                 ?>
 
@@ -466,9 +210,14 @@ background-color: rgba(255,0,0,0.10)!important;
             <li class="nav-item dropdown">
                 <?php
 
-                if (isset($_SESSION['zalogowany'])) {
+                if (isset($_SESSION['zalogowany']))
+                {
                     echo "<a class=\"nav-link\" href='logout.php'\">Wyloguj</a>";
-                } else {
+                }
+
+
+                else
+                {
                     echo "<a class=\"nav-link dropdown-toggle\" href='#'\">Pomoc</a>";
                 }
                 ?>
@@ -478,7 +227,7 @@ background-color: rgba(255,0,0,0.10)!important;
 </nav>
 
 <header class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#"
+    <a class="navbar-brand" href="homepage.html"
        style="letter-spacing: 1.5px; margin-top: -5px; font-family: 'Raleway', sans-serif; font-size: 60px;">
         <span style="color: #ca7b11; font-weight: bold">Shop</span>ly <span style="font-size: 34px;"></span>
     </a>
@@ -488,21 +237,32 @@ background-color: rgba(255,0,0,0.10)!important;
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
+     <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0 menuroll" style="font-size: 25px;padding-bottom: 10px;"
         ">
         <li class="nav-item">
-            <a class="nav-link" style="color: #e28000; opacity: 1;" href="#">Start</a>
+            <a class="nav-link" style="color: #e28000; opacity: 1;" href="#">Home</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" style="color:  rgba(226,226,226,0.49);" href="#">|
             </a></li>
         <li class="nav-item">
-            <a class="nav-link" href="produkty">Produkty</a>
+            <a class="nav-link" href="produkty">Ubrania</a>
+              <ul>
+               <li><a href="#">Buty</a></li>
+               <li><a href="#">Bluzy</a></li>
+               <li><a href="#">Kalesony</a></li>
+               <li><a href="#">leginsy</a></li>
+               <li><a href="#">skarpoetki</a></li>
+               <li><a href="#">opaski</a></li>
+          </ul>
         </li>
+
         <li class="nav-item">
             <a class="nav-link" style="color:  rgba(226,226,226,0.49);" href="#">|
+
             </a></li>
+          
         <li class="nav-item">
             <a class="nav-link" href="zamowienie">Zamówienie</a>
         </li>
@@ -511,7 +271,7 @@ background-color: rgba(255,0,0,0.10)!important;
             </a></li>
         <li class="nav-item" style="margin-top: -5px;">
             <a class="nav-link openbasketmenu" style="font-size: 30px;" href="#"><i
-                        class="fas fa-shopping-cart"></i></a>
+                    class="fas fa-shopping-cart"></i></a>
         </li>
         </ul>
     </div>
@@ -519,280 +279,310 @@ background-color: rgba(255,0,0,0.10)!important;
 
 <main id="main_start" style="background-color: white;">
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <div id="register">
-                    <div style="text-align: center; font-size: 22px; margin-bottom: 10px;">Rejestracja</div>
-                    <form method="post">
-                        <div><input type="text" placeholder="Podaj imię" name="imie" value="<?php
-
-                            if (isset($_POST['imie'])) {
-
-                                if (strlen($imie) < 1) {
-                                    echo "";
-                                }
-
-                                if (strlen($imie) > 16) {
-                                    echo "";
-                                }
-
-                                if (ctype_alnum($imie) == false) {
-                                    echo "";
-                                }
-
-                                if (preg_match("/[^A-z_-]/", $imie) == 1) {
-                                    echo "";
-                                } else {
-                                    echo $imie;
-                                }
-                            }
-
-
-                            ?>"></div>
-
-                        <?php
-
-                        if (isset($_SESSION['e_imie'])) {
-                            echo '<div class="f_error" style>' . $_SESSION['e_imie'] . '</div>';
-                            unset($_SESSION['e_imie']);
-                        }
-
-                        ?>
-
-                        <div><input type="text" placeholder="Podaj nazwisko" name="nazwisko" value="<?php
-
-                            if (isset($_POST['nazwisko'])) {
-
-                                if (strlen($nazwisko) < 1) {
-                                    echo "";
-                                }
-
-                                if (strlen($nazwisko) > 16) {
-                                    echo "";
-                                }
-
-                                if (ctype_alnum($nazwisko) == false) {
-                                    echo "";
-                                }
-
-                                if (preg_match("/[^A-z_-]/", $nazwisko) == 1) {
-                                    echo "";
-                                } else {
-                                    echo "$nazwisko";
-                                }
-
-                            }
-
-                            ?>"></div>
-
-                        <?php
-
-                        if (isset($_SESSION['e_nazwisko'])) {
-                            echo '<div class="f_error" style>' . $_SESSION['e_nazwisko'] . '</div>';
-                            unset($_SESSION['e_nazwisko']);
-                        }
-
-                        ?>
-                        <div><input type="text" placeholder="Podaj adres zamieszkania" name="adres" value="<?php
-
-                            if (isset($_POST['adres'])) {
-
-                                if (strlen($adres) < 1) {
-                                    echo "";
-                                }
-
-                                if (strlen($adres) > 40) {
-                                    echo "";
-                                } else {
-                                    echo $adres;
-                                }
-                            }
-
-
-                            ?>"></div>
-
-                        <?php
-
-                        if (isset($_SESSION['e_adres'])) {
-                            echo '<div class="f_error" style>' . $_SESSION['e_adres'] . '</div>';
-                            unset($_SESSION['e_adres']);
-                        }
-
-                        ?>
-
-                        <div><input type="text" placeholder="Podaj miejscowość" name="miejscowosc" value="<?php
-
-                            if (isset($_POST['miejscowosc'])) {
-
-                                if (strlen($miejscowosc) < 1) {
-                                    echo "";
-                                }
-
-                                if (strlen($miejscowosc) > 40) {
-                                    echo "";
-                                } else {
-                                    echo $miejscowosc;
-                                }
-                            }
-
-                            ?>"></div>
-
-
-
-                        <?php
-
-
-
-                        if (isset($_SESSION['e_miejscowosc'])) {
-                            echo '<div class="f_error" style>' . $_SESSION['e_miejscowosc'] . '</div>';
-                            unset($_SESSION['e_miejscowosc']);
-                        }
-
-
-                        ?>
-
-
-
-                        <div><input type="text" placeholder="Podaj kod pocztowy" name="zip" value="<?php
-
-                            if (isset($_POST['zip'])) {
-
-                                if (strlen($zip) < 1) {
-                                    echo "";
-                                }
-
-                                if (strlen($zip) > 6) {
-                                    echo "";
-                                } else {
-                                    echo $zip;
-                                }
-                            }
-
-                            ?>"></div>
-
-
-
-                        <?php
-
-                        if (isset($_SESSION['e_zip'])) {
-                            echo '<div class="f_error" style>' . $_SESSION['e_zip'] . '</div>';
-                            unset($_SESSION['e_zip']);
-                        }
-
-                        ?>
-
-                        <div><input type="text" placeholder="Wprowadź telefon" name="phone" value="<?php
-
-                            if (isset($_POST['phone'])) {
-
-                                if (strlen($phone) < 1) {
-                                    echo "";
-                                }
-
-                                if (strlen($phone) > 11) {
-                                    echo "";
-                                } else {
-                                    echo "$phone";
-                                }
-                            }
-
-                            ?>"></div>
-
-                        <?php
-
-                        if (isset($_SESSION['e_phone'])) {
-                            echo '<div class="f_error" style>' . $_SESSION['e_phone'] . '</div>';
-                            unset($_SESSION['e_phone']);
-                        }
-
-                        ?>
-
-
-                        <div><input type="text" placeholder="Wprowadź login" name="login" value="<?php
-
-                            if (isset($_POST['login'])) {
-
-                                if (strlen($login) < 1) {
-                                    echo "";
-                                }
-
-                                if (strlen($login) > 11) {
-                                    echo "";
-                                } else {
-                                    echo "$login";
-                                }
-                            }
-
-                            ?>"></div>
-
-                        <?php
-
-                        if (isset($_SESSION['e_login'])) {
-                            echo '<div class="f_error" style>' . $_SESSION['e_login'] . '</div>';
-                            unset($_SESSION['e_login']);
-                        }
-
-                        ?>
-                        <div><input type="password" placeholder="Wprowadź hasło" name="haslo" value="<?php
-
-                            if (isset($_POST['haslo'])) {
-
-                                if (strlen($haslo) < 1) {
-                                    echo "";
-                                }
-
-                                if (strlen($haslo) > 11) {
-                                    echo "";
-                                } else {
-                                    echo "$haslo";
-                                }
-                            }
-
-                            ?>"></div>
-
-                        <?php
-
-                        if (isset($_SESSION['e_haslo'])) {
-                            echo '<div class="f_error" style>' . $_SESSION['e_haslo'] . '</div>';
-                            unset($_SESSION['e_haslo']);
-                        }
-
-                        ?>
-
-                        <div><input type="submit" value="Załóż konto"></div>
-                        <div style="text-align: center; font-size: 14px; color: grey;">Masz już konto? <a
-                                    href="login.php" style="font-weight: bold; text-decoration: none; color: grey;">Zaloguj
-                                się</a></div>
-                    </form>
-                </div>
+   <!--Carousel Wrapper-->
+  <div id="carousel-example-1z" class="carousel slide carousel-fade pt-4" data-ride="carousel" >
+
+    <!--Indicators-->
+    <ol class="carousel-indicators">
+      <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
+      <li data-target="#carousel-example-1z" data-slide-to="1"></li>
+      <li data-target="#carousel-example-1z" data-slide-to="2"></li>
+    </ol>
+    <!--/.Indicators-->
+
+    <!--Slides-->
+    <div class="carousel-inner" role="listbox">
+
+      <!--First slide-->
+      <div class="carousel-item active">
+        <div class="view" style="background-image: url('zdjecia/baner_bialko.jpg'); background-repeat: no-repeat; background-size: cover; ">
+
+          <!-- Mask & flexbox options-->
+          <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
+
+            <!-- Content -->
+            <div class="text-center white-text mx-5 wow fadeIn">
+              <h1 class="mb-4"  >
+                <strong>Odżywki białkowe</strong>
+              </h1>
+
+              <p>
+                <strong>Znajdź swój ulubiony smak</strong>
+              </p>
+
+              <p class="mb-4 d-none d-md-block">
+                <strong>Największy wybór</strong>
+              </p>
+
+              <a target="_blank" href="https://image.freepik.com/darmowe-zdjecie/biale-tlo_23-2147730801.jpg" class="btn btn-outline-white btn-lg">Zobacz
+               
+              </a>
             </div>
-            <div class="col-md-6">
-                <div id="continue">
-                    <a href="produkty">
-                        <button type="button" class="btn btn-warning" style="width: 70%; font-size: 19px;">Kontynuuj <i
-                                    class="fas fa-angle-right"></i></button>
-                    </a><br>
-                    <div style="opacity: 0.5; font-size: 15px; text-align: center; margin-top: 7px; padding-bottom: 30px;">
-                        bez zakładania
-                        nowego konta
-                    </div>
-                </div>
+            <!-- Content -->
+
+          </div>
+          <!-- Mask & flexbox options-->
+
+        </div>
+      </div>
+      <!--/First slide-->
+
+      <!--Second slide-->
+      <div class="carousel-item">
+        <div class="view" style="background-image: url('zdjecia/baner_ubrania.jpg'); background-repeat: no-repeat; background-size: cover;color: white;">
+
+          <!-- Mask & flexbox options-->
+          <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
+
+            <!-- Content -->
+            <div class="text-center white-text mx-5 wow fadeIn">
+              <h1 class="mb-4">
+                <strong>Ubrania sportowe</strong>
+              </h1>
+
+              <p>
+                <strong>W poszukiwaniu nowej pasji</strong>
+              </p>
+
+            
+
+              <a target="_blank" href="https://image.freepik.com/darmowe-zdjecie/biale-tlo_23-2147730801.jpg" class="btn btn-outline-white btn-lg">Sprawdź więcej
+        
+              </a>
             </div>
+            <!-- Content -->
+
+          </div>
+          <!-- Mask & flexbox options-->
+
         </div>
-        <div class="alert alert-warning alert-dismissible fade show notification"
-             style="margin-top: 30px; opacity: 0.8;" role="alert">
-            <strong>Powiadomienie <i class="far fa-bell"></i></strong> Rejestrując swoje konto, zwiększasz szybkość
-            realizacji zamówienia.
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
+      </div>
+      <!--/Second slide-->
+
+      <!--Third slide-->
+      <div class="carousel-item">
+        <div class="view" style="background-image: url('zdjecia/baner_buty.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+          <!-- Mask & flexbox options-->
+          <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
+
+            <!-- Content -->
+            <div class="text-center white-text mx-5 wow fadeIn">
+              <h1 class="mb-4">
+                <strong>Buty sportowe</strong>
+              </h1>
+
+              <p>
+                <strong>Rozmiary od 36 do 48</strong>
+              </p>
+
+            
+
+              <a target="_blank" href="https://image.freepik.com/darmowe-zdjecie/biale-tlo_23-2147730801.jpg" class="btn btn-outline-white btn-lg">Zobacz
+            
+              </a>
+            </div>
+            <!-- Content -->
+
+          </div>
+          <!-- Mask & flexbox options-->
+
         </div>
+      </div>
+      <!--/Third slide-->
+
     </div>
-</main>
+    <!--/.Slides-->
 
-<footer>
-    <div id="footer" style="position:absolute; bottom: 0px; z-index: -5; ">
+    <!--Controls-->
+    <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+    <!--/.Controls-->
+
+  </div>
+  <!--/.Carousel Wrapper-->
+
+<!-- Section: Products v.4 -->
+
+<hr>
+<!-- Section: Products v.1 -->
+<section class="text-center my-5">
+
+  <!-- Section heading -->
+  <h2 class="h1-responsive font-weight-bold text-center my-5">Kategorie produktów</h2>
+  <!-- Section description -->
+  <p class="grey-text text-center w-responsive mx-auto mb-5"></p>
+
+  <!-- Grid row -->
+  <div class="row">
+
+    <!-- Grid column -->
+    <div class="col-lg-3 col-md-6 mb-lg-0 mb-4">
+      <!-- Card -->
+      <div class="card card-cascade narrower card-ecommerce">
+        <!-- Card image -->
+        <div class="view view-cascade overlay">
+          <img src="zdjecia/ubrania.jpg" class="card-img-top"
+            alt="sample photo">
+          <a>
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+        <!-- Card image -->
+        <!-- Card content -->
+        <div class="card-body card-body-cascade text-center">
+          <!-- Category & Title -->
+          <a class="grey-text">
+            <h5>Ubrania</h5>
+          </a>
+         
+          <p class="card-text"></p>
+          <!-- Card footer -->
+          <div class="card-footer px-1">
+            <span class="float-left font-weight-bold">
+              <strong>Ceny od 120zł</strong>
+            </span>
+            <span class="float-right font-weight-bold" >
+              <strong ><a href="homepage.html">Zobacz</a></strong>
+            </span>
+            
+             
+            
+          </div>
+        </div>
+        <!-- Card content -->
+      </div>
+      <!-- Card -->
+    </div>
+    <!-- Grid column -->
+
+    <!-- Grid column -->
+    <div class="col-lg-3 col-md-6 mb-lg-0 mb-4">
+      <!-- Card -->
+      <div class="card card-cascade narrower card-ecommerce">
+        <!-- Card image -->
+        <div class="view view-cascade overlay">
+          <img src="zdjecia/białko.jpg" class="card-img-top"
+            alt="sample photo">
+          <a>
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+        <!-- Card image -->
+      <!-- Card content -->
+        <div class="card-body card-body-cascade text-center">
+          <!-- Category & Title -->
+          <a  class="grey-text">
+            <h5>Odżywki</h5>
+          </a>
+         
+          <p class="card-text"></p>
+          <!-- Card footer -->
+          <div class="card-footer px-1">
+            <span class="float-left font-weight-bold">
+              <strong>Ceny od 120zł</strong>
+            </span>
+            <span class="float-right font-weight-bold" >
+              <strong ><a href="homepage.html">Zobacz</a></strong>
+            </span>
+           
+           
+          </div>
+        </div>
+        <!-- Card content -->
+      </div>
+      <!-- Card -->
+    </div>
+    <!-- Grid column -->
+
+    <!-- Grid column -->
+    <div class="col-lg-3 col-md-6 mb-md-0 mb-3">
+      <!-- Card -->
+      <div class="card card-cascade narrower card-ecommerce">
+        <!-- Card image -->
+        <div class="view view-cascade overlay">
+          <img src="zdjecia/buty.jpg" class="card-img-top"
+            alt="sample photo">
+          <a>
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+        <!-- Card image -->
+  <!-- Card content -->
+        <div class="card-body card-body-cascade text-center">
+          <!-- Category & Title -->
+          <a  class="grey-text">
+            <h5>Buty</h5>
+          </a>
+         
+          <p class="card-text"></p>
+          <!-- Card footer -->
+          <div class="card-footer px-1">
+            <span class="float-left font-weight-bold">
+              <strong>Ceny od 120zł</strong>
+            </span>
+            <span class="float-right font-weight-bold" >
+              <strong ><a href="homepage.html">Zobacz</a></strong>
+            </span>
+          </div>
+        </div>
+        <!-- Card content -->
+      </div>
+      <!-- Card -->
+    </div>
+    <!-- Grid column -->
+
+    <!-- Grid column -->
+    <div class="col-lg-3 col-md-6">
+      <!-- Card -->
+      <div class="card card-cascade narrower card-ecommer ce">
+        <!-- Card image -->
+        <div class="view view-cascade overlay">
+          <img src="zdjecia/suple.jpg" class="card-img-top"
+            alt="sample photo">
+          <a>
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+        <!-- Card image -->
+    <!-- Card content -->
+        <div class="card-body card-body-cascade text-center">
+          <!-- Category & Title -->
+          <a  class="grey-text">
+            <h5>Suplementy</h5>
+          </a>
+         
+          <p class="card-text"></p>
+          <!-- Card footer -->
+          <div class="card-footer px-1">
+            <span class="float-left font-weight-bold">
+              <strong>Ceny od 120zł</strong>
+            </span>
+            <span class="float-right font-weight-bold" >
+              <strong ><a href="homepage.html">Zobacz</a></strong>
+            </span>
+          </div>
+        </div>
+        <!-- Card content -->
+      </div>
+      <!-- Card -->
+    </div>
+    <!-- Grid column -->
+
+  </div>
+  <!-- Grid row -->
+
+</section>
+<!-- Section: Products v.1 -->
+</main>
+   <footer >
+    <div id="footer" style="position: relative; bottom: 0px; z-index: -5;">
         <a class="navbar-brand social"
            style="color: white; font-size: 24px; padding-left: 70px; padding-top: 30px; padding-right: 70px;"
            href="#">
@@ -806,9 +596,9 @@ background-color: rgba(255,0,0,0.10)!important;
 
         <span class="footerbottom"
               style="float: right; margin-top: 40px; margin-right: 70px; opacity: 0.6; font-family: Raleway;">Regulamin <span
-                    style="margin-left: 10px; margin-right: 10px;">|</span> Polityka prywatności</span>
+                style="margin-left: 10px; margin-right: 10px;">|</span> Polityka prywatności</span>
     </div>
-</footer>
+  </footer>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

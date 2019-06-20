@@ -40,7 +40,7 @@ session_start();
                 <?php
                     if (isset($_SESSION['zalogowany'])){
                         echo "<span class=\"nav-link\">
-                                <a href='../panelklienta/index.php'>
+                                <a href='../panelklienta/account.php'>
                                     Cześć <b>".$_SESSION['z_imie']."</b>!
                                 </a>
                               </span>

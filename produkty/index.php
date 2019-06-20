@@ -402,7 +402,14 @@ session_start();
                 <li class="nav-item hidden" style="margin-top: 9px; margin-left: 8px; opacity: 1;">
                     Ilość produktów: <b><?php
 
-                    require_once "php/connect.php";
+                        require_once '../inc/Database/Connect.php';
+                        require_once '../inc/Database/Products.php';
+
+                        $getNumOfProducts = new Products();
+                        $numOfProducts = $getNumOfProducts->getProductsNumber();
+                        echo $numOfProducts;
+
+                    /*require_once "php/connect.php";
                     $polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
 
                     if ($result = $polaczenie->query("SELECT * FROM article ORDER BY price DESC")) {
@@ -410,10 +417,8 @@ session_start();
                         $row_cnt = $result->num_rows;
 
                         echo $row_cnt;
-
-                        /* close result set */
                         $result->close();
-                    }
+                    }*/
                     ?></b>
 
                 </li>
@@ -434,6 +439,65 @@ session_start();
 
             <?php
 
+            require_once '../inc/Database/Connect.php';
+            require_once '../inc/Database/Products.php';
+
+            if($numOfProducts > 0) {
+                $getProducts = new Products();
+                $result = $getProducts->getProductList();
+                $i = 0;
+
+                echo "<div class='row'>";
+
+                foreach($result as $row){
+                    $i++;
+                    echo "<div class=\"col-md-3\">
+
+                    <section class='produkt' id='$i' draggable='true'>";
+
+                    if ($row["id"] == 1) {
+                        echo "<img src='img/1.jpg' style='width: 100%;'>";
+                    } else if ($row["id"] == 2) {
+                        echo "<img src='img/2.jpg' style='width: 100%;'>";
+                    } else if ($row["id"] == 3) {
+                        echo "<img src='img/3.jpg' style='width: 100%;'>";
+                    } else if ($row["id"] == 4) {
+                        echo "<img src='img/4.jpg' style='width: 100%;'>";
+                    } else if ($row["id"] == 5) {
+                        echo "<img src='img/5.jpg' style='width: 100%;'>";
+                    } else if ($row["id"] == 6) {
+                        echo "<img src='img/6.jpg' style='width: 100%;'>";
+                    } else if ($row["id"] == 7) {
+                        echo "<img src='img/7.jpg' style='width: 100%;'>";
+                    } else if ($row["id"] == 8) {
+                        echo "<img src='img/8.jpg' style='width: 100%;'>";
+                    } else if ($row["id"] == 8) {
+                        echo "<img src='img/9.jpg' style='width: 100%;'>";
+                    } else if ($row["id"] == 9) {
+                        echo "<img src='img/9.jpg' style='width: 100%;'>";
+                    } else if ($row["id"] == 10) {
+                        echo "<img src='img/10.jpg' style='width: 100%;'>";
+                    } else if ($row["id"] == 11) {
+                        echo "<img src='img/11.jpg' style='width: 100%;'>";
+                    } else if ($row["id"] == 12) {
+                        echo "<img src='img/12.jpg' style='width: 100%;'>";
+                    }
+
+                    echo "<div class=\"opis\">
+                        <div class=\"nazwa\" style='margin-top:6px;'>".$row['name']."</div>
+                        <div><b>Cena:</b> <span class=\"cenaprzedmiotu\">".$row['price']."</span> PLN</div>
+                        <div class='kategoriaproduktu'>".$row['category_id']."</div>
+                    </div>
+                    <div class='movetobasket'><i class=\"fas fa-arrows-alt\"></i></div>
+                    <div class='addtobasket'><i class=\"fas fa-cart-plus\"></i></div>";
+
+                    echo "</section></div>";
+                }
+
+                echo "</div>";
+            }
+
+            /*
             $sql = "SELECT * FROM article ORDER BY price DESC";
             $result = $polaczenie->query($sql);
             $i = 0;
@@ -494,6 +558,8 @@ session_start();
             echo "</div>";
 
             $polaczenie->close();
+
+            */
             ?>
 
         </div>

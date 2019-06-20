@@ -7,7 +7,7 @@ class Connect {
     public $query_count = 0;
 
     public function __construct() {
-        $dbhost = 'localhost'; $dbuser = 'root'; $dbpass = ''; $dbname = 'sklep';  $charset = 'utf8';
+        $dbhost = 'localhost'; $dbuser = 'root'; $dbpass = ''; $dbname = 'store';  $charset = 'utf8';
 
         $this->connection = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
 

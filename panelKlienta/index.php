@@ -131,7 +131,7 @@ session_start();
                     require_once '../inc/Database/CustomerPanel.php';
 
                     $getOrders = new CustomerPanel();
-                    $getOrders->getCustomerOrders();
+                    $getOrders->getCustomerOrders($_SESSION['z_id']);
                 ?>
             </div>
 

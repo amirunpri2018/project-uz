@@ -505,12 +505,12 @@ background-color: rgba(255,0,0,0.10)!important;
         <li class="nav-item">
             <a class="nav-link" href="produkty">Kategorie</a>
               <ul>
-               <li><a href="/project-uz/produkty/motoryzacja">Motoryzacja</a></li>
-               <li><a href="/project-uz/produkty/elektronika">Elektornia</a></li>
-               <li><a href="/project-uz/produkty/mieszkanie">Mieszkanie</a></li>
-               <li><a href="/project-uz/produkty/ubrania">ubrania</a></li>
-               <li><a href="/project-uz/produkty/szkola">szkoła</a></li>
-               <li><a href="/project-uz/produkty/sport">Sport</a></li>
+               <li><a href="/produkty/motoryzacja">Motoryzacja</a></li>
+               <li><a href="/produkty/elektronika">Elektornia</a></li>
+               <li><a href="/produkty/mieszkanie">Mieszkanie</a></li>
+               <li><a href="/produkty/ubrania">ubrania</a></li>
+               <li><a href="/produkty/szkola">szkoła</a></li>
+               <li><a href="/produkty/sport">Sport</a></li>
           </ul>
         </li>
 

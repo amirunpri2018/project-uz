@@ -254,12 +254,12 @@ ul > li ul li:hover > a {
         <li class="nav-item">
             <a class="nav-link" href="produkty">Kategorie</a>
               <ul>
-               <li><a href="/project-uz/produkty/motoryzacja">Motoryzacja</a></li>
-               <li><a href="/project-uz/produkty/elektronika">Elektornia</a></li>
-               <li><a href="/project-uz/produkty/mieszkanie">Mieszkanie</a></li>
-               <li><a href="/project-uz/produkty/ubrania">ubrania</a></li>
-               <li><a href="/project-uz/produkty/szkola">szkoła</a></li>
-               <li><a href="/project-uz/produkty/sport">Sport</a></li>
+               <li><a href="/produkty/motoryzacja">Motoryzacja</a></li>
+               <li><a href="/produkty/elektronika">Elektornia</a></li>
+               <li><a href="/produkty/mieszkanie">Mieszkanie</a></li>
+               <li><a href="/produkty/ubrania">ubrania</a></li>
+               <li><a href="/produkty/szkola">szkoła</a></li>
+               <li><a href="/produkty/sport">Sport</a></li>
           </ul>
         </li>
 
@@ -455,7 +455,7 @@ ul > li ul li:hover > a {
               <strong>Ceny od 120zł</strong>
             </span>
             <span class="float-right font-weight-bold" >
-              <strong ><a href="/project-uz/produkty/ubrania">Zobacz</a></strong>
+              <strong ><a href="/produkty/ubrania">Zobacz</a></strong>
             </span>
             
              
@@ -495,7 +495,7 @@ ul > li ul li:hover > a {
               <strong>Ceny od 120zł</strong>
             </span>
             <span class="float-right font-weight-bold" >
-              <strong ><a href="/project-uz/produkty/sport">Zobacz</a></strong>
+              <strong ><a href="/produkty/sport">Zobacz</a></strong>
             </span>
            
            
@@ -534,7 +534,7 @@ ul > li ul li:hover > a {
               <strong>Ceny od 120zł</strong>
             </span>
             <span class="float-right font-weight-bold" >
-              <strong ><a href="/project-uz/produkty/sport">Zobacz</a></strong>
+              <strong ><a href="/produkty/sport">Zobacz</a></strong>
             </span>
           </div>
         </div>
@@ -571,7 +571,7 @@ ul > li ul li:hover > a {
               <strong>Ceny od 120zł</strong>
             </span>
             <span class="float-right font-weight-bold" >
-              <strong ><a href="/project-uz/produkty/elektornika">Zobacz</a></strong>
+              <strong ><a href="/produkty/elektornika">Zobacz</a></strong>
             </span>
           </div>
         </div>

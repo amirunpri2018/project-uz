@@ -56,7 +56,7 @@ session_start();
 
                 else
                 {
-                    echo "<a class=\"nav-link\" href=\"account.php\">Rejestracja</a>";
+                    echo "<a class=\"nav-link\" href=\"../\">Rejestracja</a>";
                 }
                 ?>
 

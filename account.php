@@ -456,7 +456,7 @@ background-color: rgba(255,0,0,0.10)!important;
                 if (isset($_SESSION['zalogowany'])) {
                     echo "<span class=\"nav-link\">Cześć <b>" . $_SESSION['z_imie'] . "</b>!</span>";
                 } else {
-                    echo "<a class=\"nav-link\" href=\"../\">Rejestracja</a>";
+                    echo "<a class=\"nav-link\" href=\"account.php\">Rejestracja</a>";
                 }
                 ?>
 

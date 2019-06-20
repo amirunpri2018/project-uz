@@ -54,7 +54,7 @@ else {
 
                 else
                 {
-                    echo "<a class=\"nav-link\" href=\"../\">Rejestracja</a>";
+                    echo "<a class=\"nav-link\" href=\"account.php\">Rejestracja</a>";
                 }
                 ?>
 

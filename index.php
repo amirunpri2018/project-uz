@@ -247,14 +247,14 @@ ul > li ul li:hover > a {
             <a class="nav-link" style="color:  rgba(226,226,226,0.49);" href="#">|
             </a></li>
         <li class="nav-item">
-            <a class="nav-link" href="produkty">Ubrania</a>
+            <a class="nav-link" href="produkty">Kategorie</a>
               <ul>
-               <li><a href="#">Buty</a></li>
-               <li><a href="#">Bluzy</a></li>
-               <li><a href="#">Kalesony</a></li>
-               <li><a href="#">leginsy</a></li>
-               <li><a href="#">skarpoetki</a></li>
-               <li><a href="#">opaski</a></li>
+               <li><a href="/project-uz/produkty/motoryzacja">Motoryzacja</a></li>
+               <li><a href="/project-uz/produkty/elektornika">Elektornia</a></li>
+               <li><a href="/project-uz/produkty/mieszkanie">Mieszkanie</a></li>
+               <li><a href="/project-uz/produkty/ubrania">ubrania</a></li>
+               <li><a href="/project-uz/produkty/szkola">szkoła</a></li>
+               <li><a href="/project-uz/produkty/sport">Sport</a></li>
           </ul>
         </li>
 
@@ -295,7 +295,7 @@ ul > li ul li:hover > a {
 
       <!--First slide-->
       <div class="carousel-item active">
-        <div class="view" style="background-image: url('zdjecia/baner_bialko.jpg'); background-repeat: no-repeat; background-size: cover; ">
+        <div class="view" style="background-image: url('zdjecia/baner_sport.jpg'); background-repeat: no-repeat; background-size: cover; ">
 
           <!-- Mask & flexbox options-->
           <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
@@ -314,7 +314,7 @@ ul > li ul li:hover > a {
                 <strong>Największy wybór</strong>
               </p>
 
-              <a target="_blank" href="https://image.freepik.com/darmowe-zdjecie/biale-tlo_23-2147730801.jpg" class="btn btn-outline-white btn-lg">Zobacz
+              <a target="_blank" href="/project-uz/produkty/sport" class="btn btn-outline-white btn-lg">Zobacz
                
               </a>
             </div>
@@ -346,7 +346,7 @@ ul > li ul li:hover > a {
 
             
 
-              <a target="_blank" href="https://image.freepik.com/darmowe-zdjecie/biale-tlo_23-2147730801.jpg" class="btn btn-outline-white btn-lg">Sprawdź więcej
+              <a target="_blank" href="/project-uz/produkty/ubrania" class="btn btn-outline-white btn-lg">Sprawdź więcej
         
               </a>
             </div>
@@ -361,7 +361,7 @@ ul > li ul li:hover > a {
 
       <!--Third slide-->
       <div class="carousel-item">
-        <div class="view" style="background-image: url('zdjecia/baner_buty.jpg'); background-repeat: no-repeat; background-size: cover;">
+        <div class="view" style="background-image: url('zdjecia/baner_szkola.jpg'); background-repeat: no-repeat; background-size: cover;">
 
           <!-- Mask & flexbox options-->
           <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
@@ -378,7 +378,7 @@ ul > li ul li:hover > a {
 
             
 
-              <a target="_blank" href="https://image.freepik.com/darmowe-zdjecie/biale-tlo_23-2147730801.jpg" class="btn btn-outline-white btn-lg">Zobacz
+              <a target="_blank" href="/project-uz/produkty/szkola" class="btn btn-outline-white btn-lg">Zobacz
             
               </a>
             </div>
@@ -449,7 +449,7 @@ ul > li ul li:hover > a {
               <strong>Ceny od 120zł</strong>
             </span>
             <span class="float-right font-weight-bold" >
-              <strong ><a href="homepage.html">Zobacz</a></strong>
+              <strong ><a href="/project-uz/produkty/ubrania">Zobacz</a></strong>
             </span>
             
              
@@ -468,7 +468,7 @@ ul > li ul li:hover > a {
       <div class="card card-cascade narrower card-ecommerce">
         <!-- Card image -->
         <div class="view view-cascade overlay">
-          <img src="zdjecia/białko.jpg" class="card-img-top"
+          <img src="zdjecia/sport.jpg" class="card-img-top"
             alt="sample photo">
           <a>
             <div class="mask rgba-white-slight"></div>
@@ -479,7 +479,7 @@ ul > li ul li:hover > a {
         <div class="card-body card-body-cascade text-center">
           <!-- Category & Title -->
           <a  class="grey-text">
-            <h5>Odżywki</h5>
+            <h5>sport</h5>
           </a>
          
           <p class="card-text"></p>
@@ -489,7 +489,7 @@ ul > li ul li:hover > a {
               <strong>Ceny od 120zł</strong>
             </span>
             <span class="float-right font-weight-bold" >
-              <strong ><a href="homepage.html">Zobacz</a></strong>
+              <strong ><a href="/project-uz/produkty/sport">Zobacz</a></strong>
             </span>
            
            
@@ -507,7 +507,7 @@ ul > li ul li:hover > a {
       <div class="card card-cascade narrower card-ecommerce">
         <!-- Card image -->
         <div class="view view-cascade overlay">
-          <img src="zdjecia/buty.jpg" class="card-img-top"
+          <img src="zdjecia/mieszkanie.jpg" class="card-img-top"
             alt="sample photo">
           <a>
             <div class="mask rgba-white-slight"></div>
@@ -518,7 +518,7 @@ ul > li ul li:hover > a {
         <div class="card-body card-body-cascade text-center">
           <!-- Category & Title -->
           <a  class="grey-text">
-            <h5>Buty</h5>
+            <h5>Mieszkanie</h5>
           </a>
          
           <p class="card-text"></p>
@@ -528,7 +528,7 @@ ul > li ul li:hover > a {
               <strong>Ceny od 120zł</strong>
             </span>
             <span class="float-right font-weight-bold" >
-              <strong ><a href="homepage.html">Zobacz</a></strong>
+              <strong ><a href="/project-uz/produkty/sport">Zobacz</a></strong>
             </span>
           </div>
         </div>
@@ -544,7 +544,7 @@ ul > li ul li:hover > a {
       <div class="card card-cascade narrower card-ecommer ce">
         <!-- Card image -->
         <div class="view view-cascade overlay">
-          <img src="zdjecia/suple.jpg" class="card-img-top"
+          <img src="zdjecia/elektornika.jpg" class="card-img-top"
             alt="sample photo">
           <a>
             <div class="mask rgba-white-slight"></div>
@@ -555,7 +555,7 @@ ul > li ul li:hover > a {
         <div class="card-body card-body-cascade text-center">
           <!-- Category & Title -->
           <a  class="grey-text">
-            <h5>Suplementy</h5>
+            <h5>Elektronika</h5>
           </a>
          
           <p class="card-text"></p>
@@ -565,7 +565,7 @@ ul > li ul li:hover > a {
               <strong>Ceny od 120zł</strong>
             </span>
             <span class="float-right font-weight-bold" >
-              <strong ><a href="homepage.html">Zobacz</a></strong>
+              <strong ><a href="/project-uz/produkty/elektornika">Zobacz</a></strong>
             </span>
           </div>
         </div>

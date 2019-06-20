@@ -247,14 +247,14 @@ ul > li ul li:hover > a {
             <a class="nav-link" style="color:  rgba(226,226,226,0.49);" href="#">|
             </a></li>
         <li class="nav-item">
-            <a class="nav-link" href="produkty">Ubrania</a>
+            <a class="nav-link" href="produkty">Kategorie</a>
               <ul>
-               <li><a href="#">Buty</a></li>
-               <li><a href="#">Bluzy</a></li>
-               <li><a href="#">Kalesony</a></li>
-               <li><a href="#">leginsy</a></li>
-               <li><a href="#">skarpoetki</a></li>
-               <li><a href="#">opaski</a></li>
+               <li><a href="/project-uz/produkty/motoryzacja">Motoryzacja</a></li>
+               <li><a href="/project-uz/produkty/elektornika">Elektornia</a></li>
+               <li><a href="/project-uz/produkty/mieszkanie">Mieszkanie</a></li>
+               <li><a href="/project-uz/produkty/ubrania">ubrania</a></li>
+               <li><a href="/project-uz/produkty/szkola">szkoła</a></li>
+               <li><a href="/project-uz/produkty/sport">Sport</a></li>
           </ul>
         </li>
 

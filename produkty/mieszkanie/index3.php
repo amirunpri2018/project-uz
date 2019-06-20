@@ -87,76 +87,7 @@ session_start();
         </ul>
     </div>
 </nav>
-<header class="navbar navbar-expand-lg navbar-light bg-light" style="
-ul {
-     list-style: none;
-     float: left;
-}
- 
-ul > li {
-     margin: 0;
-     padding: 0;
-     float: left; 
-     position: relative;
-     height: 30px;
-}
- 
-ul > li > a {
-     padding: 10px; 
-     color: #444;
-     text-decoration: none; 
-}
-
-ul > li > a:hover, 
-ul > li:hover > a {
-     color: rgba(226,226,226,0.49);
-     text-decoration: underline;
-    
-}
- 
-ul > li ul {
-     padding: 0;
-     position: absolute; 
-     display: none; 
-     left: 0px; 
-     top: 30px; 
-     width: 200px; 
-     text-align: left;
-     background-color: #fcfcfc;
-     border: 1px solid #ccc;
-}
- 
-ul li:hover > ul {
-     display: block;
-     margin-top: 11px;
-}
- 
-ul > li ul ul {
-     left: 200px; 
-     top: -1px;
-}
- 
-ul > li ul li {
-     margin: 0; 
-     padding: 0;
-     position: relative; 
-     float: none; 
-     height: auto;
-}
- 
-ul > li ul li a {
-     padding: 10px 20px; 
-     color: #505050; 
-     text-decoration: none;
-     display: block;
-}
- 
-ul > li ul li a:hover,
-ul > li ul li:hover > a {
-     text-decoration: none;
-     color: #fff;
-     background-color: #f26c4f;
-}">
+<header class="navbar navbar-expand-lg navbar-light bg-light" >
     <a class="navbar-brand" href="/project-uz/index.php"
        style="letter-spacing: 1.5px; margin-top: -5px; font-family: 'Raleway', sans-serif; font-size: 60px;">
         <span style="color: #ca7b11; font-weight: bold">Shop</span>ly <span style="font-size: 34px;"></span>

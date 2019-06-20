@@ -7,19 +7,21 @@ class CustomerPanelTest extends PHPUnit_Framework_TestCase {
         $mockedStatement = \Mockery::mock('\Doctrine\DBAL\Driver\Statement');
         //$getCustomerData = new Connect();
 
+        $CustomerID = 1;
+
         try {
             $mockedDbConnection
                 ->shouldReceive('executeQuery')
                 ->with("SELECT 
-                            Imie,
-                            Nazwisko,
-                            Adres AS Ulica,
-                            '' as Kod_Pocztowy,
-                            Miejscowosc,
-                            '' AS Nr_Telefonu,
+                            Name AS Imie,
+                            Surname AS Nazwisko,
+                            Address AS Ulica,
+                            Zip_Code AS Kod_Pocztowy,
+                            City AS Miejscowosc,
+                            Phone_Number AS Nr_Telefonu,
                             '' AS Email
-                        FROM klienci
-                        WHERE id = 4;")
+                        FROM customer
+                        WHERE id = '$CustomerID';")
                 ->andReturn($mockedStatement);
             /*$getInfo = $getCustomerData->query(
                         "SELECT
@@ -125,16 +127,19 @@ class CustomerPanelTest extends PHPUnit_Framework_TestCase {
         $mockedStatement = \Mockery::mock('\Doctrine\DBAL\Driver\Statement');
         //$getOrders = new Connect();
 
+        $CustomerID = 1;
+
         try {
             $mockedDbConnection
                 ->shouldReceive('executeQuery')
                 ->with("SELECT 
                     o.ID as ID, 
-                    o.Data_Zlozenia as Data_Zlozenia,
-                    s.Nazwa as Nazwa_Statusu,
-                    o.Kwota as Kwota
-                FROM zamowienia AS o
-                    INNER JOIN status AS s ON s.ID = o.`Status`")
+                    o.Date as Data_Zlozenia,
+                    s.Name as Nazwa_Statusu,
+                    o.Price as Kwota
+                FROM `order` AS o
+                    INNER JOIN status AS s ON s.ID = o.`status_id`
+                WHERE o.customer_id = '$CustomerID'")
                 ->andReturn($mockedStatement);
 
             /*$getOrdersList = $getOrders->query(
@@ -158,7 +163,7 @@ class CustomerPanelTest extends PHPUnit_Framework_TestCase {
                     'Kwota' => 240.97),
             );
 
-            echo '<table class="table table-hover">';
+            /*echo '<table class="table table-hover">';
             echo '    <thead class="thead-dark">';
             echo '        <tr>';
             echo '            <th scope="col">Nr zamówienia</th>';
@@ -167,7 +172,7 @@ class CustomerPanelTest extends PHPUnit_Framework_TestCase {
             echo '            <th scope="col">Wartość</th>';
             echo '        </tr>';
             echo '    </thead>';
-            echo '    <tbody>';
+            echo '    <tbody>';*/
 
             $mockedStatement
                 ->shouldReceive('fetch')
@@ -195,34 +200,92 @@ class CustomerPanelTest extends PHPUnit_Framework_TestCase {
                 echo '        </tr>';
             }*/
 
-            echo '    </tbody>';
-            echo '</table>';
+            //echo '    </tbody>';
+            //echo '</table>';
 
         } finally {
-            //$getOrders->close();
             Mockery::close();
+            //$getOrders->close();
         }
     }
 
-    public function getCustomerQuestions(){
-        $getQuestions = new Connect();
+    public function testGetCustomerQuestions(){
+        $mockedDbConnection = \Mockery::mock('\Doctrine\DBAL\Connection');
+        $mockedStatement = \Mockery::mock('\Doctrine\DBAL\Driver\Statement');
+        //$getQuestions = new Connect();
+
+        $CustomerID = 1;
 
         try {
-            $getQuestionsList = $getQuestions->query(
+            $mockedDbConnection
+                ->shouldReceive('executeQuery')
+                ->with("SELECT
+                            q.ID AS ID,
+                            q.Topic AS Temat,
+                            q.Date AS Utworzono,
+                            MAX(qc.Date) AS Ostatnia_odp,
+                            zs.Name AS Status
+                        FROM ask_question AS q
+                            INNER JOIN ask_conversation AS qc ON q.ID = qc.question_id
+                            INNER JOIN ask_status AS zs ON q.status_id = zs.ID
+                        WHERE q.customer_id = '$CustomerID'
+                        GROUP BY q.ID;")
+                ->andReturn($mockedStatement);
+
+            /*$getQuestionsList = $getQuestions->query(
                 "SELECT
                             q.ID AS ID,
-                            q.Temat AS Temat,
-                            q.Data_Utworzenia AS Utworzono,
-                            MAX(qc.Data_Wyslania) AS Ostatnia_odp,
-                            zs.Nazwa AS Status
-                        FROM zap_zapytania AS q
-                            INNER JOIN zap_konwersacja AS qc ON q.ID = qc.ID_Zapytania
-                            INNER JOIN zap_status AS zs ON q.`Status` = zs.ID
-                        WHERE q.ID_Klienta = 4
+                            q.Topic AS Temat,
+                            q.Date AS Utworzono,
+                            MAX(qc.Date) AS Ostatnia_odp,
+                            zs.Name AS Status
+                        FROM ask_question AS q
+                            INNER JOIN ask_conversation AS qc ON q.ID = qc.question_id
+                            INNER JOIN ask_status AS zs ON q.status_id = zs.ID
+                        WHERE q.customer_id = '$CustomerID'
                         GROUP BY q.ID;"
-            )->fetchAll();
+            )->fetchAll();*/
 
-            echo '<table class="table table-hover">';
+            $mockedStatement
+                ->shouldReceive('fetch')
+                ->andReturnUsing(function () use (&$mockedRows) {
+                    $row = current($mockedRows);
+                    next($mockedRows);
+                    return $row;
+                });
+
+            $mockedRows = array(
+                array('ID' => 1,
+                    'Temat' => 'Rabat',
+                    'Utworzono' => '2019-06-20 18:13:17',
+                    'Ostatnia_odp' => '2019-06-21 09:03:45',
+                    'Status' => 'Zamknięte'),
+                array('ID' => 2,
+                    'Temat' => 'Status zamówienia',
+                    'Utworzono' => '2019-07-01 15:19:22',
+                    'Ostatnia_odp' => '2019-07-01 16:33:48',
+                    'Status' => 'Odpowiedź sklepu'),
+            );
+
+            $mockedStatement
+                ->shouldReceive('fetch')
+                ->andReturnUsing(function () use (&$mockedRows) {
+                    $row = current($mockedRows);
+                    next($mockedRows);
+                    return $row;
+                });
+
+            $expectedResult = $mockedRows;
+
+            foreach($expectedResult as $row){
+                $this->assertInternalType('int', $row['ID']);
+                $this->assertInternalType('string', $row['Temat']);
+                $this->assertInternalType('string', $row['Utworzono']);
+                $this->assertInternalType('string', $row['Ostatnia_odp']);
+                $this->assertInternalType('string', $row['Status']);
+            }
+
+            /*echo '<table class="table table-hover">';
             echo '    <thead class="thead-dark">';
             echo '        <tr>';
             echo '            <th scope="col">Temat</th>';
@@ -254,17 +317,80 @@ class CustomerPanelTest extends PHPUnit_Framework_TestCase {
                     });
                 });
                 </script>';
+         */
         } finally {
-            $getQuestions->close();
+            Mockery::close();
+            //$getQuestions->close();
         }
     }
 
-    public function getQuestionDetails($ID_Zapytania){
-        $getQuestion = new Connect();
+    public function testGetQuestionDetails(){
+        $mockedDbConnection = \Mockery::mock('\Doctrine\DBAL\Connection');
+        $mockedStatement = \Mockery::mock('\Doctrine\DBAL\Driver\Statement');
+        //$getQuestion = new Connect();
         $statusID = -1;
 
+        $CustomerID = 1;
+        $QuestionID = 1;
+
         try {
-            $getDetails = $getQuestion->query(
+            $mockedDbConnection
+                ->shouldReceive('executeQuery')
+                ->with("SELECT
+                            qc.question_id AS ID_Zapytania,
+                            q.topic AS Temat,
+                            (SELECT 
+                                CONCAT(name, ' ', surname) 
+                            FROM customer
+                            WHERE customer.id = qc.customer_id) AS Uzytkownik,
+                            qc.date AS Data,
+                            qc.contents AS Tresc,
+                            zs.Name AS Status
+                        FROM ask_conversation AS qc
+                            INNER JOIN ask_question AS q ON q.customer_id = qc.customer_id
+                            INNER JOIN ask_status AS zs ON q.status_id = zs.ID
+                        WHERE q.customer_id = '$CustomerID'
+                            AND qc.question_id = '$QuestionID'
+                        GROUP BY qc.ID")
+                ->andReturn($mockedStatement);
+
+            $mockedStatement
+                ->shouldReceive('fetch')
+                ->andReturnUsing(function () use (&$mockedRows) {
+                    $row = current($mockedRows);
+                    next($mockedRows);
+                    return $row;
+                });
+
+            $mockedRows = array(
+                array('ID' => 1,
+                    'Temat' => 'Rabat',
+                    'Uzytkownik' => 'Andzej Newton',
+                    'Data' => '2019-06-20 19:17:33',
+                    'Tresc' => 'Dzień dobry<br><br>Co się dzieje z moim zamówieniem? Od 3 dni nie zmienił się status!<br>',
+                    'Status' => 'Nowe')
+            );
+
+            $mockedStatement
+                ->shouldReceive('fetch')
+                ->andReturnUsing(function () use (&$mockedRows) {
+                    $row = current($mockedRows);
+                    next($mockedRows);
+                    return $row;
+                });
+
+            $expectedResult = $mockedRows;
+
+            foreach($expectedResult as $row){
+                $this->assertInternalType('int', $row['ID']);
+                $this->assertInternalType('string', $row['Temat']);
+                $this->assertInternalType('string', $row['Uzytkownik']);
+                $this->assertInternalType('string', $row['Data']);
+                $this->assertInternalType('string', $row['Tresc']);
+                $this->assertInternalType('string', $row['Status']);
+            }
+
+            /*$getDetails = $getQuestion->query(
                 "SELECT
                             qc.ID_Zapytania AS ID_Zapytania,
                             q.Temat AS Temat,
@@ -315,9 +441,10 @@ class CustomerPanelTest extends PHPUnit_Framework_TestCase {
                     echo '<textarea class="form-control" id="textAreaTrescWiadomosci" rows="3"></textarea>';
                     echo '<button type="submit" class="btn btn-primary">Wyślij wiadomość</button>';
                 echo '</div>';
-            }
+            }*/
         } finally {
-            $getQuestion->close();
+            Mockery::close();
+            //$getQuestion->close();
         }
     }
 

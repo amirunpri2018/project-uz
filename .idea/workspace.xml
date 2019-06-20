@@ -1,33 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b31a5e8a-43f9-4cfa-832c-c639600258b0" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/produkty/elektronika/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/produkty/elektronika/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/produkty/elektronika/index2.php" beforeDir="false" afterPath="$PROJECT_DIR$/produkty/elektronika/index2.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/produkty/elektronika/index3.php" beforeDir="false" afterPath="$PROJECT_DIR$/produkty/elektronika/index3.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/produkty/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/produkty/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/produkty/mieszkanie/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/produkty/mieszkanie/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/produkty/mieszkanie/index2.php" beforeDir="false" afterPath="$PROJECT_DIR$/produkty/mieszkanie/index2.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/produkty/mieszkanie/index3.php" beforeDir="false" afterPath="$PROJECT_DIR$/produkty/mieszkanie/index3.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/produkty/motoryzacja/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/produkty/motoryzacja/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/produkty/motoryzacja/index2.php" beforeDir="false" afterPath="$PROJECT_DIR$/produkty/motoryzacja/index2.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/produkty/motoryzacja/index3.php" beforeDir="false" afterPath="$PROJECT_DIR$/produkty/motoryzacja/index3.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/produkty/php/connect.php" beforeDir="false" afterPath="$PROJECT_DIR$/produkty/php/connect.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/produkty/php/zaloguj.php" beforeDir="false" afterPath="$PROJECT_DIR$/produkty/php/zaloguj.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/produkty/sport/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/produkty/sport/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/produkty/sport/index2.php" beforeDir="false" afterPath="$PROJECT_DIR$/produkty/sport/index2.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/produkty/sport/index3.php" beforeDir="false" afterPath="$PROJECT_DIR$/produkty/sport/index3.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/produkty/szkola/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/produkty/szkola/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/produkty/szkola/index2.php" beforeDir="false" afterPath="$PROJECT_DIR$/produkty/szkola/index2.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/produkty/szkola/index3.php" beforeDir="false" afterPath="$PROJECT_DIR$/produkty/szkola/index3.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/produkty/ubrania/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/produkty/ubrania/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/produkty/ubrania/index2.php" beforeDir="false" afterPath="$PROJECT_DIR$/produkty/ubrania/index2.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/produkty/ubrania/index3.php" beforeDir="false" afterPath="$PROJECT_DIR$/produkty/ubrania/index3.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zamowienie/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/zamowienie/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zamowienie/zamowienie.php" beforeDir="false" afterPath="$PROJECT_DIR$/zamowienie/zamowienie.php" afterDir="false" />
-    </list>
+    <list default="true" id="b31a5e8a-43f9-4cfa-832c-c639600258b0" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -92,7 +66,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="zamowienie.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="zamowienie.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/zamowienie/zamowienie.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="419">
@@ -102,6 +76,15 @@
                 <element signature="n#style#0;n#a#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="store2.sql" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/_sql/store2.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="699">
+              <caret line="84" lean-forward="true" selection-start-line="84" selection-end-line="84" />
             </state>
           </provider>
         </entry>
@@ -216,6 +199,7 @@
         <option value="$PROJECT_DIR$/produkty/index.php" />
         <option value="$PROJECT_DIR$/zamowienie/index.php" />
         <option value="$PROJECT_DIR$/zamowienie/zamowienie.php" />
+        <option value="$PROJECT_DIR$/_sql/store2.sql" />
       </list>
     </option>
   </component>
@@ -243,6 +227,11 @@
             <path>
               <item name="Root" type="cbb8eebc:String" user="Root" />
               <item name="project-uz" type="cbb8eebc:String" user="project-uz" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="project-uz" type="cbb8eebc:String" user="project-uz" />
+              <item name="_sql" type="cbb8eebc:String" user="_sql" />
             </path>
             <path>
               <item name="Root" type="cbb8eebc:String" user="Root" />
@@ -296,12 +285,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1561029925558</updated>
-      <workItem from="1561029926784" duration="10717000" />
+      <workItem from="1561029926784" duration="10844000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10717000" />
+    <option name="totallyTimeSpent" value="10844000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1200" extended-state="0" />
@@ -508,6 +497,13 @@
             <element signature="n#style#0;n#a#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_sql/store2.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="699">
+          <caret line="84" lean-forward="true" selection-start-line="84" selection-end-line="84" />
         </state>
       </provider>
     </entry>

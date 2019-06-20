@@ -2,45 +2,6 @@
 
 session_start();
 
-
-require_once "produkty/php/connect.php";
-$polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
-
-if (isset($_POST['p_nr']) && !empty($_POST['p_nr'])) {
-
-    $p_nr = $_POST['p_nr'];
-
-    if ($polaczenie->connect_errno != 0) {
-        echo "Error: " . $polaczenie->connect_errno;
-    } else {
-
-        $p_nr = htmlentities($p_nr, ENT_QUOTES, "UTF-8");
-
-        if ($rezultat = @$polaczenie->query(
-            sprintf("SELECT status FROM zamowienia WHERE id = '%s'",
-                mysqli_real_escape_string($polaczenie, $p_nr)))) {
-            $ilu_userow = $rezultat->num_rows;
-
-            if ($ilu_userow > 0) {
-
-                $wiersz = $rezultat->fetch_assoc();
-                $_SESSION['status'] = $wiersz['status'];
-                $rezultat->free_result();
-            } else {
-                echo "<style>
-
-input[type='text'], input[type='password']  {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.09)!important;
-}
-</style>";
-                $_SESSION['blad2'] = '<div style="color: red; text-align: center; font-size: 14px; font-weight: bold; margin: 10px;">Nie znaleziono takiego zamówienia.</div>';
-            }}
-    }
-}
-
-$polaczenie->close();
-
 ?>
 
 <!doctype html>

@@ -395,7 +395,7 @@ background-color: rgba(255,0,0,0.10)!important;
                     mysqli_real_escape_string($polaczenie, $address),
                     mysqli_real_escape_string($polaczenie, $city),
                     mysqli_real_escape_string($polaczenie, $zip),
-                    mysqli_real_escape_string($polaczenie, $_POST['phone']),
+                    mysqli_real_escape_string($polaczenie, $phone),
                     mysqli_real_escape_string($polaczenie, $login),
                     mysqli_real_escape_string($polaczenie, $password)
 
@@ -404,8 +404,6 @@ background-color: rgba(255,0,0,0.10)!important;
 
                     $_SESSION['udanarejestracja'] = "Rejestracja zakończona pomyślnie!";
                     header('location: login.php');
-                } else {
-                    var_dump($name, $surname, $address, $login, $password, $zip, $phone, $city);
                 }
             }
             $polaczenie->close();

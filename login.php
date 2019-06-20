@@ -124,7 +124,7 @@ $polaczenie->close();
 </nav>
 
 <header class="navbar navbar-expand-lg navbar-light bg-light" >
-    <a class="navbar-brand" href="/project-uz/index.php"
+    <a class="navbar-brand" href="/index.php"
        style="letter-spacing: 1.5px; margin-top: -5px; font-family: 'Raleway', sans-serif; font-size: 60px;">
         <span style="color: #ca7b11; font-weight: bold">Shop</span>ly <span style="font-size: 34px;"></span>
     </a>
@@ -138,7 +138,7 @@ $polaczenie->close();
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0 menuroll" style="font-size: 25px;padding-bottom: 10px;"
         ">
         <li class="nav-item">
-            <a class="nav-link" style="color: #e28000; opacity: 1;" href="/project-uz/index.php">Home</a>
+            <a class="nav-link" style="color: #e28000; opacity: 1;" href="/index.php">Home</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" style="color:  rgba(226,226,226,0.49);" href="#">|
@@ -161,7 +161,7 @@ $polaczenie->close();
             </a></li>
           
         <li class="nav-item">
-            <a class="nav-link" href="/project-uz/zamowienie">Zamówienie</a>
+            <a class="nav-link" href="/zamowienie">Zamówienie</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" style="color:  rgba(226,226,226,0.49);" href="#">|

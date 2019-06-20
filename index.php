@@ -232,7 +232,7 @@ ul > li ul li:hover > a {
 </nav>
 
 <header class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/project-uz/index.php"
+    <a class="navbar-brand" href="/index.php"
        style="letter-spacing: 1.5px; margin-top: -5px; font-family: 'Raleway', sans-serif; font-size: 60px;">
         <span style="color: #ca7b11; font-weight: bold">Shop</span>ly <span style="font-size: 34px;"></span>
     </a>
@@ -246,7 +246,7 @@ ul > li ul li:hover > a {
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0 menuroll" style="font-size: 25px;padding-bottom: 10px;"
         ">
         <li class="nav-item">
-            <a class="nav-link" style="color: #e28000; opacity: 1;" href="/project-uz/index.php">Home</a>
+            <a class="nav-link" style="color: #e28000; opacity: 1;" href="/index.php">Home</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" style="color:  rgba(226,226,226,0.49);" href="#">|
@@ -269,7 +269,7 @@ ul > li ul li:hover > a {
             </a></li>
           
         <li class="nav-item">
-            <a class="nav-link" href="/project-uz/zamowienie">Zamówienie</a>
+            <a class="nav-link" href="/zamowienie">Zamówienie</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" style="color:  rgba(226,226,226,0.49);" href="#">|
@@ -320,7 +320,7 @@ ul > li ul li:hover > a {
                 <strong>Największy wybór</strong>
               </p>
 
-              <a target="_blank" href="/project-uz/produkty/sport" class="btn btn-outline-white btn-lg">Zobacz
+              <a target="_blank" href="/produkty/sport" class="btn btn-outline-white btn-lg">Zobacz
                
               </a>
             </div>
@@ -352,7 +352,7 @@ ul > li ul li:hover > a {
 
             
 
-              <a target="_blank" href="/project-uz/produkty/ubrania" class="btn btn-outline-white btn-lg">Sprawdź więcej
+              <a target="_blank" href="/produkty/ubrania" class="btn btn-outline-white btn-lg">Sprawdź więcej
         
               </a>
             </div>
@@ -384,7 +384,7 @@ ul > li ul li:hover > a {
 
             
 
-              <a target="_blank" href="/project-uz/produkty/szkola" class="btn btn-outline-white btn-lg">Zobacz
+              <a target="_blank" href="/produkty/szkola" class="btn btn-outline-white btn-lg">Zobacz
             
               </a>
             </div>

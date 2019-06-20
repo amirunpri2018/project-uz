@@ -1,14 +1,28 @@
 <?php
 
-//require_once '../inc/Database/Connect.php';
 
 class CustomerPanelTest extends PHPUnit_Framework_TestCase {
     public function testGetCustomerData() {
+        $mockedDbConnection = \Mockery::mock('\Doctrine\DBAL\Connection');
+        $mockedStatement = \Mockery::mock('\Doctrine\DBAL\Driver\Statement');
         //$getCustomerData = new Connect();
 
         try {
+            $mockedDbConnection
+                ->shouldReceive('executeQuery')
+                ->with("SELECT 
+                            Imie,
+                            Nazwisko,
+                            Adres AS Ulica,
+                            '' as Kod_Pocztowy,
+                            Miejscowosc,
+                            '' AS Nr_Telefonu,
+                            '' AS Email
+                        FROM klienci
+                        WHERE id = 4;")
+                ->andReturn($mockedStatement);
             /*$getInfo = $getCustomerData->query(
-                "SELECT 
+                        "SELECT
                             Imie,
                             Nazwisko,
                             Adres AS Ulica,
@@ -20,16 +34,38 @@ class CustomerPanelTest extends PHPUnit_Framework_TestCase {
                         WHERE id = 4;"
             )->fetchAll();*/
 
-            $imie = 'Andrzej';
-            $nazwisko = 'Newton';
-            $ulica = 'Podgórna 16';
-            $kod_pocztowy = '64-200';
-            $miejscowosc = 'Wolsztyn';
-            $nr_telefonu = '600 700 900';
-            $email = 'andrzej@newton.com';
+            $mockedRows = array(
+                array('Imie' => 'Andzej',
+                    'Nazwisko' => 'Newton',
+                    'Adres' => 'Podgórna 16',
+                    'Kod_Pocztowy' => '64-200',
+                    'Miejscowosc' => 'Wolsztyn',
+                    'Nr_Telefonu' => '600 700 900',
+                    'Email'=> 'andrzej@newton.com')
+            );
+
+            $mockedStatement
+                ->shouldReceive('fetch')
+                ->andReturnUsing(function () use (&$mockedRows) {
+                    $row = current($mockedRows);
+                    next($mockedRows);
+                    return $row;
+                });
+
+            $expectedResult = $mockedRows;
+
+            foreach($expectedResult as $row){
+                $this->assertInternalType('string', $row['Imie']);
+                $this->assertInternalType('string', $row['Nazwisko']);
+                $this->assertInternalType('string', $row['Adres']);
+                $this->assertInternalType('string', $row['Kod_Pocztowy']);
+                $this->assertInternalType('string', $row['Miejscowosc']);
+                $this->assertInternalType('string', $row['Nr_Telefonu']);
+                $this->assertInternalType('string', $row['Email']);
+            }
 
             //foreach($getInfo as $result){
-                echo '<form>';
+                /*echo '<form>';
                 echo '    <div class="form-row">';
                 echo '        <div class="form-group col-md-6">';
                 echo '            <label for="inputImie">Imię: </label>';
@@ -75,19 +111,33 @@ class CustomerPanelTest extends PHPUnit_Framework_TestCase {
                 echo '    </div>';
                 echo '';
                 echo '    <button type="submit" class="btn btn-primary">Zapisz</button>';
-                echo '</form>';
+                echo '</form>';*/
             //}
 
         } finally {
+            Mockery::close();
             //$getCustomerData->close();
         }
     }
 
-    public function getCustomerOrders() {
-        $getOrders = new Connect();
+    public function testGetCustomerOrders() {
+        $mockedDbConnection = \Mockery::mock('\Doctrine\DBAL\Connection');
+        $mockedStatement = \Mockery::mock('\Doctrine\DBAL\Driver\Statement');
+        //$getOrders = new Connect();
 
         try {
-            $getOrdersList = $getOrders->query(
+            $mockedDbConnection
+                ->shouldReceive('executeQuery')
+                ->with("SELECT 
+                    o.ID as ID, 
+                    o.Data_Zlozenia as Data_Zlozenia,
+                    s.Nazwa as Nazwa_Statusu,
+                    o.Kwota as Kwota
+                FROM zamowienia AS o
+                    INNER JOIN status AS s ON s.ID = o.`Status`")
+                ->andReturn($mockedStatement);
+
+            /*$getOrdersList = $getOrders->query(
                 "SELECT 
                     o.ID as ID, 
                     o.Data_Zlozenia as Data_Zlozenia,
@@ -95,7 +145,18 @@ class CustomerPanelTest extends PHPUnit_Framework_TestCase {
                     o.Kwota as Kwota
                 FROM zamowienia AS o
                     INNER JOIN status AS s ON s.ID = o.`Status`"
-            )->fetchAll();
+            )->fetchAll();*/
+
+            $mockedRows = array(
+                array('ID' => 1,
+                    'Data_Zlozenia' => '2019-06-15 20:10:20',
+                    'Nazwa' => 'Zamkniety (wysłano)',
+                    'Kwota' => 360.00),
+                array('ID' => 2,
+                    'Data_Zlozenia' => '2019-06-18 14:35:57',
+                    'Nazwa' => 'Nowe',
+                    'Kwota' => 240.97),
+            );
 
             echo '<table class="table table-hover">';
             echo '    <thead class="thead-dark">';
@@ -108,20 +169,38 @@ class CustomerPanelTest extends PHPUnit_Framework_TestCase {
             echo '    </thead>';
             echo '    <tbody>';
 
-            foreach($getOrdersList as $result){
+            $mockedStatement
+                ->shouldReceive('fetch')
+                ->andReturnUsing(function () use (&$mockedRows) {
+                    $row = current($mockedRows);
+                    next($mockedRows);
+                    return $row;
+                });
+
+            $expectedResult = $mockedRows;
+
+            foreach($expectedResult as $row){
+                $this->assertInternalType('int', $row['ID']);
+                $this->assertInternalType('string', $row['Data_Zlozenia']);
+                $this->assertInternalType('string', $row['Nazwa']);
+                $this->assertInternalType('float', $row['Kwota']);
+            }
+
+            /*foreach($getOrdersList as $result){
                 echo '        <tr>';
                 echo '            <th scope="row">#' .  sprintf('%08d', $result['ID']) . '</th>';
                 echo '            <td>' . $result['Data_Zlozenia'] . '</td>';
                 echo '            <td>' . $result['Nazwa_Statusu'] . '</td>';
                 echo '            <td>' . number_format($result['Kwota'], 2,',', ' ') . ' zł' . '</td>';
                 echo '        </tr>';
-            }
+            }*/
 
             echo '    </tbody>';
             echo '</table>';
 
         } finally {
-            $getOrders->close();
+            //$getOrders->close();
+            Mockery::close();
         }
     }
 

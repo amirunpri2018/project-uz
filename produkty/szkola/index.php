@@ -52,7 +52,7 @@ session_start();
                 if (isset($_SESSION['zalogowany']))
                 {
                     echo "<span class=\"nav-link\">
-                                <a href='../panelklienta/account.php'>
+                                <a href='../panelklienta/index.php'>
                                     Cześć <b>".$_SESSION['z_imie']."</b>!
                                 </a>
                               </span>
@@ -61,7 +61,7 @@ session_start();
 
                 else
                 {
-                    echo "<a class=\"nav-link\" href=\"account.php\">Rejestracja</a>";
+                    echo "<a class=\"nav-link\" href=\"../../\">Rejestracja</a>";
                 }
                 ?>
 
@@ -89,9 +89,10 @@ session_start();
     </div>
 </nav>
 
+
 <header class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#"
-       style="letter-spacing: 1.5px; margin-top: -10px; font-family: 'Raleway', sans-serif; font-size: 60px;">
+    <a class="navbar-brand" href="homepage.html"
+       style="letter-spacing: 1.5px; margin-top: -5px; font-family: 'Raleway', sans-serif; font-size: 60px;">
         <span style="color: #ca7b11; font-weight: bold">Shop</span>ly <span style="font-size: 34px;"></span>
     </a>
 
@@ -100,33 +101,46 @@ session_start();
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
+     <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0 menuroll" style="font-size: 25px;padding-bottom: 10px;"
         ">
         <li class="nav-item">
-            <a class="nav-link" href="../../">Start</a>
+            <a class="nav-link" style="color: #e28000; opacity: 1;" href="#">Home</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" style="color:  rgba(226,226,226,0.49);" href="#">|
             </a></li>
         <li class="nav-item">
-            <a class="nav-link" style="color: #e28000; opacity: 1;" href="#">Produkty</a>
+            <a class="nav-link" href="produkty">Kategorie</a>
+              <ul>
+               <li><a href="/project-uz/produkty/motoryzacja">Motoryzacja</a></li>
+               <li><a href="/project-uz/produkty/elektronika">Elektornia</a></li>
+               <li><a href="/project-uz/produkty/mieszkanie">Mieszkanie</a></li>
+               <li><a href="/project-uz/produkty/ubrania">ubrania</a></li>
+               <li><a href="/project-uz/produkty/szkola">szkoła</a></li>
+               <li><a href="/project-uz/produkty/sport">Sport</a></li>
+          </ul>
         </li>
+
         <li class="nav-item">
             <a class="nav-link" style="color:  rgba(226,226,226,0.49);" href="#">|
+
             </a></li>
+          
         <li class="nav-item">
-            <a class="nav-link" href="../../zamowienie">Zamówienie</a>
+            <a class="nav-link" href="zamowienie">Zamówienie</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" style="color:  rgba(226,226,226,0.49);" href="#">|
             </a></li>
         <li class="nav-item" style="margin-top: -5px;">
-            <a class="nav-link openbasketmenu" style="font-size: 30px;" href="#"><i class="fas fa-shopping-cart"></i></a>
+            <a class="nav-link openbasketmenu" style="font-size: 30px;" href="#"><i
+                    class="fas fa-shopping-cart"></i></a>
         </li>
         </ul>
     </div>
 </header>
+
 <main id="main">
     <div class="img">
         <div class="tekst">Produkty</div>

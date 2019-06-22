@@ -40,7 +40,7 @@ session_start();
                 <?php
                     if (isset($_SESSION['zalogowany'])){
                         echo "<span class=\"nav-link\">
-                                <a href='../panelklienta/account.php'>
+                                <a href='../panelklienta/index.php'>
                                     Cześć <b>".$_SESSION['z_imie']."</b>!
                                 </a>
                               </span>
@@ -137,7 +137,7 @@ session_start();
                     require_once '../inc/Database/CustomerPanel.php';
 
                     $getOrders = new CustomerPanel();
-                    $getOrders->getCustomerData();
+                    $getOrders->getCustomerData($_SESSION['z_id']);
                 ?>
 
             </div>

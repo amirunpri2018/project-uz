@@ -2,21 +2,21 @@
 
 
 class CustomerPanel {
-    public function getCustomerData() {
+    public function getCustomerData($CustomerID) {
         $getCustomerData = new Connect();
 
         try {
             $getInfo = $getCustomerData->query(
                 "SELECT 
-                            Imie,
-                            Nazwisko,
-                            Adres AS Ulica,
-                            '' as Kod_Pocztowy,
-                            Miejscowosc,
-                            '' AS Nr_Telefonu,
+                            Name AS Imie,
+                            Surname AS Nazwisko,
+                            Address AS Ulica,
+                            Zip_Code AS Kod_Pocztowy,
+                            City AS Miejscowosc,
+                            Phone_Number AS Nr_Telefonu,
                             '' AS Email
-                        FROM klienci
-                        WHERE id = 4;"
+                        FROM customer
+                        WHERE id = '$CustomerID';"
             )->fetchAll();
 
             foreach($getInfo as $result){
@@ -74,18 +74,19 @@ class CustomerPanel {
         }
     }
 
-    public function getCustomerOrders() {
+    public function getCustomerOrders($CustomerID) {
         $getOrders = new Connect();
 
         try {
             $getOrdersList = $getOrders->query(
                 "SELECT 
                     o.ID as ID, 
-                    o.Data_Zlozenia as Data_Zlozenia,
-                    s.Nazwa as Nazwa_Statusu,
-                    o.Kwota as Kwota
-                FROM zamowienia AS o
-                    INNER JOIN status AS s ON s.ID = o.`Status`"
+                    o.Date as Data_Zlozenia,
+                    s.Name as Nazwa_Statusu,
+                    o.Price as Kwota
+                FROM `order` AS o
+                    INNER JOIN status AS s ON s.ID = o.`status_id`
+                WHERE o.customer_id = '$CustomerID';"
             )->fetchAll();
 
             echo '<table class="table table-hover">';
@@ -116,21 +117,21 @@ class CustomerPanel {
         }
     }
 
-    public function getCustomerQuestions(){
+    public function getCustomerQuestions($CustomerID){
         $getQuestions = new Connect();
 
         try {
             $getQuestionsList = $getQuestions->query(
                 "SELECT
                             q.ID AS ID,
-                            q.Temat AS Temat,
-                            q.Data_Utworzenia AS Utworzono,
-                            MAX(qc.Data_Wyslania) AS Ostatnia_odp,
-                            zs.Nazwa AS Status
-                        FROM zap_zapytania AS q
-                            INNER JOIN zap_konwersacja AS qc ON q.ID = qc.ID_Zapytania
-                            INNER JOIN zap_status AS zs ON q.`Status` = zs.ID
-                        WHERE q.ID_Klienta = 4
+                            q.Topic AS Temat,
+                            q.Date AS Utworzono,
+                            MAX(qc.Date) AS Ostatnia_odp,
+                            zs.Name AS Status
+                        FROM ask_question AS q
+                            INNER JOIN ask_conversation AS qc ON q.ID = qc.question_id
+                            INNER JOIN ask_status AS zs ON q.status_id = zs.ID
+                        WHERE q.customer_id = '$CustomerID'
                         GROUP BY q.ID;"
             )->fetchAll();
 
@@ -171,27 +172,27 @@ class CustomerPanel {
         }
     }
 
-    public function getQuestionDetails($ID_Zapytania){
+    public function getQuestionDetails($CustomerID, $QuestionID){
         $getQuestion = new Connect();
         $statusID = -1;
 
         try {
             $getDetails = $getQuestion->query(
                 "SELECT
-                            qc.ID_Zapytania AS ID_Zapytania,
-                            q.Temat AS Temat,
+                            qc.question_id AS ID_Zapytania,
+                            q.topic AS Temat,
                             (SELECT 
-                                CONCAT(imie, ' ', nazwisko) 
-                            FROM klienci 
-                            WHERE klienci.id = qc.ID_Uzytkownika) AS Uzytkownik,
-                            qc.Data_Wyslania AS Data,
-                            qc.Tresc AS Tresc,
-                            q.Status AS Status
-                        FROM zap_konwersacja AS qc
-                            INNER JOIN zap_zapytania AS q ON q.ID = qc.ID_Zapytania
-                            INNER JOIN zap_status AS zs ON q.`Status` = zs.ID
-                        WHERE q.ID_Klienta = 4 
-                            AND qc.ID_Zapytania = '$ID_Zapytania'
+                                CONCAT(name, ' ', surname) 
+                            FROM customer
+                            WHERE customer.id = qc.customer_id) AS Uzytkownik,
+                            qc.date AS Data,
+                            qc.contents AS Tresc,
+                            zs.Name AS Status
+                        FROM ask_conversation AS qc
+                            INNER JOIN ask_question AS q ON q.customer_id = qc.customer_id
+                            INNER JOIN ask_status AS zs ON q.status_id = zs.ID
+                        WHERE q.customer_id = '$CustomerID'
+                            AND qc.question_id = '$QuestionID'
                         GROUP BY qc.ID"
             )->fetchAll();
 

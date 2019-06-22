@@ -50,7 +50,7 @@ else {
                 if (isset($_SESSION['zalogowany']))
                 {
                     echo "<span class=\"nav-link\">
-                                <a href='../panelklienta/account.php'>
+                                <a href='../panelklienta/index.php'>
                                     Cześć <b>".$_SESSION['z_imie']."</b>!
                                 </a>
                               </span>

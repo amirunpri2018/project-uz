@@ -62,7 +62,7 @@ if (isset($_POST['imie'])) {
 
                 if (isset($_SESSION['zalogowany'])) {
                     echo "<span class=\"nav-link\">
-                                <a href='../panelklienta/index.php'>
+                                <a href='../panelklienta/account.php'>
                                     Cześć <b>".$_SESSION['z_imie']."</b>!
                                 </a>
                               </span>
@@ -82,8 +82,9 @@ if (isset($_POST['imie'])) {
 
                 if (isset($_SESSION['zalogowany'])) {
                     echo "<a class=\"nav-link\" href='logout.php'\">Wyloguj</a>";
-                } else {
-                    echo "<a class=\"nav-link dropdown-toggle\" href='#'\">Pomoc</a>";
+                } else
+                {
+                    echo "<a class=\"nav-link\" href=\"login.php\">Logowanie</a>";
                 }
                 ?>
             </li>

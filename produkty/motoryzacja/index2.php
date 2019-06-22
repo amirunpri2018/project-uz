@@ -49,19 +49,15 @@ session_start();
             <li class="nav-item">
                 <?php
 
-                if (isset($_SESSION['zalogowany']))
-                {
+                if (isset($_SESSION['zalogowany'])) {
                     echo "<span class=\"nav-link\">
-                                <a href='../panelklienta/index.php'>
+                                <a href='../panelklienta/account.php'>
                                     Cześć <b>".$_SESSION['z_imie']."</b>!
                                 </a>
                               </span>
                              ";
-                }
-
-                else
-                {
-                    echo "<a class=\"nav-link\" href=\"../../\">Rejestracja</a>";
+                } else {
+                    echo "<a class=\"nav-link\" href=\"account.php\">Rejestracja</a>";
                 }
                 ?>
 
@@ -73,15 +69,11 @@ session_start();
             <li class="nav-item dropdown">
                 <?php
 
-                if (isset($_SESSION['zalogowany']))
+                if (isset($_SESSION['zalogowany'])) {
+                    echo "<a class=\"nav-link\" href='logout.php'\">Wyloguj</a>";
+                } else
                 {
-                    echo "<a class=\"nav-link\" href='../../logout.php'\">Wyloguj</a>";
-                }
-
-
-                else
-                {
-                    echo "<a class=\"nav-link dropdown-toggle\" href='#'\">Pomoc</a>";
+                    echo "<a class=\"nav-link\" href=\"login.php\">Logowanie</a>";
                 }
                 ?>
             </li>
@@ -170,12 +162,12 @@ session_start();
 
         <div id="kategoria">
             <ul class="list-group">
-                <li class="list-group-item"><i class="fas fa-align-justify"></i><a href="../" style="text-decoration: none; color: black">Wszystkie produkty</a></li>
+                <li class="list-group-item active"><i class="fas fa-align-justify"></i><a href="../" style="text-decoration: none; color: white">Wszystkie produkty</a></li>
                 <li class="list-group-item"><a href="../elektronika" style="color: black; text-decoration: none"><i class="fas fa-tv"></i> Elektronika</a></li>
                 <li class="list-group-item"><a href="../ubrania" style="color: black; text-decoration: none"><i class="fas fa-tshirt"></i> Ubrania</li>
                 <li class="list-group-item"><a href="../mieszkanie" style="color: black; text-decoration: none"><i class="fas fa-home"></i> Mieszkanie</li>
                 <li class="list-group-item"><a href="../szkola" style="color: black; text-decoration: none"><i class="fas fa-table"></i> Szkoła</li>
-                <li class="list-group-item active"><a href="#" style="color: white; text-decoration: none"><i class="fas fa-car"></i> Motoryzacja</li>
+                <li class="list-group-item "><a href="../motoryzacja" style="color: black; text-decoration: none"><i class="fas fa-car"></i> Motoryzacja</li>
                 <li class="list-group-item"><a href="../sport" style="color: black; text-decoration: none"><i class="fas fa-bicycle"></i> Sport</li>
             </ul>
         </div>

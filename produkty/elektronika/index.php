@@ -46,22 +46,18 @@ session_start();
     </a>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
         <ul class="navbar-nav">
-        <li class="nav-item">
+            <li class="nav-item">
                 <?php
 
-                if (isset($_SESSION['zalogowany']))
-                {
+                if (isset($_SESSION['zalogowany'])) {
                     echo "<span class=\"nav-link\">
-                                <a href='../panelklienta/index.php'>
+                                <a href='../panelklienta/account.php'>
                                     Cześć <b>".$_SESSION['z_imie']."</b>!
                                 </a>
                               </span>
                              ";
-                }
-
-                else
-                {
-                    echo "<a class=\"nav-link\" href=\"../../\">Rejestracja</a>";
+                } else {
+                    echo "<a class=\"nav-link\" href=\"account.php\">Rejestracja</a>";
                 }
                 ?>
 
@@ -73,22 +69,17 @@ session_start();
             <li class="nav-item dropdown">
                 <?php
 
-                if (isset($_SESSION['zalogowany']))
+                if (isset($_SESSION['zalogowany'])) {
+                    echo "<a class=\"nav-link\" href='logout.php'\">Wyloguj</a>";
+                } else
                 {
-                    echo "<a class=\"nav-link\" href='../../logout.php'\">Wyloguj</a>";
-                }
-
-
-                else
-                {
-                    echo "<a class=\"nav-link dropdown-toggle\" href='#'\">Pomoc</a>";
+                    echo "<a class=\"nav-link\" href=\"login.php\">Logowanie</a>";
                 }
                 ?>
             </li>
         </ul>
     </div>
 </nav>
-
 <header class="navbar navbar-expand-lg navbar-light bg-light" >
     <a class="navbar-brand" href="/index.php"
        style="letter-spacing: 1.5px; margin-top: -5px; font-family: 'Raleway', sans-serif; font-size: 60px;">

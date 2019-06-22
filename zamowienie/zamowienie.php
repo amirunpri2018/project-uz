@@ -47,18 +47,14 @@ else {
             <li class="nav-item">
                 <?php
 
-                if (isset($_SESSION['zalogowany']))
-                {
+                if (isset($_SESSION['zalogowany'])) {
                     echo "<span class=\"nav-link\">
-                                <a href='../panelklienta/index.php'>
+                                <a href='../panelklienta/account.php'>
                                     Cześć <b>".$_SESSION['z_imie']."</b>!
                                 </a>
                               </span>
                              ";
-                }
-
-                else
-                {
+                } else {
                     echo "<a class=\"nav-link\" href=\"account.php\">Rejestracja</a>";
                 }
                 ?>
@@ -71,25 +67,20 @@ else {
             <li class="nav-item dropdown">
                 <?php
 
-                if (isset($_SESSION['zalogowany']))
+                if (isset($_SESSION['zalogowany'])) {
+                    echo "<a class=\"nav-link\" href='logout.php'\">Wyloguj</a>";
+                } else
                 {
-                    echo "<a class=\"nav-link\" href='../logout.php'\">Wyloguj</a>";
-                }
-
-
-                else
-                {
-                    echo "<a class=\"nav-link dropdown-toggle\" href='#'\">Pomoc</a>";
+                    echo "<a class=\"nav-link\" href=\"login.php\">Logowanie</a>";
                 }
                 ?>
             </li>
         </ul>
     </div>
 </nav>
-
-<header class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#"
-       style="letter-spacing: 1.5px; margin-top: -10px; font-family: 'Raleway', sans-serif; font-size: 60px;">
+<header class="navbar navbar-expand-lg navbar-light bg-light" >
+    <a class="navbar-brand" href="/index.php"
+       style="letter-spacing: 1.5px; margin-top: -5px; font-family: 'Raleway', sans-serif; font-size: 60px;">
         <span style="color: #ca7b11; font-weight: bold">Shop</span>ly <span style="font-size: 34px;"></span>
     </a>
 
@@ -98,23 +89,34 @@ else {
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
+     <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0 menuroll" style="font-size: 25px;padding-bottom: 10px;"
         ">
         <li class="nav-item">
-            <a class="nav-link" href="../">Start</a>
+            <a class="nav-link" style="color: #e28000; opacity: 1;" href="/index.php">Home</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" style="color:  rgba(226,226,226,0.49);" href="#">|
             </a></li>
         <li class="nav-item">
-            <a class="nav-link" href="../produkty">Produkty</a>
+            <a class="nav-link" href="produkty">Kategorie</a>
+              <ul>
+               <li><a href="/produkty/motoryzacja">Motoryzacja</a></li>
+               <li><a href="/produkty/elektronika">Elektronika</a></li>
+               <li><a href="/produkty/mieszkanie">Mieszkanie</a></li>
+               <li><a href="/produkty/ubrania">Ubrania</a></li>
+               <li><a href="/produkty/szkola">Szkoła</a></li>
+               <li><a href="/produkty/sport">Sport</a></li>
+          </ul>
         </li>
+
         <li class="nav-item">
             <a class="nav-link" style="color:  rgba(226,226,226,0.49);" href="#">|
+
             </a></li>
+
         <li class="nav-item">
-            <a class="nav-link" style="color: #e28000; opacity: 1;" href="#">Zamówienie</a>
+            <a class="nav-link" href="/zamowienie">Zamówienie</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" style="color:  rgba(226,226,226,0.49);" href="#">|

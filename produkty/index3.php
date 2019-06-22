@@ -172,12 +172,101 @@ session_start();
         <div id="kategoria">
             <ul class="list-group">
                 <li class="list-group-item active"><i class="fas fa-align-justify"></i><a href="#" style="text-decoration: none; color: white">Wszystkie produkty</a></li>
-                <li class="list-group-item"><a href="elektronika" style="color: black; text-decoration: none"><i class="fas fa-tv"></i> Elektronika</a></li>
-                <li class="list-group-item"><a href="ubrania" style="color: black; text-decoration: none"><i class="fas fa-tshirt"></i> Ubrania</li>
-                <li class="list-group-item"><a href="mieszkanie" style="color: black; text-decoration: none"><i class="fas fa-home"></i> Mieszkanie</li>
-                <li class="list-group-item"><a href="szkola" style="color: black; text-decoration: none"><i class="fas fa-table"></i> Szkoła</li>
-                <li class="list-group-item"><a href="motoryzacja" style="color: black; text-decoration: none"><i class="fas fa-car"></i> Motoryzacja</li>
-                <li class="list-group-item"><a href="sport" style="color: black; text-decoration: none"><i class="fas fa-bicycle"></i> Sport</li>
+                <li class="list-group-item"><a  style="color: black; text-decoration: none;"><strong></i> Elektronika</strong>           
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="materialIndeterminate2"  checked>
+                      <label class="form-check-label" for="materialIndeterminate2">Material indeterminate</label>
+                    </div>       
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="materialIndeterminate2" >
+                      <label class="form-check-label" for="materialIndeterminate2">Material indeterminate</label>
+                    </div>
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="materialIndeterminate2" >
+                      <label class="form-check-label" for="materialIndeterminate2">Material indeterminate</label>
+                    </div>
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="materialIndeterminate2" >
+                      <label class="form-check-label" for="materialIndeterminate2">Material indeterminate</label>
+                    </div>
+                </li>
+
+                <li class="list-group-item"><a  style="color: black; text-decoration: none"><strong> Elektronika</strong>           
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="materialIndeterminate2"  checked>
+                      <label class="form-check-label" for="materialIndeterminate2">Material indeterminate</label>
+                    </div>       
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="materialIndeterminate2" >
+                      <label class="form-check-label" for="materialIndeterminate2">Material indeterminate</label>
+                    </div>
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="materialIndeterminate2" >
+                      <label class="form-check-label" for="materialIndeterminate2">Material indeterminate</label>
+                    </div>
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="materialIndeterminate2" >
+                      <label class="form-check-label" for="materialIndeterminate2">Material indeterminate</label>
+                    </div></li>
+
+                  <li class="list-group-item"><a  style="color: black; text-decoration: none;"><strong></i> Elektronika</strong>           
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="materialIndeterminate2"  checked>
+                      <label class="form-check-label" for="materialIndeterminate2">Material indeterminate</label>
+                    </div>       
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="materialIndeterminate2" >
+                      <label class="form-check-label" for="materialIndeterminate2">Material indeterminate</label>
+                    </div>
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="materialIndeterminate2" >
+                      <label class="form-check-label" for="materialIndeterminate2">Material indeterminate</label>
+                    </div>
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="materialIndeterminate2" >
+                      <label class="form-check-label" for="materialIndeterminate2">Material indeterminate</label>
+                    </div></li>
+
+                  <li class="list-group-item"><a  style="color: black; text-decoration: none;"><strong></i> Elektronika</strong>             
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="materialIndeterminate2"  checked>
+                      <label class="form-check-label" for="materialIndeterminate2">Material indeterminate</label>
+                    </div>       
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="materialIndeterminate2" >
+                      <label class="form-check-label" for="materialIndeterminate2">Material indeterminate</label>
+                    </div>
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="materialIndeterminate2" >
+                      <label class="form-check-label" for="materialIndeterminate2">Material indeterminate</label>
+                    </div>
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="materialIndeterminate2" >
+                      <label class="form-check-label" for="materialIndeterminate2">Material indeterminate</label>
+                    </div></li>
+
+                  <li class="list-group-item"><a  style="color: black; text-decoration: none;"><strong></i> Elektronika</strong>            
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="materialIndeterminate2"  checked>
+                      <label class="form-check-label" for="materialIndeterminate2">Material indeterminate</label>
+                    </div>       
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="materialIndeterminate2" >
+                      <label class="form-check-label" for="materialIndeterminate2">Material indeterminate</label>
+                    </div>
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="materialIndeterminate2" >
+                      <label class="form-check-label" for="materialIndeterminate2">Material indeterminate</label>
+                    </div>
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="materialIndeterminate2" >
+                      <label class="form-check-label" for="materialIndeterminate2">Material indeterminate</label>
+                    </div></li>
+                <li class="list-group-item"><a style="color: black; text-decoration: none">
+ <label for="customRange2">Cena (1-500zł)</label>
+<input type="range" class="custom-range" min="1" max="500" id="customRange2">
+                </li>
+                   
             </ul>
         </div>
 
@@ -188,15 +277,104 @@ session_start();
                         <div class="bg-light p-4">
                                                         <span class="text-muted">
                                         <ul class="nav justify-content-center">
-<li class="list-group-item">
-    <a href="#" style="text-decoration: none; color: orange;">
-    <i class="fas fa-align-justify"></i> Wszystkie produkty</a></li>
-                <li class="list-group-item"><a style="text-decoration: none; color: orange;" href="elektronika"><i class="fas fa-tv"></i> Elektronika</a></li>
-                <li class="list-group-item"><a style="text-decoration: none; color: orange;" href="ubrania"><i class="fas fa-tshirt"></i> Ubrania</a></li>
-                <li class="list-group-item"><a style="text-decoration: none; color: orange;" href="mieszkanie"><i class="fas fa-home"></i> Mieszkanie</a></li>
-                <li class="list-group-item"><a style="text-decoration: none; color: orange;" href="szkola"><i class="fas fa-table"></i> Szkoła</a></li>
-                <li class="list-group-item"><a style="text-decoration: none; color: orange;" href="motoryzacja"><i class="fas fa-car"></i> Motoryzacja</a></li>
-                <li class="list-group-item"><a style="text-decoration: none; color: orange;" href="sport"><i class="fas fa-bicycle"></i> Sport</a></li>
+
+                <li class="list-group-item active"><i class="fas fa-align-justify"></i><a href="#" style="text-decoration: none; color: white">Wszystkie produkty</a></li>
+                <li class="list-group-item"><a  style="color: black; text-decoration: none;"><strong></i> Elektronika</strong>           
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="materialIndeterminate2"  checked>
+                      <label class="form-check-label" for="materialIndeterminate2">Material indeterminate</label>
+                    </div>       
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="materialIndeterminate2" >
+                      <label class="form-check-label" for="materialIndeterminate2">Material indeterminate</label>
+                    </div>
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="materialIndeterminate2" >
+                      <label class="form-check-label" for="materialIndeterminate2">Material indeterminate</label>
+                    </div>
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="materialIndeterminate2" >
+                      <label class="form-check-label" for="materialIndeterminate2">Material indeterminate</label>
+                    </div>
+                </li>
+
+                <li class="list-group-item"><a  style="color: black; text-decoration: none"><strong> Elektronika</strong>           
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="materialIndeterminate2"  checked>
+                      <label class="form-check-label" for="materialIndeterminate2">Material indeterminate</label>
+                    </div>       
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="materialIndeterminate2" >
+                      <label class="form-check-label" for="materialIndeterminate2">Material indeterminate</label>
+                    </div>
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="materialIndeterminate2" >
+                      <label class="form-check-label" for="materialIndeterminate2">Material indeterminate</label>
+                    </div>
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="materialIndeterminate2" >
+                      <label class="form-check-label" for="materialIndeterminate2">Material indeterminate</label>
+                    </div></li>
+
+                  <li class="list-group-item"><a  style="color: black; text-decoration: none;"><strong></i> Elektronika</strong>           
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="materialIndeterminate2"  checked>
+                      <label class="form-check-label" for="materialIndeterminate2">Material indeterminate</label>
+                    </div>       
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="materialIndeterminate2" >
+                      <label class="form-check-label" for="materialIndeterminate2">Material indeterminate</label>
+                    </div>
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="materialIndeterminate2" >
+                      <label class="form-check-label" for="materialIndeterminate2">Material indeterminate</label>
+                    </div>
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="materialIndeterminate2" >
+                      <label class="form-check-label" for="materialIndeterminate2">Material indeterminate</label>
+                    </div></li>
+
+                  <li class="list-group-item"><a  style="color: black; text-decoration: none;"><strong></i> Elektronika</strong>             
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="materialIndeterminate2"  checked>
+                      <label class="form-check-label" for="materialIndeterminate2">Material indeterminate</label>
+                    </div>       
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="materialIndeterminate2" >
+                      <label class="form-check-label" for="materialIndeterminate2">Material indeterminate</label>
+                    </div>
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="materialIndeterminate2" >
+                      <label class="form-check-label" for="materialIndeterminate2">Material indeterminate</label>
+                    </div>
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="materialIndeterminate2" >
+                      <label class="form-check-label" for="materialIndeterminate2">Material indeterminate</label>
+                    </div></li>
+
+                  <li class="list-group-item"><a  style="color: black; text-decoration: none;"><strong></i> Elektronika</strong>            
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="materialIndeterminate2"  checked>
+                      <label class="form-check-label" for="materialIndeterminate2">Material indeterminate</label>
+                    </div>       
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="materialIndeterminate2" >
+                      <label class="form-check-label" for="materialIndeterminate2">Material indeterminate</label>
+                    </div>
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="materialIndeterminate2" >
+                      <label class="form-check-label" for="materialIndeterminate2">Material indeterminate</label>
+                    </div>
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="materialIndeterminate2" >
+                      <label class="form-check-label" for="materialIndeterminate2">Material indeterminate</label>
+                    </div></li>
+                <li class="list-group-item"><a style="color: black; text-decoration: none">
+ <label for="customRange2">Cena (1-500zł)</label>
+<input type="range" class="custom-range" min="1" max="500" id="customRange2">
+                </li>
+                   
+            
 </ul>
                             </span>
                         </div>
@@ -213,29 +391,23 @@ session_start();
                     <a class="nav-link padding" href="#"><i class="fas fa-exchange-alt"></i></a>
                 </li>
                 <li class="nav-item hidden">
-                    <a class="nav-link" href="index.php">Cena: rosnąco</i></a>
+                    <a class="nav-link" href="index.php">Cena: rosnąco</a>
                 </li>
                 <li class="nav-item hidden">
                     <a class="nav-link" href="index2.php">Cena: malejąco</a>
                 </li>
                 <li class="nav-item hidden active">
-                    <a class="nav-link active" href="#">Alfabetycznie <i class="fas fa-caret-right"></i></i></a>
+                    <a class="nav-link active"href="index3.php">Alfabetycznie <i class="fas fa-caret-up"></i></a>
                 </li>
                 <li class="nav-item hidden" style="margin-top: 9px; margin-left: 8px; opacity: 1;">
                     Ilość produktów: <b><?php
 
-                    require_once "php/connect.php";
-                    $polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
+                        require_once '../inc/Database/Connect.php';
+                        require_once '../inc/Database/Products.php';
 
-                    if ($result = $polaczenie->query("SELECT * FROM produkty ORDER BY nazwa")) {
-
-                        $row_cnt = $result->num_rows;
-
-                        echo $row_cnt;
-
-                        /* close result set */
-                        $result->close();
-                    }
+                        $getNumOfProducts = new Products();
+                        $numOfProducts = $getNumOfProducts->getProductsNumber();
+                        echo $numOfProducts;
                     ?></b>
 
                 </li>
@@ -256,18 +428,17 @@ session_start();
 
             <?php
 
-            $sql = "SELECT * FROM produkty ORDER BY nazwa";
-            $result = $polaczenie->query($sql);
-            $i = 1;
+            require_once '../inc/Database/Connect.php';
+            require_once '../inc/Database/Products.php';
 
-            $ilosc_produktow = $result->num_rows;
-
-            if ($result->num_rows > 0) {
-                // output data of each row
+            if($numOfProducts > 0) {
+                $getProducts = new Products();
+                $result = $getProducts->getProductListOrderByNameASC();
+                $i = 0;
 
                 echo "<div class='row'>";
 
-                while ($row = $result->fetch_assoc()) {
+                foreach($result as $row){
                     $i++;
                     echo "<div class=\"col-md-3\">
 
@@ -302,19 +473,18 @@ session_start();
                     }
 
                     echo "<div class=\"opis\">
-                        <div class=\"nazwa\" style='margin-top:6px;'>".$row['nazwa']."</div>
-                        <div><b>Cena:</b> <span class=\"cenaprzedmiotu\">".$row['cena']."</span> PLN</div>
-                        <div class='kategoriaproduktu' style='display: none;'>".$row['kategoria']."</div>
-                        <div class='movetobasket'><i class=\"fas fa-arrows-alt\"></i>
-                    </div><div class='addtobasket'><i class=\"fas fa-cart-plus\"></i></div>";
+                        <div class=\"nazwa\" style='margin-top:6px;'>".$row['name']."</div>
+                        <div><b>Cena:</b> <span class=\"cenaprzedmiotu\">".$row['price']."</span> PLN</div>
+                        <div class='kategoriaproduktu'>".$row['category_id']."</div>
+                    </div>
+                    <div class='movetobasket'><i class=\"fas fa-arrows-alt\"></i></div>
+                    <div class='addtobasket'><i class=\"fas fa-cart-plus\"></i></div>";
 
                     echo "</section></div>";
                 }
+
+                echo "</div>";
             }
-
-            echo "</div>";
-
-            $polaczenie->close();
             ?>
 
         </div>

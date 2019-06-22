@@ -391,7 +391,7 @@ session_start();
                     <a class="nav-link padding" href="#"><i class="fas fa-exchange-alt"></i></a>
                 </li>
                 <li class="nav-item hidden active">
-                    <a class="nav-link active" href="#">Cena: rosnąco <i class="fas fa-caret-up"></i></a>
+                    <a class="nav-link active" href="index.php">Cena: rosnąco </a>
                 </li>
                 <li class="nav-item hidden">
                     <a class="nav-link" href="index2.php">Cena: malejąco</a>
@@ -408,17 +408,6 @@ session_start();
                         $getNumOfProducts = new Products();
                         $numOfProducts = $getNumOfProducts->getProductsNumber();
                         echo $numOfProducts;
-
-                    /*require_once "php/connect.php";
-                    $polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
-
-                    if ($result = $polaczenie->query("SELECT * FROM article ORDER BY price DESC")) {
-
-                        $row_cnt = $result->num_rows;
-
-                        echo $row_cnt;
-                        $result->close();
-                    }*/
                     ?></b>
 
                 </li>
@@ -444,7 +433,7 @@ session_start();
 
             if($numOfProducts > 0) {
                 $getProducts = new Products();
-                $result = $getProducts->getProductList();
+                $result = $getProducts->getProductListOrderByPriceASC();
                 $i = 0;
 
                 echo "<div class='row'>";
@@ -496,70 +485,6 @@ session_start();
 
                 echo "</div>";
             }
-
-            /*
-            $sql = "SELECT * FROM article ORDER BY price DESC";
-            $result = $polaczenie->query($sql);
-            $i = 0;
-
-            $ilosc_produktow = $result->num_rows;
-
-            if ($result->num_rows > 0) {
-                // output data of each row
-
-                echo "<div class='row'>";
-
-                while ($row = $result->fetch_assoc()) {
-                    $i++;
-                    echo "<div class=\"col-md-3\">
-
-                    <section class='produkt' id='$i' draggable='true'>";
-
-                    if ($row["id"] == 1) {
-                        echo "<img src='img/1.jpg' style='width: 100%;'>";
-                    } else if ($row["id"] == 2) {
-                        echo "<img src='img/2.jpg' style='width: 100%;'>";
-                    } else if ($row["id"] == 3) {
-                        echo "<img src='img/3.jpg' style='width: 100%;'>";
-                    } else if ($row["id"] == 4) {
-                        echo "<img src='img/4.jpg' style='width: 100%;'>";
-                    } else if ($row["id"] == 5) {
-                        echo "<img src='img/5.jpg' style='width: 100%;'>";
-                    } else if ($row["id"] == 6) {
-                        echo "<img src='img/6.jpg' style='width: 100%;'>";
-                    } else if ($row["id"] == 7) {
-                        echo "<img src='img/7.jpg' style='width: 100%;'>";
-                    } else if ($row["id"] == 8) {
-                        echo "<img src='img/8.jpg' style='width: 100%;'>";
-                    } else if ($row["id"] == 8) {
-                        echo "<img src='img/9.jpg' style='width: 100%;'>";
-                    } else if ($row["id"] == 9) {
-                        echo "<img src='img/9.jpg' style='width: 100%;'>";
-                    } else if ($row["id"] == 10) {
-                        echo "<img src='img/10.jpg' style='width: 100%;'>";
-                    } else if ($row["id"] == 11) {
-                        echo "<img src='img/11.jpg' style='width: 100%;'>";
-                    } else if ($row["id"] == 12) {
-                        echo "<img src='img/12.jpg' style='width: 100%;'>";
-                    }
-
-                    echo "<div class=\"opis\">
-                        <div class=\"nazwa\" style='margin-top:6px;'>".$row['name']."</div>
-                        <div><b>Cena:</b> <span class=\"cenaprzedmiotu\">".$row['price']."</span> PLN</div>
-                        <div class='kategoriaproduktu'>".$row['category_id']."</div>
-                    </div>
-                    <div class='movetobasket'><i class=\"fas fa-arrows-alt\"></i></div>
-                    <div class='addtobasket'><i class=\"fas fa-cart-plus\"></i></div>";
-
-                    echo "</section></div>";
-                }
-            }
-
-            echo "</div>";
-
-            $polaczenie->close();
-
-            */
             ?>
 
         </div>

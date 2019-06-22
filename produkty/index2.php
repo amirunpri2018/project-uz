@@ -139,6 +139,7 @@ session_start();
     </div>
 </header>
 
+
 <main id="main">
     <div class="img">
         <div class="tekst">Produkty</div>
@@ -393,7 +394,7 @@ session_start();
                     <a class="nav-link" href="index.php">Cena: rosnąco</a>
                 </li>
                 <li class="nav-item hidden active">
-                    <a class="nav-link active" href="#">Cena: malejąco <i class="fas fa-caret-down"></i></a>
+                    <a class="nav-link active" href="index2.php">Cena: malejąco <i class="fas fa-caret-up"></i></a>
                 </li>
                 <li class="nav-item hidden">
                     <a class="nav-link" href="index3.php">Alfabetycznie</i></i></a>
@@ -401,18 +402,12 @@ session_start();
                 <li class="nav-item hidden" style="margin-top: 9px; margin-left: 8px; opacity: 1;">
                     Ilość produktów: <b><?php
 
-                    require_once "php/connect.php";
-                    $polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
+                        require_once '../inc/Database/Connect.php';
+                        require_once '../inc/Database/Products.php';
 
-                    if ($result = $polaczenie->query("SELECT * FROM produkty ORDER BY cena")) {
-
-                        $row_cnt = $result->num_rows;
-
-                        echo $row_cnt;
-
-                        /* close result set */
-                        $result->close();
-                    }
+                        $getNumOfProducts = new Products();
+                        $numOfProducts = $getNumOfProducts->getProductsNumber();
+                        echo $numOfProducts;
                     ?></b>
 
                 </li>
@@ -433,18 +428,17 @@ session_start();
 
             <?php
 
-            $sql = "SELECT * FROM produkty ORDER BY cena";
-            $result = $polaczenie->query($sql);
-            $i = 1;
+            require_once '../inc/Database/Connect.php';
+            require_once '../inc/Database/Products.php';
 
-            $ilosc_produktow = $result->num_rows;
-
-            if ($result->num_rows > 0) {
-                // output data of each row
+            if($numOfProducts > 0) {
+                $getProducts = new Products();
+                $result = $getProducts->getProductListOrderByPriceDESC();
+                $i = 0;
 
                 echo "<div class='row'>";
 
-                while ($row = $result->fetch_assoc()) {
+                foreach($result as $row){
                     $i++;
                     echo "<div class=\"col-md-3\">
 
@@ -479,19 +473,18 @@ session_start();
                     }
 
                     echo "<div class=\"opis\">
-                        <div class=\"nazwa\" style='margin-top:6px;'>".$row['nazwa']."</div>
-                        <div><b>Cena:</b> <span class=\"cenaprzedmiotu\">".$row['cena']."</span> PLN</div>
-                        <div class='kategoriaproduktu' style='display: none;'>".$row['kategoria']."</div>
-                        <div class='movetobasket'><i class=\"fas fa-arrows-alt\"></i></div>
+                        <div class=\"nazwa\" style='margin-top:6px;'>".$row['name']."</div>
+                        <div><b>Cena:</b> <span class=\"cenaprzedmiotu\">".$row['price']."</span> PLN</div>
+                        <div class='kategoriaproduktu'>".$row['category_id']."</div>
+                    </div>
+                    <div class='movetobasket'><i class=\"fas fa-arrows-alt\"></i></div>
                     <div class='addtobasket'><i class=\"fas fa-cart-plus\"></i></div>";
 
                     echo "</section></div>";
                 }
+
+                echo "</div>";
             }
-
-            echo "</div>";
-
-            $polaczenie->close();
             ?>
 
         </div>

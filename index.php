@@ -164,6 +164,7 @@ ul > li ul li:hover > a {
 
                 else
                 {
+                    echo "<button type="button" class="btn btn-primary btn-rounded" href=\"login.php\">Logowanie</button>";
                     echo "<a class=\"nav-link\" href=\"account.php\">Rejestracja</a>";
                 }
                 ?>

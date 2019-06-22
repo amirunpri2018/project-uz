@@ -142,19 +142,6 @@ session_start();
 
             </div>
 
-<script>
-    $(document).ready(function () {
-        $("#kwota2").val(localStorage.getItem('sumalist'));
-        $("#zamowienie2").val(localStorage.getItem('item_id'));
-
-        var pp = $("#nr_zamowienia").html(Math.floor((Math.random() * 10000) + 1));
-
-        document.getElementById("nr_zamowienia2").value = pp.html();
-        localStorage.setItem('order_id', document.getElementById("nr_zamowienia2").value);
-    });
-
-</script>
-
                 </div>
             </div>
         </div>

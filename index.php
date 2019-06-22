@@ -2,45 +2,6 @@
 
 session_start();
 
-
-require_once "produkty/php/connect.php";
-$polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
-
-if (isset($_POST['p_nr']) && !empty($_POST['p_nr'])) {
-
-    $p_nr = $_POST['p_nr'];
-
-    if ($polaczenie->connect_errno != 0) {
-        echo "Error: " . $polaczenie->connect_errno;
-    } else {
-
-        $p_nr = htmlentities($p_nr, ENT_QUOTES, "UTF-8");
-
-        if ($rezultat = @$polaczenie->query(
-            sprintf("SELECT status FROM zamowienia WHERE id = '%s'",
-                mysqli_real_escape_string($polaczenie, $p_nr)))) {
-            $ilu_userow = $rezultat->num_rows;
-
-            if ($ilu_userow > 0) {
-
-                $wiersz = $rezultat->fetch_assoc();
-                $_SESSION['status'] = $wiersz['status'];
-                $rezultat->free_result();
-            } else {
-                echo "<style>
-
-input[type='text'], input[type='password']  {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.09)!important;
-}
-</style>";
-                $_SESSION['blad2'] = '<div style="color: red; text-align: center; font-size: 14px; font-weight: bold; margin: 10px;">Nie znaleziono takiego zamówienia.</div>';
-            }}
-    }
-}
-
-$polaczenie->close();
-
 ?>
 
 <!doctype html>
@@ -203,6 +164,7 @@ ul > li ul li:hover > a {
 
                 else
                 {
+                    echo "<button type="button" class="btn btn-primary btn-rounded" href=\"login.php\">Logowanie</button>";
                     echo "<a class=\"nav-link\" href=\"account.php\">Rejestracja</a>";
                 }
                 ?>
@@ -232,7 +194,7 @@ ul > li ul li:hover > a {
 </nav>
 
 <header class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="homepage.html"
+    <a class="navbar-brand" href="/index.php"
        style="letter-spacing: 1.5px; margin-top: -5px; font-family: 'Raleway', sans-serif; font-size: 60px;">
         <span style="color: #ca7b11; font-weight: bold">Shop</span>ly <span style="font-size: 34px;"></span>
     </a>
@@ -246,7 +208,7 @@ ul > li ul li:hover > a {
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0 menuroll" style="font-size: 25px;padding-bottom: 10px;"
         ">
         <li class="nav-item">
-            <a class="nav-link" style="color: #e28000; opacity: 1;" href="#">Home</a>
+            <a class="nav-link" style="color: #e28000; opacity: 1;" href="/index.php">Home</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" style="color:  rgba(226,226,226,0.49);" href="#">|
@@ -254,12 +216,12 @@ ul > li ul li:hover > a {
         <li class="nav-item">
             <a class="nav-link" href="produkty">Kategorie</a>
               <ul>
-               <li><a href="/project-uz/produkty/motoryzacja">Motoryzacja</a></li>
-               <li><a href="/project-uz/produkty/elektornika">Elektornia</a></li>
-               <li><a href="/project-uz/produkty/mieszkanie">Mieszkanie</a></li>
-               <li><a href="/project-uz/produkty/ubrania">ubrania</a></li>
-               <li><a href="/project-uz/produkty/szkola">szkoła</a></li>
-               <li><a href="/project-uz/produkty/sport">Sport</a></li>
+               <li><a href="/produkty/motoryzacja">Motoryzacja</a></li>
+               <li><a href="/produkty/elektronika">Elektronika</a></li>
+               <li><a href="/produkty/mieszkanie">Mieszkanie</a></li>
+               <li><a href="/produkty/ubrania">Ubrania</a></li>
+               <li><a href="/produkty/szkola">Szkoła</a></li>
+               <li><a href="/produkty/sport">Sport</a></li>
           </ul>
         </li>
 
@@ -269,7 +231,7 @@ ul > li ul li:hover > a {
             </a></li>
           
         <li class="nav-item">
-            <a class="nav-link" href="zamowienie">Zamówienie</a>
+            <a class="nav-link" href="/zamowienie">Zamówienie</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" style="color:  rgba(226,226,226,0.49);" href="#">|
@@ -281,6 +243,7 @@ ul > li ul li:hover > a {
         </ul>
     </div>
 </header>
+
 
 <main id="main_start" style="background-color: white;">
 
@@ -319,7 +282,7 @@ ul > li ul li:hover > a {
                 <strong>Największy wybór</strong>
               </p>
 
-              <a target="_blank" href="/project-uz/produkty/sport" class="btn btn-outline-white btn-lg">Zobacz
+              <a target="_blank" href="/produkty/sport" class="btn btn-outline-white btn-lg">Zobacz
                
               </a>
             </div>
@@ -351,7 +314,7 @@ ul > li ul li:hover > a {
 
             
 
-              <a target="_blank" href="/project-uz/produkty/ubrania" class="btn btn-outline-white btn-lg">Sprawdź więcej
+              <a target="_blank" href="/produkty/ubrania" class="btn btn-outline-white btn-lg">Sprawdź więcej
         
               </a>
             </div>
@@ -383,7 +346,7 @@ ul > li ul li:hover > a {
 
             
 
-              <a target="_blank" href="/project-uz/produkty/szkola" class="btn btn-outline-white btn-lg">Zobacz
+              <a target="_blank" href="/produkty/szkola" class="btn btn-outline-white btn-lg">Zobacz
             
               </a>
             </div>
@@ -454,7 +417,7 @@ ul > li ul li:hover > a {
               <strong>Ceny od 120zł</strong>
             </span>
             <span class="float-right font-weight-bold" >
-              <strong ><a href="/project-uz/produkty/ubrania">Zobacz</a></strong>
+              <strong ><a href="/produkty/ubrania">Zobacz</a></strong>
             </span>
             
              
@@ -494,7 +457,7 @@ ul > li ul li:hover > a {
               <strong>Ceny od 120zł</strong>
             </span>
             <span class="float-right font-weight-bold" >
-              <strong ><a href="/project-uz/produkty/sport">Zobacz</a></strong>
+              <strong ><a href="/produkty/sport">Zobacz</a></strong>
             </span>
            
            
@@ -533,7 +496,7 @@ ul > li ul li:hover > a {
               <strong>Ceny od 120zł</strong>
             </span>
             <span class="float-right font-weight-bold" >
-              <strong ><a href="/project-uz/produkty/sport">Zobacz</a></strong>
+              <strong ><a href="/produkty/sport">Zobacz</a></strong>
             </span>
           </div>
         </div>
@@ -549,7 +512,7 @@ ul > li ul li:hover > a {
       <div class="card card-cascade narrower card-ecommer ce">
         <!-- Card image -->
         <div class="view view-cascade overlay">
-          <img src="zdjecia/elektornika.jpg" class="card-img-top"
+          <img src="zdjecia/elektronika.jpg" class="card-img-top"
             alt="sample photo">
           <a>
             <div class="mask rgba-white-slight"></div>
@@ -570,7 +533,7 @@ ul > li ul li:hover > a {
               <strong>Ceny od 120zł</strong>
             </span>
             <span class="float-right font-weight-bold" >
-              <strong ><a href="/project-uz/produkty/elektornika">Zobacz</a></strong>
+              <strong ><a href="/produkty/elektronika">Zobacz</a></strong>
             </span>
           </div>
         </div>

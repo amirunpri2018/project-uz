@@ -2,51 +2,16 @@
 
 session_start();
 
-require_once "produkty/php/connect.php";
-$polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
+require_once 'inc/Database/Connect.php';
+require_once 'inc/Database/CustomerLogin.php';
 
 if (isset($_POST['l_login']) && isset($_POST['l_haslo'])) {
     $_SESSION['l_login'] = $_POST['l_login'];
     $l_haslo = $_POST['l_haslo'];
 
-    if ($polaczenie->connect_errno != 0) {
-        echo "Error: " . $polaczenie->connect_errno;
-    } else {
-        $l_login = htmlentities($_SESSION['l_login'], ENT_QUOTES, "UTF-8");
-        $l_haslo = htmlentities($l_haslo, ENT_QUOTES, "UTF-8");
-        if ($rezultat = @$polaczenie->query(
-            sprintf("SELECT * FROM customer WHERE login = '%s' AND password = '%s'",
-                mysqli_real_escape_string($polaczenie, $_SESSION['l_login']),
-                mysqli_real_escape_string($polaczenie, $l_haslo)))) {
-            $ilu_userow = $rezultat->num_rows;
-
-            if ($ilu_userow > 0) {
-                $_SESSION['zalogowany'] = true;
-
-                $wiersz = $rezultat->fetch_assoc();
-                $_SESSION['z_imie'] = $wiersz['name'];
-                $_SESSION['z_nazwisko'] = $wiersz['surname'];
-                $_SESSION['z_adres'] = $wiersz['address'];
-                $_SESSION['z_miejscowosc'] = $wiersz['city'];
-                $_SESSION['z_id'] = $wiersz['id'];
-                $rezultat->free_result();
-
-                header('Location: panel.php');
-            } else {
-                echo "<style>
-
-input[type='text'], input[type='password']  {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.09)!important;
+    $login = new CustomerLogin();
+    $login->loginCustomer($_SESSION['l_login'], $l_haslo);
 }
-</style>";
-            $_SESSION['blad1'] = '<div style="color: red; text-align: center; font-size: 14px; font-weight: bold; margin: 10px;">Nieprawidłowy login lub hasło!</div>';
-        }}
-    }
-}
-
-$polaczenie->close();
-
 ?>
 
 <!doctype html>
@@ -123,8 +88,8 @@ $polaczenie->close();
     </div>
 </nav>
 
-<header class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#"
+<header class="navbar navbar-expand-lg navbar-light bg-light" >
+    <a class="navbar-brand" href="/index.php"
        style="letter-spacing: 1.5px; margin-top: -5px; font-family: 'Raleway', sans-serif; font-size: 60px;">
         <span style="color: #ca7b11; font-weight: bold">Shop</span>ly <span style="font-size: 34px;"></span>
     </a>
@@ -134,34 +99,46 @@ $polaczenie->close();
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
+     <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0 menuroll" style="font-size: 25px;padding-bottom: 10px;"
         ">
         <li class="nav-item">
-            <a class="nav-link" style="color: #e28000; opacity: 1;" href="#">Start</a>
+            <a class="nav-link" style="color: #e28000; opacity: 1;" href="/index.php">Home</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" style="color:  rgba(226,226,226,0.49);" href="#">|
             </a></li>
         <li class="nav-item">
-            <a class="nav-link" href="produkty">Produkty</a>
+            <a class="nav-link" href="produkty">Kategorie</a>
+              <ul>
+               <li><a href="/produkty/motoryzacja">Motoryzacja</a></li>
+               <li><a href="/produkty/elektronika">Elektronika</a></li>
+               <li><a href="/produkty/mieszkanie">Mieszkanie</a></li>
+               <li><a href="/produkty/ubrania">Ubrania</a></li>
+               <li><a href="/produkty/szkola">Szkoła</a></li>
+               <li><a href="/produkty/sport">Sport</a></li>
+          </ul>
         </li>
+
         <li class="nav-item">
             <a class="nav-link" style="color:  rgba(226,226,226,0.49);" href="#">|
+
             </a></li>
+          
         <li class="nav-item">
-            <a class="nav-link" href="zamowienie">Zamówienie</a>
+            <a class="nav-link" href="/zamowienie">Zamówienie</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" style="color:  rgba(226,226,226,0.49);" href="#">|
             </a></li>
         <li class="nav-item" style="margin-top: -5px;">
             <a class="nav-link openbasketmenu" style="font-size: 30px;" href="#"><i
-                        class="fas fa-shopping-cart"></i></a>
+                    class="fas fa-shopping-cart"></i></a>
         </li>
         </ul>
     </div>
 </header>
+
 
 <main id="main_start" style="background-color: white;">
 

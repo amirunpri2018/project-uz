@@ -88,9 +88,8 @@ session_start();
         </ul>
     </div>
 </nav>
-
-<header class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="homepage.html"
+<header class="navbar navbar-expand-lg navbar-light bg-light" >
+    <a class="navbar-brand" href="/index.php"
        style="letter-spacing: 1.5px; margin-top: -5px; font-family: 'Raleway', sans-serif; font-size: 60px;">
         <span style="color: #ca7b11; font-weight: bold">Shop</span>ly <span style="font-size: 34px;"></span>
     </a>
@@ -104,7 +103,7 @@ session_start();
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0 menuroll" style="font-size: 25px;padding-bottom: 10px;"
         ">
         <li class="nav-item">
-            <a class="nav-link" style="color: #e28000; opacity: 1;" href="#">Home</a>
+            <a class="nav-link" style="color: #e28000; opacity: 1;" href="/index.php">Home</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" style="color:  rgba(226,226,226,0.49);" href="#">|
@@ -112,12 +111,12 @@ session_start();
         <li class="nav-item">
             <a class="nav-link" href="produkty">Kategorie</a>
               <ul>
-               <li><a href="/project-uz/produkty/motoryzacja">Motoryzacja</a></li>
-               <li><a href="/project-uz/produkty/elektronika">Elektornia</a></li>
-               <li><a href="/project-uz/produkty/mieszkanie">Mieszkanie</a></li>
-               <li><a href="/project-uz/produkty/ubrania">ubrania</a></li>
-               <li><a href="/project-uz/produkty/szkola">szkoła</a></li>
-               <li><a href="/project-uz/produkty/sport">Sport</a></li>
+               <li><a href="/produkty/motoryzacja">Motoryzacja</a></li>
+               <li><a href="/produkty/elektronika">Elektronika</a></li>
+               <li><a href="/produkty/mieszkanie">Mieszkanie</a></li>
+               <li><a href="/produkty/ubrania">Ubrania</a></li>
+               <li><a href="/produkty/szkola">Szkoła</a></li>
+               <li><a href="/produkty/sport">Sport</a></li>
           </ul>
         </li>
 
@@ -127,7 +126,7 @@ session_start();
             </a></li>
           
         <li class="nav-item">
-            <a class="nav-link" href="zamowienie">Zamówienie</a>
+            <a class="nav-link" href="/zamowienie">Zamówienie</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" style="color:  rgba(226,226,226,0.49);" href="#">|
@@ -139,6 +138,7 @@ session_start();
         </ul>
     </div>
 </header>
+
 
 <main id="main">
     <div class="img">

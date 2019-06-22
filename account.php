@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+ob_start();
 
 if (isset($_SESSION['zalogowany'])) {
     header('Location: panel.php');
@@ -8,413 +9,21 @@ if (isset($_SESSION['zalogowany'])) {
 }
 
 if (isset($_POST['imie'])) {
-    $wszystko_ok = true;
-
-// imie
     $imie = $_POST['imie'];
-
-
-    if (strlen($imie) < 1) {
-        $wszystko_ok = false;
-        $_SESSION['e_imie'] = "<i class=\"fas fa-user-times\"></i> Pole imię jest wymagane!";
-
-
-        echo "<style>
-
-input[name='imie'] {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.10)!important;
-}
-
-</style>";
-
-    }
-
-    if (strlen($imie) > 16) {
-        $wszystko_ok = false;
-        $_SESSION['e_imie'] = "<i class=\"fas fa-user-times\"></i> Wprowadź maksymalnie 15 liter!";
-
-        echo "<style>
-
-input[name='imie'] {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.10)!important;
-}
-
-</style>";
-
-    }
-
-    if (ctype_alnum($imie) == false) {
-        $wszystko_ok = false;
-        $_SESSION['e_imie'] = "<i class=\"fas fa-user-times\"></i> Pole imię jest wymagane!";
-
-        echo "<style>
-
-input[name='imie'] {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.10)!important;
-}
-
-</style>";
-
-    }
-
-    if (preg_match("/[^A-z_-]/", $imie) == 1) {
-        $wszystko_ok = false;
-        $_SESSION['e_imie'] = "<i class=\"fas fa-user-times\"></i> Wprowadź tylko litery!";
-
-        echo "<style>
-
-input[name='imie'] {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.10)!important;
-}
-
-</style>";
-
-    }
-
-//koniec imienia
-
-//nazwisko
     $nazwisko = $_POST['nazwisko'];
-
-    if (strlen($nazwisko) < 1) {
-        $wszystko_ok = false;
-        $_SESSION['e_nazwisko'] = "<i class=\"fas fa-user-times\"></i> Pole nazwisko jest wymagane!";
-
-        echo "<style>
-
-input[name='nazwisko'] {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.10)!important;
-}
-
-</style>";
-    }
-
-    if (strlen($nazwisko) > 16) {
-        $wszystko_ok = false;
-        $_SESSION['e_nazwisko'] = "<i class=\"fas fa-user-times\"></i> Wprowadź maksymalnie 15 liter!";
-
-        echo "<style>
-
-input[name='nazwisko'] {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.10)!important;
-}
-
-</style>";
-    }
-
-    if (ctype_alnum($nazwisko) == false) {
-        $wszystko_ok = false;
-        $_SESSION['e_nazwisko'] = "<i class=\"fas fa-user-times\"></i> Pole nazwisko jest wymagane!";
-
-        echo "<style>
-
-input[name='nazwisko'] {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.10)!important;
-}
-
-</style>";
-    }
-
-    if (preg_match("/[^A-z_-]/", $nazwisko) == 1) {
-        $wszystko_ok = false;
-        $_SESSION['e_nazwisko'] = "<i class=\"fas fa-user-times\"></i> Wprowadź tylko litery!";
-
-        echo "<style>
-
-input[name='nazwisko'] {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.10)!important;
-}
-
-</style>";
-    }
-
-//koniec nazwisko
-
-//poczatek haslo
-
+    $login = $_POST['login'];
     $haslo = $_POST['haslo'];
-
-    if (strlen($haslo) < 1) {
-        $wszystko_ok = false;
-        $_SESSION['e_haslo'] = "<i class=\"fas fa-user-times\"></i> Pole hasło jest wymagane!";
-
-        echo "<style>
-
-input[name='haslo'] {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.10)!important;
-}
-
-</style>";
-    }
-
-    if (strlen($haslo) > 11) {
-        $wszystko_ok = false;
-        $_SESSION['e_haslo'] = "<i class=\"fas fa-user-times\"></i> Wprowadź maksymalnie 10 znaków!";
-
-        echo "<style>
-
-input[name='haslo'] {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.10)!important;
-}
-
-</style>";
-    }
-
-
-//koniec haslo
-
-//poczatek adres
-
     $adres = $_POST['adres'];
-
-    if (strlen($adres) < 1) {
-        $wszystko_ok = false;
-        $_SESSION['e_adres'] = "<i class=\"fas fa-user-times\"></i> Pole adres dostawy jest wymagane!";
-
-        echo "<style>
-
-input[name='adres'] {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.10)!important;
-}
-
-</style>";
-    }
-
-    if (strlen($adres) > 40) {
-        $wszystko_ok = false;
-        $_SESSION['e_adres'] = "<i class=\"fas fa-user-times\"></i> Wprowadź maksymalnie 40 znaków!";
-
-        echo "<style>
-
-input[name='adres'] {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.10)!important;
-}
-
-</style>";
-    }
-
-
-
+    $zip = $_POST['zip'];
+    $miejscowosc = $_POST['miejscowosc'];
     $phone = $_POST['phone'];
 
-    if (strlen($phone) < 1) {
-        $wszystko_ok = false;
-        $_SESSION['e_phone'] = "<i class=\"fas fa-user-times\"></i> Pole telefon jest wymagane!";
+    require_once 'inc/Database/Connect.php';
+    require_once 'inc/Database/CustomerRegister.php';
 
-        echo "<style>
-
-input[name='phone'] {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.10)!important;
+    $register = new CustomerRegister();
+    $register->registerCustomer($imie, $nazwisko, $login, $haslo, $adres, $zip, $miejscowosc, $phone);
 }
-
-</style>";
-    }
-
-    if (strlen($phone) > 11) {
-        $wszystko_ok = false;
-        $_SESSION['e_phone'] = "<i class=\"fas fa-user-times\"></i> Wprowadź maksymalnie 9 znaków!";
-
-        echo "<style>
-
-input[name='phone'] {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.10)!important;
-}
-
-</style>";
-    }
-
-
-
-
-    $zip = $_POST['zip'];
-
-    if (strlen($zip) < 1) {
-        $wszystko_ok = false;
-        $_SESSION['e_zip'] = "<i class=\"fas fa-user-times\"></i> Pole kod pocztowy jest wymagane!";
-
-        echo "<style>
-
-input[name='zip'] {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.10)!important;
-}
-
-</style>";
-    }
-
-    if (strlen($zip) > 6) {
-        $wszystko_ok = false;
-        $_SESSION['e_zip'] = "<i class=\"fas fa-user-times\"></i> Wprowadź maksymalnie 6 znaków!";
-
-        echo "<style>
-
-input[name='zip'] {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.10)!important;
-}
-
-</style>";
-    }
-
-
-
-
-    $miejscowosc = $_POST['miejscowosc'];
-
-    if (strlen($miejscowosc) < 1) {
-        $wszystko_ok = false;
-        $_SESSION['e_miejscowosc'] = "<i class=\"fas fa-user-times\"></i> Pole miejscowość jest wymagane!";
-
-        echo "<style>
-
-input[name='miejscowosc'] {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.10)!important;
-}
-
-</style>";
-    }
-
-    if (strlen($miejscowosc) > 40) {
-        $wszystko_ok = false;
-        $_SESSION['e_miejscowosc'] = "<i class=\"fas fa-user-times\"></i> Wprowadź maksymalnie 40 znaków!";
-
-        echo "<style>
-
-input[name='miejscowosc'] {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.10)!important;
-}
-
-</style>";
-    }
-
-    //poczatek login
-
-    $login = $_POST['login'];
-
-    require_once "produkty/php/connect.php";
-    mysqli_report(MYSQLI_REPORT_STRICT);
-
-    try {
-        $polaczenie = new mysqli($host, $db_user, $db_password, $db_name);
-        if ($polaczenie->connect_errno != 0) {
-            throw new Exception(mysqli_connect_errno());
-        } else {
-            // czy numer dostępu istnieje?
-            $rezultat = $polaczenie->query("SELECT login FROM customer WHERE login='$login'");
-            if (!$rezultat)
-                throw new Exception($polaczenie->error);
-            $ile_takich_loginow = $rezultat->num_rows;
-            if ($ile_takich_loginow > 0) {
-                $wszystko_ok = false;
-                $_SESSION['e_login'] = "<i class=\"fas fa-user-times\"></i> Istnieje już taki login!";
-                echo "<style>
-            input[name='login'] {
-            border: 1px solid red!important;
-            background-color: rgba(255,0,0,0.10)!important;
-            }
-            </style>";
-            }
-        }
-        $polaczenie->close();
-
-    } catch (Exception $e) {
-        echo "<span style='color: red;'>Błąd serwera! Prosimy o rejestrację w innym terminie! :)</span>";
-        echo $e;
-    };
-
-    if (strlen($login) < 1) {
-        $wszystko_ok = false;
-        $_SESSION['e_login'] = "<i class=\"fas fa-user-times\"></i> Pole login jest wymagane!";
-
-        echo "<style>
-
-input[name='login'] {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.10)!important;
-}
-
-</style>";
-    }
-
-    if (strlen($login) > 11) {
-        $wszystko_ok = false;
-        $_SESSION['e_login'] = "<i class=\"fas fa-user-times\"></i> Wprowadź maksymalnie 10 znaków!";
-
-        echo "<style>
-
-input[name='login'] {
-border: 1px solid red!important;
-background-color: rgba(255,0,0,0.10)!important;
-}
-
-</style>";
-    }
-
-//koniec login
-
-    if ($wszystko_ok == true) {
-
-        require_once "produkty/php/connect.php";
-
-        try {
-            $polaczenie = new mysqli($host, $db_user, $db_password, $db_name);
-            if ($polaczenie->connect_errno != 0) {
-                throw new Exception(mysqli_connect_errno());
-            } else {
-
-                $polaczenie = new mysqli($host, $db_user, $db_password, $db_name);
-
-                $name = htmlentities($imie, ENT_QUOTES, "UTF-8");
-                $surname = htmlentities($nazwisko, ENT_QUOTES, "UTF-8");
-                $address = htmlentities($adres, ENT_QUOTES, "UTF-8");
-                $login = htmlentities($login, ENT_QUOTES, "UTF-8");
-                $password = htmlentities($haslo, ENT_QUOTES, "UTF-8");
-                $zip = htmlentities($zip, ENT_QUOTES, "UTF-8");
-                $phone = htmlentities($zip, ENT_QUOTES, "UTF-8");
-                $city = htmlentities($miejscowosc, ENT_QUOTES, "UTF-8");
-
-                if ($polaczenie->query(sprintf("INSERT INTO customer VALUES (NULL, '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
-                    mysqli_real_escape_string($polaczenie, $name),
-                    mysqli_real_escape_string($polaczenie, $surname),
-                    mysqli_real_escape_string($polaczenie, $address),
-                    mysqli_real_escape_string($polaczenie, $city),
-                    mysqli_real_escape_string($polaczenie, $zip),
-                    mysqli_real_escape_string($polaczenie, $phone),
-                    mysqli_real_escape_string($polaczenie, $login),
-                    mysqli_real_escape_string($polaczenie, $password)
-
-
-                    ))) {
-
-                    $_SESSION['udanarejestracja'] = "Rejestracja zakończona pomyślnie!";
-                    header('location: login.php');
-                }
-            }
-            $polaczenie->close();
-        } catch (Exception $e) {
-            echo "<span style='color: red;'>Błąd serwera! Prosimy o rejestrację w innym terminie! :)</span>";
-            echo $e;
-        }
-    }
-}
-
-//koniec adres
 ?>
 
 <!doctype html>
@@ -481,9 +90,8 @@ background-color: rgba(255,0,0,0.10)!important;
         </ul>
     </div>
 </nav>
-
-<header class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#"
+<header class="navbar navbar-expand-lg navbar-light bg-light" >
+    <a class="navbar-brand" href="/index.php"
        style="letter-spacing: 1.5px; margin-top: -5px; font-family: 'Raleway', sans-serif; font-size: 60px;">
         <span style="color: #ca7b11; font-weight: bold">Shop</span>ly <span style="font-size: 34px;"></span>
     </a>
@@ -493,34 +101,47 @@ background-color: rgba(255,0,0,0.10)!important;
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
+     <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0 menuroll" style="font-size: 25px;padding-bottom: 10px;"
         ">
         <li class="nav-item">
-            <a class="nav-link" style="color: #e28000; opacity: 1;" href="#">Start</a>
+            <a class="nav-link" style="color: #e28000; opacity: 1;" href="/index.php">Home</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" style="color:  rgba(226,226,226,0.49);" href="#">|
             </a></li>
         <li class="nav-item">
-            <a class="nav-link" href="produkty">Produkty</a>
+            <a class="nav-link" href="produkty">Kategorie</a>
+              <ul>
+               <li><a href="/produkty/motoryzacja">Motoryzacja</a></li>
+               <li><a href="/produkty/elektronika">Elektronika</a></li>
+               <li><a href="/produkty/mieszkanie">Mieszkanie</a></li>
+               <li><a href="/produkty/ubrania">Ubrania</a></li>
+               <li><a href="/produkty/szkola">Szkoła</a></li>
+               <li><a href="/produkty/sport">Sport</a></li>
+          </ul>
         </li>
+
         <li class="nav-item">
             <a class="nav-link" style="color:  rgba(226,226,226,0.49);" href="#">|
+
             </a></li>
+
         <li class="nav-item">
-            <a class="nav-link" href="zamowienie">Zamówienie</a>
+            <a class="nav-link" href="/zamowienie">Zamówienie</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" style="color:  rgba(226,226,226,0.49);" href="#">|
             </a></li>
         <li class="nav-item" style="margin-top: -5px;">
             <a class="nav-link openbasketmenu" style="font-size: 30px;" href="#"><i
-                        class="fas fa-shopping-cart"></i></a>
+                    class="fas fa-shopping-cart"></i></a>
         </li>
         </ul>
     </div>
 </header>
+
+
 
 <main id="main_start" style="background-color: white;">
 

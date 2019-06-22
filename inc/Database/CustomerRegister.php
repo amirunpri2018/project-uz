@@ -207,7 +207,7 @@ class CustomerRegister {
         } finally {
             $databaseConnection->close();
             $_SESSION['udanarejestracja'] = "Rejestracja zakończona pomyślnie!";
-            header('location: http://project-uz.nazwa.pl/login.php');
+            header('location: /login.php');
             exit();
         }
     }

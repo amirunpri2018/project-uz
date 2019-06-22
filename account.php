@@ -22,8 +22,6 @@ if (isset($_POST['imie'])) {
 
     $register = new CustomerRegister();
     $register->registerCustomer($imie, $nazwisko, $login, $haslo, $adres, $zip, $miejscowosc, $phone);
-
-    header('location: login.php');
 }
 ?>
 
@@ -127,7 +125,7 @@ if (isset($_POST['imie'])) {
             <a class="nav-link" style="color:  rgba(226,226,226,0.49);" href="#">|
 
             </a></li>
-          
+
         <li class="nav-item">
             <a class="nav-link" href="/zamowienie">Zamówienie</a>
         </li>

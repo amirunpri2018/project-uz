@@ -22,6 +22,8 @@ if (isset($_POST['imie'])) {
 
     $register = new CustomerRegister();
     $register->registerCustomer($imie, $nazwisko, $login, $haslo, $adres, $zip, $miejscowosc, $phone);
+
+    header('location: login.php');
 }
 ?>
 

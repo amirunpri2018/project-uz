@@ -20,7 +20,7 @@ if (isset($_POST['imie'])) {
     require_once 'inc/Database/Connect.php';
     require_once 'inc/Database/CustomerRegister.php';
 
-    $register = new CustomerRegisterTest();
+    $register = new CustomerRegister();
     $register->registerCustomer($imie, $nazwisko, $login, $haslo, $adres, $zip, $miejscowosc, $phone);
 }
 ?>

@@ -117,6 +117,17 @@ class CustomerPanel {
         }
     }
 
+    public function getOrderDetails($CustomerID, $QuestionID){
+        $getOrders = new Connect();
+
+        try {
+            $getOrderDetails = $getOrders->query("
+            ");
+        } finally {
+            $getOrders->close();
+        }
+    }
+
     public function getCustomerQuestions($CustomerID){
         $getQuestions = new Connect();
 

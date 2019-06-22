@@ -1,15 +1,33 @@
 <?php
 
 session_start();
+ob_start();
+
+echo '<pre>';
+var_dump($_SESSION);
+echo '</pre>';
 
 if (isset($_POST['kwota2'])) {
-    $wszystko_ok2 = true;
+    /*$wszystko_ok2 = true;
     $_SESSION['kwota2'] = $_POST['kwota2'];
     $_SESSION['taskOption'] = $_POST['taskOption'];
-    $_SESSION['zamowienie2'] = $_POST['zamowienie2'];
+    $_SESSION['zamowienie2'] = $_POST['zamowienie2'];*/
+    echo '1' . $_SESSION['z_id']. '<br>';
+    echo '2' . $_POST['kwota2'] . '<br>';
+    echo '3' . $_POST['taskOption'] . '<br>';
+    echo '4' . $_POST['zamowienie2'] . '<br>';
 
+    $orderPrice = $_POST['kwota2'];
+    $paymentMethod = $_POST['taskOption'];
+    $orderProductsIDs = $_POST['zamowienie2'];
 
-    if ($wszystko_ok2 == true) {
+    require_once '../inc/Database/Connect.php';
+    require_once '../inc/Database/CreateOrder.php';
+
+    $newOrder = new CreateOrder();
+    $newOrder->createOrder($_SESSION['z_id'], $orderPrice, $paymentMethod, $orderProductsIDs);
+
+    /*if ($wszystko_ok2 == true) {
 
         require_once "../produkty/php/connect.php";
 
@@ -79,7 +97,7 @@ if (isset($_POST['kwota2'])) {
             echo "<span style='color: red;'>Błąd serwera! Prosimy o zakupy w innym terminie! :)</span>";
             echo $e;
         }
-    }
+    }*/
 }
 
 ?>

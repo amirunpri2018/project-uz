@@ -3,29 +3,15 @@
 session_start();
 ob_start();
 
-echo '<pre>';
-var_dump($_SESSION);
-echo '</pre>';
-
 if (isset($_POST['kwota2'])) {
-    /*$wszystko_ok2 = true;
     $_SESSION['kwota2'] = $_POST['kwota2'];
     $_SESSION['taskOption'] = $_POST['taskOption'];
-    $_SESSION['zamowienie2'] = $_POST['zamowienie2'];*/
-    echo '1' . $_SESSION['z_id']. '<br>';
-    echo '2' . $_POST['kwota2'] . '<br>';
-    echo '3' . $_POST['taskOption'] . '<br>';
-    echo '4' . $_POST['zamowienie2'] . '<br>';
-
-    $orderPrice = $_POST['kwota2'];
-    $paymentMethod = $_POST['taskOption'];
     $orderProductsIDs = $_POST['zamowienie2'];
 
     require_once '../inc/Database/Connect.php';
     require_once '../inc/Database/CreateOrder.php';
 
-    $newOrder = new CreateOrder();
-    $newOrder->createOrder($_SESSION['z_id'], $orderPrice, $paymentMethod, $orderProductsIDs);
+    $newOrder = new CreateOrder($_SESSION['z_id'], $_SESSION['kwota2'], $_SESSION['taskOption'], $orderProductsIDs);
 
     /*if ($wszystko_ok2 == true) {
 

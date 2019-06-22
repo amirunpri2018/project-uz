@@ -137,14 +137,20 @@ else {
                     <div style="text-align: center;">Wybrałaś/eś sposób zapłaty: <b><?php
 
                             echo $_SESSION['taskOption'];
+                            $_SESSION['kwota2'] = number_format($_SESSION['kwota2'], 2,',', ' ');
 
                             if ($_SESSION['taskOption'] == "Przelew tradycyjny")
                             {
-                                echo "</b><br>dlatego prosimy o przelanie wyliczonej kwoty <b>".$_SESSION['kwota2']."</b> PLN na nasze konto bankowe:<br><br><b>Shoply sp. Z o.o<br>ul. Morcinka 21, 67-200 Głogów<br>32 2233 3232 4335 3224 5354 4242 2342 0001</b>";
-                            }
-
-                            else {
-                                echo "</b><br>dlatego prosimy o przekazanie wyliczonej kwoty <b>".$_SESSION['kwota2']."</b> PLN dla kuriera.";
+                                echo "</b><br>Prosimy o przelanie wyliczonej kwoty <b>".
+                                    $_SESSION['kwota2'].
+                                    "</b> PLN na nasze konto bankowe:<br><br>
+                                    <b>Shoply sp. Z o.o<br>
+                                    ul. Morcinka 21, 67-200 Głogów<br>
+                                    32 2233 3232 4335 3224 5354 4242 2342 0001</b>";
+                            } else {
+                                echo "</b><br>Prosimy o przekazanie wyliczonej kwoty <b>".
+                                    $_SESSION['kwota2'].
+                                    "</b> PLN dla kuriera.";
                             }
 
                             ?>

@@ -1,15 +1,13 @@
 <?php
 
-
 class CreateOrder {
-    public function createOrder($customerID, $orderValue, $paymentMethod, $orderProducts){
+    public function __construct($customerID, $orderValue, $paymentMethod, $orderProducts){
         $databaseConnection = new Connect();
         $orderDate = date("Y-m-d H:i:s");
 
         try {
             $createOrder = $databaseConnection->query("
-                INSERT INTO `order` (`id`, `customer_id`, `status_id`, `date`, `price`, `shipping_method`) 
-                VALUES (NULL, '$customerID', '3', '$orderDate', '$orderValue', '$paymentMethod'");
+                INSERT INTO `order` VALUES (NULL, '$customerID', '3', '$orderDate', '$orderValue', '$paymentMethod');");
 
             $getOrderID = $databaseConnection->query("
                 SELECT o.id AS OrderID

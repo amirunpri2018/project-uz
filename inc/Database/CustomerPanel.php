@@ -101,7 +101,7 @@ class CustomerPanel {
             echo '    <tbody>';
 
             foreach($getOrdersList as $result){
-                echo '        <tr>';
+                echo '        <tr class="clickable-row" data-href="../panelklienta/zamowienie.php?id=' . $result['ID'] . '">';
                 echo '            <th scope="row">#' .  sprintf('%08d', $result['ID']) . '</th>';
                 echo '            <td>' . $result['Data_Zlozenia'] . '</td>';
                 echo '            <td>' . $result['Nazwa_Statusu'] . '</td>';
@@ -112,17 +112,91 @@ class CustomerPanel {
             echo '    </tbody>';
             echo '</table>';
 
+            echo '<script>
+                jQuery(document).ready(function($) {
+                    $(".clickable-row").click(function() {
+                        window.location = $(this).data("href");
+                    });
+                });
+                </script>';
         } finally {
             $getOrders->close();
         }
     }
 
-    public function getOrderDetails($CustomerID, $QuestionID){
+    public function getOrderDetails($CustomerID, $OrderID){
         $getOrders = new Connect();
 
         try {
             $getOrderDetails = $getOrders->query("
-            ");
+                SELECT
+                    o.ID AS ID,
+                    s.NAME AS Status,
+                    o.date AS OrderDate
+                FROM `order` AS o
+                    INNER JOIN `status` AS s ON s.id = o.status_id
+                WHERE o.customer_id = '$CustomerID'
+                    AND o.id = '$OrderID'")->fetchArray();
+
+            echo '<div class="row">';
+            echo '	<div class="col-md-5">';
+            echo '		<table class="table">';
+            echo '			<thead class="thead-dark">';
+            echo '				<tr>';
+            echo '					<th scope="col">Zamówienie: <strong>#' . sprintf('%08d', $getOrderDetails['ID']) . '</strong></th>';
+            echo '				</tr>';
+            echo '			</thead>';
+            echo '			<tbody>';
+            echo '				<tr>';
+            echo '					<td>Status: <strong>' . $getOrderDetails['Status'] . '</strong></td>';
+            echo '				</tr>';
+            echo '				<tr>';
+            echo '					<td>Data złożenia: <strong>' . $getOrderDetails['OrderDate'] . '</strong></td>';
+            echo '				</tr>';
+            echo '			</tbody>';
+            echo '		</table>';
+            echo '	</div>';
+            echo '</div>';
+
+            $getOrderDetails = $getOrders->query("
+                SELECT
+                    a.name AS ProductName,
+                    c.name AS CathegoryName,
+                    od.quantity AS Quantity,
+                    a.price AS Price	
+                FROM `order_detail` AS od
+                    INNER JOIN `order` AS o ON o.id = od.order_number_id
+                    INNER JOIN `article` AS a ON a.id = od.article_id
+                    INNER JOIN `category` AS c ON c.id = a.category_id
+                WHERE od.order_number_id = '$OrderID'
+                    AND o.customer_id = '$CustomerID'")->fetchAll();
+
+            echo '<div class="col-md-12" style="padding: 0;">';
+            echo '        <table class="table table-hover">';
+            echo '            <thead class="thead-dark">';
+            echo '                <tr>';
+            echo '                    <th style="width: 25%;" scope="col">Nazwa</th>';
+            echo '                    <th style="width: 25%;" scope="col">Kategoria</th>';
+            echo '                    <th style="width: 25%;" scope="col">Ilość</th>';
+            echo '                    <th style="width: 25%;" scope="col">Cena</th>';
+            echo '                </tr>';
+            echo '            </thead>';
+            echo '            <tbody>';
+
+            foreach($getOrderDetails as $result){
+                echo '                <tr>';
+                echo '                    <td>' . $result['ProductName'] . '</td>';
+                echo '                    <td>' . ucfirst($result['CathegoryName']) . '</td>';
+                echo '                    <td>' . $result['Quantity'] . '</td>';
+                echo '                    <td>' . number_format($result['Price'], 2,',', ' ') . ' zł</td>';
+                echo '                </tr>';
+            }
+
+            echo '            </tbody>';
+            echo '        </table>';
+            echo '    </div>';
+            echo '</div>';
+
         } finally {
             $getOrders->close();
         }

@@ -2,6 +2,11 @@
 
 session_start();
 
+if(!isset($_SESSION['z_id'])){
+    header('Location: ../index.php');
+    exit();
+}
+
 ?>
 
 <!doctype html>

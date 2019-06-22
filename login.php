@@ -50,7 +50,7 @@ if (isset($_POST['l_login']) && isset($_POST['l_haslo'])) {
 
                 if (isset($_SESSION['zalogowany'])) {
                     echo "<span class=\"nav-link\">
-                                <a href='../panelklienta/account.php'>
+                                <a href='../panelklienta'>
                                     Cześć <b>".$_SESSION['z_imie']."</b>!
                                 </a>
                               </span>

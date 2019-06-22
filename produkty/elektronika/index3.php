@@ -69,7 +69,7 @@ session_start();
                 <?php
 
                 if (isset($_SESSION['zalogowany'])) {
-                    echo "<a class=\"nav-link\" href='logout.php'\">Wyloguj</a>";
+                    echo "<a class=\"nav-link\" href='../logout.php'\">Wyloguj</a>";
                 } else
                 {
                     echo "<a class=\"nav-link\" href=\"login.php\">Logowanie</a>";

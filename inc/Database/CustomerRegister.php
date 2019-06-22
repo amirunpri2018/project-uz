@@ -4,6 +4,7 @@
 class CustomerRegister {
     public function registerCustomer($imie, $nazwisko, $login, $haslo, $adres, $zip, $miejscowosc, $phone){
         $wszystko_ok = true;
+        $phone = str_replace(' ', '', $phone);
 
         echo '
             <style>

@@ -115,10 +115,10 @@ if (isset($_POST['p_nr']) && !empty($_POST['p_nr'])) {
             <a class="nav-link" href="produkty">Kategorie</a>
               <ul>
                <li><a href="/produkty/motoryzacja">Motoryzacja</a></li>
-               <li><a href="/produkty/elektronika">Elektornia</a></li>
+               <li><a href="/produkty/elektronika">Elektronika</a></li>
                <li><a href="/produkty/mieszkanie">Mieszkanie</a></li>
-               <li><a href="/produkty/ubrania">ubrania</a></li>
-               <li><a href="/produkty/szkola">szkoła</a></li>
+               <li><a href="/produkty/ubrania">Ubrania</a></li>
+               <li><a href="/produkty/szkola">Szkoła</a></li>
                <li><a href="/produkty/sport">Sport</a></li>
           </ul>
         </li>

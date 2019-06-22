@@ -112,10 +112,10 @@ session_start();
             <a class="nav-link" href="produkty">Kategorie</a>
               <ul>
                <li><a href="/produkty/motoryzacja">Motoryzacja</a></li>
-               <li><a href="/produkty/elektronika">Elektornia</a></li>
+               <li><a href="/produkty/elektronika">Elektronika</a></li>
                <li><a href="/produkty/mieszkanie">Mieszkanie</a></li>
-               <li><a href="/produkty/ubrania">ubrania</a></li>
-               <li><a href="/produkty/szkola">szkoła</a></li>
+               <li><a href="/produkty/ubrania">Ubrania</a></li>
+               <li><a href="/produkty/szkola">Szkoła</a></li>
                <li><a href="/produkty/sport">Sport</a></li>
           </ul>
         </li>
@@ -273,33 +273,7 @@ session_start();
 
                     <section class='produkt' id='$i' draggable='true'>";
 
-                    if ($row["id"] == 1) {
-                        echo "<img src='../img/1.jpg' style='width: 100%;'>";
-                    } else if ($row["id"] == 2) {
-                        echo "<img src='../img/2.jpg' style='width: 100%;'>";
-                    } else if ($row["id"] == 3) {
-                        echo "<img src='../img/3.jpg' style='width: 100%;'>";
-                    } else if ($row["id"] == 4) {
-                        echo "<img src='../img/4.jpg' style='width: 100%;'>";
-                    } else if ($row["id"] == 5) {
-                        echo "<img src='../img/5.jpg' style='width: 100%;'>";
-                    } else if ($row["id"] == 6) {
-                        echo "<img src='../img/6.jpg' style='width: 100%;'>";
-                    } else if ($row["id"] == 7) {
-                        echo "<img src='../img/7.jpg' style='width: 100%;'>";
-                    } else if ($row["id"] == 8) {
-                        echo "<img src='../img/8.jpg' style='width: 100%;'>";
-                    } else if ($row["id"] == 8) {
-                        echo "<img src='../img/9.jpg' style='width: 100%;'>";
-                    } else if ($row["id"] == 9) {
-                        echo "<img src='../img/9.jpg' style='width: 100%;'>";
-                    } else if ($row["id"] == 10) {
-                        echo "<img src='../img/10.jpg' style='width: 100%;'>";
-                    } else if ($row["id"] == 11) {
-                        echo "<img src='../img/11.jpg' style='width: 100%;'>";
-                    } else if ($row["id"] == 12) {
-                        echo "<img src='../img/12.jpg' style='width: 100%;'>";
-                    }
+                    echo "<img src='../img/" . $row["id"] . ".jpg' style='width: 100%;'>";
 
                     echo "<div class=\"opis\">
                         <div class=\"nazwa\" style='margin-top:6px;'>".$row['nazwa']."</div>
